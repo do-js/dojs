@@ -1,0 +1,239 @@
+﻿{
+  "ID": "do_App",
+  "IsContainer": "0",
+  "Type": "SM",
+  "UIType": "Layout",
+  "Name": "应用类",
+  "Version": "Internal",
+  "Description": "这个是DeviceOne提供的基本应用类，通常在DeviceOne里开发的一个工程项目就是一个App实例。这个类负责页面Page的基本跳转，和App作用域内的数据共享等。",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "其它类型",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "loaded",
+      "Description": "App启动完成时触发，通常这个事件是整个程序的入口。",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "getAppID",
+      "Name": "当前App的唯一ID",
+      "Description": "应用内可以用多个App实例，这个id作为多个App区分的唯一标识。",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "App的ID",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "closePage",
+      "Name": "关闭最上层页面",
+      "Description": "上层Page关闭的时候会触发下层Page一个result事件，这个事件可以把数据传递到下层Page",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "data",
+          "Name": "关闭当前的Page传递给下层的Page的值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "animationType",
+          "Name": "动画类型",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "不设置时，默认取openPge动画所对应配套的关闭动画，例如openPage中是从左至右滑出，则配套关闭为从右至左。\r\nwinphone8不支持该动画效果，android和ios支持。\r\n目前支持以下几种：\r\n'slide_l2r': 从左至右滑出\r\n'slide_r2l': 从右至左滑出\r\n'slide_b2t': 从底至上滑出\r\n'slide_t2b': 从上至底滑出\r\n'push_l2r': 从左至右推出\r\n'push_r2l': 从右至左推出\r\n'push_b2t': 从底至上推出\r\n'push_t2b': 从上至底推出\r\n'fade' : 淡入淡出\r\n'page_curl' : 上翻页\r\n'page_uncurl' : 下翻页\r\n'cube' :立体翻转"
+        },
+        {
+          "ID": "layer",
+          "Name": "关闭层数",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "1",
+          "Description": "表示连续关闭多个page的次数，缺省是1，设置为任何小于1的数字都表示1表示只关闭当前页面。如果这个值大于1，则只有一次动画效果，result事件只会触发一次，中间关闭的页面不会有动画也不会触发result事件"
+        }
+      ]
+    },
+    {
+      "ID": "closePageToID",
+      "Name": "关闭指定页面",
+      "Description": "可以关闭指定页面，指定的id为openPage时定义的；上层Page关闭的时候会触发下层Page一个result事件，这个事件可以把数据传递到下层Page；当id为空时只关闭一层页面，id找不到时会报错",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "data",
+          "Name": "关闭当前的Page传递给下层的Page的值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "animationType",
+          "Name": "动画类型",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "不设置时，默认取openPge动画所对应配套的关闭动画，例如openPage中是从左至右滑出，则配套关闭为从右至左。\r\nwinphone8不支持该动画效果，android和ios支持。\r\n目前支持以下几种：\r\n'slide_l2r': 从左至右滑出\r\n'slide_r2l': 从右至左滑出\r\n'slide_b2t': 从底至上滑出\r\n'slide_t2b': 从上至底滑出\r\n'push_l2r': 从左至右推出\r\n'push_r2l': 从右至左推出\r\n'push_b2t': 从底至上推出\r\n'push_t2b': 从上至底推出\r\n'fade' : 淡入淡出\r\n'page_curl' : 上翻页\r\n'page_uncurl' : 下翻页\r\n'cube' :立体翻转"
+        },
+        {
+          "ID": "id",
+          "Name": "关闭指定页面id",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "openPage",
+      "Name": "弹出新的页面",
+      "Description": "在目前的Page基础上弹出新的Page，每一个Page都是扩充全屏，多个Page一级级覆盖，只有关闭了上层Page，才能看到下层Page",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "source",
+          "Name": "Page页的UI文件路径",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "路径支持source://和data://目录。关于文件协议说明可以参考Storage类。"
+        },
+        {
+          "ID": "data",
+          "Name": "传递给页面的数据",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "页面之间的数据传递。比如在页面A的基础上弹出页面B，页面A可以通过data参数把数据传递到页面B，页面B可以通过Page的getData方法来获取传递过来的数据"
+        },
+        {
+          "ID": "animationType",
+          "Name": "动画类型",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "slide_l2r",
+          "Description": "winphone8不支持该动画效果，android和ios支持。目前支持以下几种：\r\n'slide_l2r': 从左至右滑出\r\n'slide_r2l': 从右至左滑出\r\n'slide_b2t': 从底至上滑出\r\n'slide_t2b': 从上至底滑出\r\n'push_l2r': 从左至右推出\r\n'push_r2l': 从右至左推出\r\n'push_b2t': 从底至上推出\r\n'push_t2b': 从上至底推出\r\n'fade' : 淡入淡出\r\n'page_curl' : 上翻页\r\n'page_uncurl' : 下翻页\r\n'cube' :立体翻转\r\n'slide_l2r_1'：从左至右滑出（旧页淡出效果）\r\n'slide_r2l_1'：从右至左滑出（旧页淡出效果）\r\n'push_l2r_1': 从左至右推出（旧页被遮盖）\r\n'push_r2l_1': 从右至左推出（旧页被遮盖）"
+        },
+        {
+          "ID": "keyboardMode",
+          "Name": "是否弹出软键盘",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "hidden",
+          "Description": "当屏幕中有焦点时是否弹出软键盘（default--跟系统保持一致[已废弃]，visible--总是弹出，hidden--总是隐藏）"
+        },
+        {
+          "ID": "scriptType",
+          "Name": "打开页面的脚本类型",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "若参数有值，则打开的ui文件对应的脚本文件就是这个参数对应的文件。比如若参数有值，且为javascr，则打开xx.ui.js否则打开xx.ui.lua，若参数没有值，则打开系统全局配置的语言类型脚本文件"
+        },
+        {
+          "ID": "statusBarState",
+          "Name": "顶部状态栏显示状态",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "show",
+          "Description": "打开一个新的page的时候，控制顶部状态栏显示的状态，有三种值show:缺省值，表示顶部状态栏显示，所有视图都是从状态栏下开始显示；hide: 表示状态栏消失，所有视图都是从屏幕最顶端开始显示；transparent:表示状态栏透明，所有视图是从屏幕最顶端开始显示，可以透过状态栏看到底下的视图。 该属性android只有4.4版本后支持"
+        },
+        {
+          "ID": "statusBarFgColor",
+          "Name": "顶部状态栏前景色",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "black",
+          "Description": "打开一个新的page的时候，如果不是全屏的话，顶部状态栏字体的前景色，只能为'white'和'black'两种值，仅支持iOS平台"
+        },
+        {
+          "ID": "id",
+          "Name": "打开page的唯一标示",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "打开一个新的page的时候，增加一个打开的Page的唯一标示，id不能重复，如果重复则从上往下找到第一个为准"
+        }
+      ]
+    },
+    {
+      "ID": "update",
+      "Name": "更新页面数据",
+      "Description": "支持从data目录下拷贝一个目录或文件到source目录下并覆盖原目录或文件；若为更新data目录下页面，则仅需先替换要更新的页面，再掉一下update方法，不用带参数即可",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "拷贝是否成功，false为失败，true为成功",
+      "Paras": [
+        {
+          "ID": "source",
+          "Name": "要拷贝的目录或文件路径",
+          "Type": "Node",
+          "Type_JavaScript": "Node",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "仅支持data目录下一个或多个子目录或者文件，只处理能找到的文件或目录"
+        },
+        {
+          "ID": "target",
+          "Name": "目标地址",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "只允许是source目录，如果目录不存在，则创建对应的目录"
+        }
+      ]
+    }
+  ]
+}

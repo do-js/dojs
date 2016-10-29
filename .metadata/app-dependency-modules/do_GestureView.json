@@ -1,0 +1,70 @@
+﻿{
+  "ID": "do_GestureView",
+  "IsContainer": "0",
+  "Type": "UI",
+  "Name": "手势组件",
+  "Version": "Internal",
+  "Description": "手势组件，缺省是透明的，windowsPC不支持",
+  "Icon": "",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "fling",
+      "Description": "手指在触摸屏上迅速移动，并松开的动作，松开时触发",
+      "ReturnType": "Node",
+      "ReturnDesc": "{velocityX:'100',velocityY:'100'} 返回手指在手指x,y方向滑动的速率，其中正值表示的是往下和往右、负值表示的是往上和往左。iOS的速率是固定值"
+    },
+    {
+      "ID": "longTouch",
+      "Description": "长按触发该事件",
+      "ReturnType": "Node",
+      "ReturnDesc": "{x:'100',y:'100'} 返回手指x,y在屏幕的绝对值"
+    },
+    {
+      "ID": "move",
+      "Description": "手指在触摸屏上移动时触发",
+      "ReturnType": "Node",
+      "ReturnDesc": "{x:'100',y:'100'} 返回手指x,y在屏幕的绝对值"
+    },
+    {
+      "ID": "touch",
+      "Description": "按下并在组件范围抬起，触发该事件",
+      "ReturnType": "Node",
+      "ReturnDesc": "{x:'100',y:'100'} 返回手指x,y在屏幕的绝对值"
+    },
+    {
+      "ID": "touchDown",
+      "Description": "组件范围内按下即可触发",
+      "ReturnType": "Node",
+      "ReturnDesc": "{x:'100',y:'100'} 返回手指x,y在屏幕的绝对值"
+    },
+    {
+      "ID": "touchUp",
+      "Description": "一旦按下，手指离开即触发，不论是否在组件范围内",
+      "ReturnType": "Node",
+      "ReturnDesc": "{x:'100',y:'100'} 返回手指x,y在屏幕的绝对值"
+    }
+  ],
+  "syncMethodes": [],
+  "asyncMethodes": []
+}

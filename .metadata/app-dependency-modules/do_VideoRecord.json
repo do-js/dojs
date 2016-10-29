@@ -1,0 +1,89 @@
+﻿{
+  "ID": "do_VideoRecord",
+  "IsContainer": "0",
+  "Type": "UI",
+  "UIType": "View",
+  "Name": "视频录制",
+  "Version": "Internal",
+  "Description": "录制视频，输出MP4格式",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "音频视频",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "error",
+      "Description": "录制出错事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "finish",
+      "Description": "完成录制",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回值包含两个节点{path:'data://temp/do_VideoRecord/20160101101010111.mp4',size:'232342'}，其中path为保存视频的路径，文件名是日期+精确到毫秒时间；size为视频大小，单位为KB"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "start",
+      "Name": "开始录制视频",
+      "Description": "打开录制界面开始录制视频",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "quality",
+          "Name": "录制视频质量",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "normal",
+          "Description": "选择录音输出的质量，支持high(1920*1080)、normal(1280*720)、low(640*480),如果手机不支持high,以及normal,默认为low格式"
+        },
+        {
+          "ID": "limit",
+          "Name": "视频时长限制",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "-1",
+          "Description": "录制视频的时长限制，以毫秒为单位，-1时表示不限时长"
+        }
+      ]
+    },
+    {
+      "ID": "stop",
+      "Name": "停止录制视频",
+      "Description": "停止录制视频",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": []
+}

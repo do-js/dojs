@@ -1,0 +1,32 @@
+封装了3个方法来实现ui和数据的绑定，简化自动给多个ui设置属性和获取多个ui属性
+
+//定义一个绑定的映射关系
+function define = function(root, mapping) ;
+
+//给ui的属性设置数据
+function setData = function(binding_id, data) ;
+
+//获取当前所有ui属性的值
+function getData = function(binding_id) ;
+
+首先，在调用这些函数之前，不要忘了引入twowayBinding.js库：
+//-----------------------------------------
+//.ui.js中的代码：
+var twowayBinding = require("do/tools/twowayBinding");
+
+//1.定义多个ui和数据的隐射关系，返回绑定的唯一id 
+var binding_id = twowayBinding.define(ui("$"), {
+	"do_TextField_1.text" : "ipaddress",
+	"do_TextField_2.text" : "port"
+});
+
+//2. 给多个ui设置真实的值，自动把这些值设置到ui的属性上
+var data = {
+	"ipaddress" : "192.168.1.100",
+	"port" : "3333"
+}
+twowayBinding.setData(binding_id, data);
+
+//3. 通过别的手段修改ui的属性值后，最后根据绑定标示获取所有ui的属性值的集合
+var data = twowayBinding.getData(binding_id);
+//-----------------------------------------

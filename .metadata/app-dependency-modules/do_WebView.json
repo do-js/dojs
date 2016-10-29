@@ -1,0 +1,393 @@
+﻿{
+  "ID": "do_WebView",
+  "IsContainer": "0",
+  "Type": "UI",
+  "UIType": "View",
+  "Name": "网页视图控件",
+  "Version": "Internal",
+  "Description": "可以加载html网页，同时在网页中可以使用DeviceOne提供的js SDK实现跨webview的交互",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "设备功能",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "allowDeviceOne",
+      "Name": "是否加载DeviceOne函数",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "true",
+      "EditType": "1",
+      "Group": "",
+      "Description": "若想要WebView可以调用DeviceOne的函数，必须将该属性值设置为true，且在该页面的中将代码加到一个特定的函数window.onDeviceOneLoaded = function(){ //do something }方可",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "allowVideoFullScreenPlayback",
+      "Name": "HTML中的视频是否自动全屏播放",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "1",
+      "Group": "",
+      "Description": "为true时则播放HTML页面中视频时自动全屏，为false时则在播放的时候不改变原有视频窗口大小",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "bounces",
+      "Name": "反弹效果",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "true",
+      "EditType": "1",
+      "Group": "",
+      "Description": "只支持iOS平台，为false时没有上拉下拉的反弹效果",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "cacheType",
+      "Name": "缓存类型",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "no_cache",
+      "EditType": "1",
+      "Group": "",
+      "Description": "改变WebView的缓存方式，缺省值为no_cache表示不使用缓存；为normal时根据cache-control决定是否获取新数据；windows平台不支持",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "no_cache",
+            "value": "不使用缓存"
+          },
+          {
+            "id": "normal",
+            "value": "跟服务器一致"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "headerView",
+      "Name": "表头视图",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "0",
+      "Group": "",
+      "Description": "设置要显示的表头视图地址，不填但isHeaderVisible为true时有缺省样式",
+      "Design": {
+        "Type": "FileSource",
+        "Data": []
+      }
+    },
+    {
+      "ID": "isHeaderVisible",
+      "Name": "是否显示headerview",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "缺省false不显示",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "isShowLoadingProgress",
+      "Name": "是否显示进度条",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "webview的顶部有一个绿色进度条，显示加载网页的进度，缺省false不显示",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "url",
+      "Name": "网页地址",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "支持http://,https://,支持source://,data://文件格式。文件格式的说明可以参考Storage类",
+      "Design": {
+        "Type": "Richtext",
+        "Data": []
+      }
+    },
+    {
+      "ID": "userAgent",
+      "Name": "浏览器标识",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "设置浏览器的User-Agent",
+      "Design": {
+        "Type": "Text",
+        "Data": []
+      }
+    },
+    {
+      "ID": "zoom",
+      "Name": "手势缩放",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "设置webview是否支持手势缩小放大，设置为true时支持",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    }
+  ],
+  "Events": [
+    {
+      "ID": "failed",
+      "Description": "加载错误事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "加载网页失败或加载一个错误的或者不存在的网页时触发，返回错误信息"
+    },
+    {
+      "ID": "loaded",
+      "Description": "加载结束事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "pull",
+      "Description": "下拉headerview事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "返回{state,offset}，其中state表示headerview的状态，offset为headerview下拉的位移量；其中state=0：表示开始下拉headerview，在headerview下拉到headerview复位整个过程中，pull事件会触发很多次；state=1：表示下拉headerview超过headerview的高度，触发一次这个事件，前端开发者接受到这个事件会更新headerview的ui；state=2：下拉超过一定值，触发state=1事件后，松手会触发一次这个事件，前端开发者接受到这个事件会更新headerview的ui，然后开始加载数据，数据加载完后需要调用rebound方法让header复位"
+    },
+    {
+      "ID": "start",
+      "Description": "开始加载",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "back",
+      "Name": "回退",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "canBack",
+      "Name": "是否可后退",
+      "Description": "",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "检查是否有可以后退的历史记录",
+      "Paras": []
+    },
+    {
+      "ID": "canForward",
+      "Name": "是否可继续前进",
+      "Description": "",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "返回是否可继续前进",
+      "Paras": []
+    },
+    {
+      "ID": "forward",
+      "Name": "前进",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "getContentSize",
+      "Name": "获取加载页面内容尺寸",
+      "Description": "获取当前加载页面真实内容的宽高，windows平台不支持",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "返回{width,height}",
+      "Paras": []
+    },
+    {
+      "ID": "rebound",
+      "Name": "headerview复位",
+      "Description": "headerview复位",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "reload",
+      "Name": "重新加载",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "setCookie",
+      "Name": "设置cookie",
+      "Description": "设置浏览器的cookie",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "url",
+          "Name": "域名地址",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "如果webview加载该域名地址，会自动把cookie传给服务器"
+        },
+        {
+          "ID": "value",
+          "Name": "cookie值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "setDefaultEncodingURL",
+      "Name": "设置默认转码",
+      "Description": "设置是否对url默认按照utf-8编码格式转码，仅支持iOS平台",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "isEncode",
+          "Name": "是否默认转码",
+          "Type": "Bool",
+          "Type_JavaScript": "Bool",
+          "Required": 0,
+          "DefaultValue": "true",
+          "Description": "默认按照utf-8编码方式转码，设置为false则不对原url进行处理"
+        }
+      ]
+    },
+    {
+      "ID": "setLoadingProgressColor",
+      "Name": "设置顶部进度条颜色",
+      "Description": "设置加载html页面时，组件顶部进度条的颜色",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "color",
+          "Name": "进度条颜色",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "颜色值格式为：8位16进制字符，前6位是RGB颜色值，后两位是透明度（Alpha），例如：000000FF"
+        }
+      ]
+    },
+    {
+      "ID": "stop",
+      "Name": "停止刷新",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "eval",
+      "Name": "执行JavaScript函数",
+      "Description": "在WebView页面执行一段Javascript代码，并返回值",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "code",
+          "Name": "要执行的JS代码",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "loadString",
+      "Name": "加载html字符串",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "text",
+          "Name": "html格式文本字符串",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    }
+  ]
+}

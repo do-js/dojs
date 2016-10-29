@@ -1,0 +1,180 @@
+﻿{
+  "ID": "do_LinearLayout",
+  "IsContainer": "*",
+  "Type": "UI",
+  "UIType": "Layout",
+  "Name": "线性布局",
+  "Version": "Internal",
+  "Description": "横、纵向布局。如果是纵向布局的话，所有内部子控件都从上向下排列，不会有重合，当height=-1时，表示自动高度，整个layout的高度是所有内部子控件的高之和。\r\n如果是横向布局的话，当width=-1时，所有内部组件横向方向顺序排列，宽度是所有子控件宽度之和",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "其它类型",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "bgImage",
+      "Name": "背景图片",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "可设置本地文件：支持data://和source://两种方式。文件格式说明参考Storage类",
+      "Design": {
+        "Type": "ImageSource",
+        "Data": []
+      }
+    },
+    {
+      "ID": "bgImageFillType",
+      "Name": "背景图片填充方式",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "fillxy",
+      "EditType": "1",
+      "Group": "",
+      "Description": "背景图片填充方式，缺省为fillxy，win8不支持repeatxy方式：\r\nfillxy：拉伸图片（不按比例）以填充layout的宽高\r\nrepeatxy：按原图大小重复填充",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "fillxy",
+            "value": "平铺填充"
+          },
+          {
+            "id": "repeatxy",
+            "value": "重复填充"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "direction",
+      "Name": "布局方向",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "vertical",
+      "EditType": "0",
+      "Group": "",
+      "Description": "支持2种方向布局，只允许设计器修改：\r\nhorizontal：横向布局\r\nvertical：纵向布局",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "horizontal",
+            "value": "横向布局"
+          },
+          {
+            "id": "vertical",
+            "value": "纵向布局"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "enabled",
+      "Name": "是否可点击",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "true",
+      "EditType": "1",
+      "Group": "",
+      "Description": "缺省为'true'，如果enable为true，则Layout是可以点击的，touch事件才有意义，否则不可点击",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "padding",
+      "Name": "内边距",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "0,0,0,0",
+      "EditType": "0",
+      "Group": "",
+      "Description": "0,0,0,0 分别表示上，右，下，左的内边距，通常只用于height和width为-1的情况",
+      "Design": {
+        "Type": "Text",
+        "Data": []
+      }
+    }
+  ],
+  "Events": [
+    {
+      "ID": "touch",
+      "Description": "点击触发",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "add",
+      "Name": "插入一个UI",
+      "Description": "可以在LinearLayout控件内动态插入新的ui组件，新的ui组件的脚本环境和LinearLayout所在的环境是一致的",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "返回这个ui文件对应的根节点view的地址",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "唯一标识",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "为了确保ui自身的id属性和父容器里其他子ui的id重复。这个id作为一个在父容器的唯一标识"
+        },
+        {
+          "ID": "path",
+          "Name": "插入目标组件的ui文件路径",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "插入的ui对应的文件路径，支持data://和source://目录。文件格式说明请参考Storage类。"
+        },
+        {
+          "ID": "target",
+          "Name": "插入目标组件的id或者地址",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "要插入目标组件模块的id或者地址，插入的ui加在该组件的右面或者下面，为空时表示加在LinearLayout最上面或左边。"
+        }
+      ]
+    },
+    {
+      "ID": "getChildren",
+      "Name": "获取子view的id",
+      "Description": "获取当前组件内所有第一层子view的id",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回一个JSON数组，类似['do_Button_1','do_Button_2']",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": []
+}

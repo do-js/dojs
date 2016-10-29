@@ -1,0 +1,21 @@
+{
+	"RootView":{
+		"bgColor":"00000044",
+		"x":"0",
+		"width":"750",
+		"y":"0",
+		"id":"do_ALayout_root",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"bgColor":"FFFFFFFF",
+				"templates":"source://modules/popupMenu/main_1.ui,source://modules/popupMenu/main_2.ui",
+				"width":"750",
+				"id":"do_ListView_index",
+				"type":"do_ListView",
+				"height":"900"
+			}
+		],
+		"height":"1334"
+	}
+}

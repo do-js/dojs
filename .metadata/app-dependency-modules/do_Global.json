@@ -1,0 +1,216 @@
+﻿{
+  "ID": "do_Global",
+  "IsContainer": "0",
+  "Type": "SM",
+  "UIType": "Layout",
+  "Name": "应用全局类",
+  "Version": "Internal",
+  "Description": "Global组件表示手机上的移动应用App的概念，但是和我们的定义的App组件有差别，一个Global下至少包含一个DeviceOne的App组件，但是有可能有多个App组件。这个组件负责一些应用全局的事件，负责应用全局范围内数据的交互和设置。",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "其它类型",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "background",
+      "Description": "通常是按手机的home键应用进到后台会触发这个事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "broadcast",
+      "Description": "android原生系统广播会触发这个事件，当然只有android系统才支持",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回广播类型type和应用包名content，{type:'PACKAGE_ADDED',content:''}，其中type为PACKAGE_ADDED（安装应用）、PACKAGE_REMOVED（卸载应用）、0（开屏、点亮屏幕）、1（锁屏）、2（解锁）这几种枚举值之一"
+    },
+    {
+      "ID": "foreground",
+      "Description": "应用从后台回到前台会触发这个事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "launch",
+      "Description": "应用被启动会触发这个事件，三种情况 1. 正常点击应用图标启动 2. 被启动应用通过唤醒ID被其他应用唤醒启动 3. 通过点击推送过来的消息来启动 这个事件只能在程序入口脚本代码中订阅才有意义，比如app.lua ,app.js",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "这是一个JSON格式的数据，包含type和data2个节点，格式如下{ 'type':'启动的类型', 'data':'启动被传递的数据' }其中type有4种情况1. 正常启动，该值为空；2. 被其他应用唤醒，该值为'wakeup' 3. 被推送消息启动，该值为'notification'；4. 被本地通知消息启动，该值为'locaLNotification'；而data有3种情况1. 正常启动：这个值为空 2. 被其他应用唤醒：这个值为第三方传递，可以咨询第三方 ，其中andoid需要和第三方约定，唤醒应用的第三方的原生代码里intent需要putStringExtra('data','必须要有值'); 如果第三方也是do平台的应用，可以通过External的openApp方法，方法里的data参数必须要有值3. 被推送消息启动：这个值的格式可以参考我们的推送类"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "exit",
+      "Name": "退出应用",
+      "Description": "直接kill进程，退出程序",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "getFromPasteboard",
+      "Name": "从粘贴板取出内容",
+      "Description": "从系统的粘帖板里获取内容",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "获取的内容",
+      "Paras": []
+    },
+    {
+      "ID": "getMemory",
+      "Name": "获取全局变量值",
+      "Description": "获取全局变量值，整个应用程序全局的内存共享，在程序的任何位置都可以通过get Memory方法来获取共享数据",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "内存中一个变量的值",
+      "Paras": [
+        {
+          "ID": "key",
+          "Name": "变量名",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "变量键值对的key"
+        }
+      ]
+    },
+    {
+      "ID": "getSignatureInfo",
+      "Name": "获取签名证书信息",
+      "Description": "获取签名证书信息，仅支持Android平台",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回是一个JSON格式，包含2个值，基本格式如下\r\n{\r\n   'version':'证书版本',\r\n   'serialNumber':'序列号',\r\n   'sigAlgName':'签名算法名称',\r\n   'notBefore':'有效期开始日期',\r\n   'notAfter':'截止日期',\r\n   'SHA256':'SHA256值',\r\n   'SHA1':'SHA1值',\r\n   'MD5':'MD5值',\r\n   'issuerDN':'证书颁发者',\r\n   'subjectDN':'证书拥有者'}\r\n",
+      "Paras": []
+    },
+    {
+      "ID": "getTime",
+      "Name": "获取当前设备时间",
+      "Description": "根据用户传递的时间foramt返回格式化的时间。请使用标准的时间格式标记。",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "当前设备时间",
+      "Paras": [
+        {
+          "ID": "format",
+          "Name": "时间格式",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "需要返回的时间格式，比如yyyy-MM-dd这种通用时间格式，如果format为空，返回一个时间的长整型毫秒数"
+        }
+      ]
+    },
+    {
+      "ID": "getVersion",
+      "Name": "获取应用安装包的版本号",
+      "Description": "原生应用安装包的版本，可以通过云打包的过程中设置。通常要实现安装包升级需要调用这个方法，通过比较当前应用的版本和远程服务上最新应用安装包的版本来确定是否需要提示用户升级安装包",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回是一个JSON格式，包含2个值，基本格式如下\r\n{\r\n   'ver':'版本的显示名称，通常是xxx.yyy.zzz格式',\r\n   'code':'版本的build号，是一个唯一序号，通常是一个数字'\r\n}\r\n",
+      "Paras": []
+    },
+    {
+      "ID": "getWakeupID",
+      "Name": "获取应用唤醒ID",
+      "Description": "应用可以被其它应用启动，这个唤醒ID可以在云打包中配置。这个值需要告诉其它第三方应用，让其它应用通过这个唤醒ID来启动我们自己的的应用。同时我们如果知道其它移动应用的唤醒ID，也可以通过我们的External类来启动其他应用",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "唤醒ID",
+      "Paras": []
+    },
+    {
+      "ID": "setMemory",
+      "Name": "设置全局变量值",
+      "Description": "设置全局变量值，整个应用程序全局的内存共享，在程序的任何位置都可以通过set Memory方法来设置共享数据。如有已经有这个变量名，会覆盖旧的变量值",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "key",
+          "Name": "变量名",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "value",
+          "Name": "变量值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "setToPasteboard",
+      "Name": "拷贝到粘贴板",
+      "Description": "拷贝一个字符串到系统的粘贴板共享给其它程序",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "拷贝是否成功",
+      "Paras": [
+        {
+          "ID": "data",
+          "Name": "",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "要拷贝的内容"
+        }
+      ]
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "install",
+      "Name": "安装升级包",
+      "Description": "DeviceOne提供了程序内升级的功能，也就是不需要升级安装包就能升级业务代码和数据。通常升级包的目录结构必须和build.do文件解开后的目录结构一致，build.do实际上一个zip文件，是通过设计器的“Build Local Package”功能生成的文件，但是升级包只包含变化的文件，最后把升级包压缩成zip文件，再把升级包部署在网络服务上。通过http获取别的方式把升级包下载到我们的data目录下，然后再调用这个install方法，这个方法会解压升级包zip文件到系统目录的升级目录。重启程序，程序每次启动会检查这个升级目录，发现里面有文件就会自动拷贝内容到对应的目录从而实现程序内升级功能",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "安装是否成功",
+      "Paras": [
+        {
+          "ID": "src",
+          "Name": "安装包的指定路径",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "只能是data://格式的数据文件，而且只能是zip文件"
+        }
+      ]
+    }
+  ]
+}

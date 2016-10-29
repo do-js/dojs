@@ -1,0 +1,99 @@
+﻿{
+  "ID": "M2590_PickerView",
+  "IsContainer": "*",
+  "Type": "UI",
+  "UIType": "Container",
+  "Name": "滑动选择框",
+  "Version": "Internal",
+  "Description": "null",
+  "Icon": "",
+  "BBS": "null",
+  "Keyword": "null",
+  "IOS": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "19"
+  },
+  "Windows": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "WindowsPhone": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "cancel",
+      "Description": "点击取消",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "ok",
+      "Description": "选择框确定按钮",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回选择的对象"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "bindItems",
+      "Name": "bindItems",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "json",
+          "Name": "json",
+          "Type": "Node",
+          "Type_JavaScript": "Node",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "refreshItems",
+      "Name": "refreshItems",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "setSelected",
+      "Name": "setSelected",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "index",
+          "Name": "index",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "index"
+        }
+      ]
+    }
+  ],
+  "asyncMethodes": []
+}

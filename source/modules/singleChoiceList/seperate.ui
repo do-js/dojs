@@ -1,0 +1,18 @@
+{
+	"RootView":{
+		"bgColor":"DCDCDCFF",
+		"width":"750",
+		"type":"do_LinearLayout",
+		"views":[
+			{
+				"margin":"20,0,0,0",
+				"bgColor":"ACACACFF",
+				"width":"750",
+				"id":"do_Label_1",
+				"type":"do_Label",
+				"height":"1"
+			}
+		],
+		"height":"-1"
+	}
+}

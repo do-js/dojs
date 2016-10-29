@@ -1,0 +1,238 @@
+﻿{
+  "ID": "do_ALayout",
+  "IsContainer": "*",
+  "Type": "UI",
+  "UIType": "Layout",
+  "Name": "绝对布局",
+  "Version": "Internal",
+  "Description": "UI组件，绝对布局,通过设置x,y来设置控件的绝对位置。这是DeviceOne平台提供的一个核心组件也是最重要的组件之一。",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "其它类型",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "bgImage",
+      "Name": "背景图片",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "设置layout的背景图片，支持data://和source://两种方式；文件格式说明参考Storage类",
+      "Design": {
+        "Type": "ImageSource",
+        "Data": []
+      }
+    },
+    {
+      "ID": "bgImageFillType",
+      "Name": "背景图片填充方式",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "fillxy",
+      "EditType": "1",
+      "Group": "",
+      "Description": "背景图片填充方式，缺省为fillxy，win8不支持repeatxy方式。其中fillxy:表示无论图片大小，图片会自动拉伸平铺满整个layout；repeatxy:表示图片不会有任何自动拉伸，根据layout大小会重复很多个图片",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "fillxy",
+            "value": "自动拉伸平铺"
+          },
+          {
+            "id": "repeatxy",
+            "value": "重复填充"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "enabled",
+      "Name": "是否可点击",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "true",
+      "EditType": "1",
+      "Group": "",
+      "Description": "缺省为true，如果enable为true，则ALayout是可以点击的，否则不可点击",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "isStretch",
+      "Name": "是否自动拉伸",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "true",
+      "EditType": "0",
+      "Group": "",
+      "Description": "通常ALayout包括ALayout内的所有组件都是按照设计器里设计的分辨率映射到手机屏幕的分辨率，按比例缩放的。比如设计器设计一个ui缺省是320*480，如果在ALayout是100*100的正方形，最后安装到640*960分辨率的手机上会是一个200*200的正方形区域；但是安装到分辨率比例和设计器比例不一致的手机上，正方形会变形为长方形，比如手机分辨率为640*1024，则正方形会变成200*213的长方形，为了确保不变形，可以通过设置这个属性来控制。通常isStretch为true，表示缺省是自动平铺拉伸，如果改为false，则layout的优先考虑比例，会自动拉伸，但是会拉伸到铺满横向或者纵向。比如上面的例子，安装到分辨率是640*1024，如果设置isStretch为false的话，layout还会是200*200的正方形，但是layout的父容器会多出13左右的空白",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "layoutAlign",
+      "Name": "对齐方式",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "MiddelCenter",
+      "EditType": "0",
+      "Group": "",
+      "Description": "这个属性只有当isStretch为false的时候才有意义。正如isStretch属性描述，如果设计器设计的区域分辨率宽高比和运行的手机宽高比不一致的时候，通过设置isStretch为false可以确保ALayout比例不变形，但是有可能会有空白区域，这个属性就是设置这个空白区的停靠方式。总共有如下几种对齐方式：\r\n 'TopLeft'：'垂直居上，水平居左'\r\n'TopCenter'：'垂直居上，水平居中'\r\n'TopRight'：'垂直居上，水平居右'\r\n'MiddleLeft'：'垂直居中，水平居左'\r\n'MiddleCenter'：'垂直水平都居中'\r\n'MiddleRight'：'垂直居中，水平居右'\r\n'BottomLeft'：'垂直居下，水平居左'\r\n'BottomCenter'：'垂直居下，水平居中'\r\n'BottomRight'：'垂直居下，水平居右'",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "TopLeft",
+            "value": "垂直居上，水平居左"
+          },
+          {
+            "id": "TopCenter",
+            "value": "垂直居上，水平居中"
+          },
+          {
+            "id": "TopRight",
+            "value": "垂直居上，水平居右"
+          },
+          {
+            "id": "MiddleLeft",
+            "value": "垂直居中，水平居左"
+          },
+          {
+            "id": "MiddleCenter",
+            "value": "垂直水平都居中"
+          },
+          {
+            "id": "MiddleRight",
+            "value": "垂直居中，水平居右"
+          },
+          {
+            "id": "BottomLeft",
+            "value": "垂直居下，水平居左"
+          },
+          {
+            "id": "BottomCenter",
+            "value": "垂直居下，水平居中"
+          },
+          {
+            "id": "BottomRight",
+            "value": "垂直居下，水平居右"
+          }
+        ]
+      }
+    }
+  ],
+  "Events": [
+    {
+      "ID": "longTouch",
+      "Description": "长按事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "touch",
+      "Description": "按下并在alayout范围抬起，触发该事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "touchDown",
+      "Description": "alayout范围内按下即可触发，必须先订阅toch事件才会有效果",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "touchUp",
+      "Description": "一旦按下，手指离开即触发，不论是否在alayout范围内，必须先订阅toch事件才会有效果",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "add",
+      "Name": "插入一个UI",
+      "Description": "可以在ALayout控件内在用户指定的x,y坐标上动态插入新的ui组件，这个ui文件可以有自己的脚本代码，但是和这个ui的所在Page共享一个脚本环境。",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "返回这个ui文件对应的根节点view的地址",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "唯一标识",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "为了确保ui自身的id属性和父容器里其他子ui的id重复。这个id作为一个在父容器的唯一标识"
+        },
+        {
+          "ID": "path",
+          "Name": "插入的ui组件对应的ui文件路径",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "插入的UI文件路径，支持data://和source://目录。关于文件格式的说明请参考Storage类"
+        },
+        {
+          "ID": "x",
+          "Name": "x 坐标",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "插入的ui组件相对ALayout的x 坐标,如果没有设置,则x坐标是这个ui文件里指定的x坐标"
+        },
+        {
+          "ID": "y",
+          "Name": "y的坐标",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "插入的ui组件相对ALayout的y 坐标,如果没有设置,则y坐标是这个ui文件里指定的y坐标"
+        }
+      ]
+    },
+    {
+      "ID": "getChildren",
+      "Name": "获取子view的id",
+      "Description": "获取当前组件内所有第一层子view的id",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回一个JSON数组，类似['do_Button_1','do_Button_2']",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": []
+}

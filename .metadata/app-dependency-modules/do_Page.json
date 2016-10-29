@@ -1,0 +1,145 @@
+﻿{
+  "ID": "do_Page",
+  "IsContainer": "0",
+  "Type": "SM",
+  "UIType": "Layout",
+  "Name": "页面",
+  "Version": "Internal",
+  "Description": "应用程序基本页面类，包括UI布局和逻辑代码。每一个移动应用都是由多个Page一层层的叠加来组成。在当前Page的基础上打开新的Page，新的Page打开后会盖住底部的Page，当新的Page关闭后，又会露出底部的Page。\r\n每一个Page都有自己的脚本运行环境，Page内所有的组件都公用这一个脚本环境。",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "其它类型",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "back",
+      "Description": "点击设备物理或虚拟返回按键触发事件（Android、WindowsPhone有效）",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "loaded",
+      "Description": "页面加载完触发事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "menu",
+      "Description": "点击设备物理或虚拟菜单按键触发事件（Android、WindowsPhone有效）",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "pause",
+      "Description": "进入后台、被其他Page盖住或关闭当前页面时触发",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    },
+    {
+      "ID": "result",
+      "Description": "上层Page关闭时触发",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "上层Page关闭的时候会触发下层Page一个result事件。并返回上层页面关闭时传递过来的数据"
+    },
+    {
+      "ID": "resume",
+      "Description": "回到前台、Page回到顶端时触发或打开当前页面",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": ""
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "getData",
+      "Name": "获取从上一层page传递过来的数据",
+      "Description": "弹出新的page，通过data来传递数据。",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "传递过来的数据",
+      "Paras": []
+    },
+    {
+      "ID": "hideKeyboard",
+      "Name": "隐藏软键盘",
+      "Description": "找到当前page是否有键盘弹出，然后把焦点释放，键盘隐藏",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "remove",
+      "Name": "删除子ui",
+      "Description": "删除Page里一个子UI",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "子ui的id或者地址",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "通过子ui的id和地址获取到子ui，然后删除"
+        }
+      ]
+    },
+    {
+      "ID": "supportPanClosePage",
+      "Name": "手势滑动关闭页面",
+      "Description": "可通过从左往右滑动手势关闭页面，并从当前页面传递data给下层页面，仅支持iOS平台",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "data",
+          "Name": "关闭当前的Page传递给下层的Page的值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "support",
+          "Name": "是否支持手势滑动关闭",
+          "Type": "Bool",
+          "Type_JavaScript": "Bool",
+          "Required": 0,
+          "DefaultValue": "true",
+          "Description": "单独设置某页支持手势关闭"
+        }
+      ]
+    }
+  ],
+  "asyncMethodes": []
+}
