@@ -1,0 +1,13 @@
+{
+  "libs": [
+    "ecma5"
+  ],
+  "plugins": {
+    ".metadata/deviceone": {
+      
+    }
+  },
+  "loadEagerly": [
+    "source/script/*.js"
+  ]
+}
