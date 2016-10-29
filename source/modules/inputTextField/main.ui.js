@@ -1,38 +1,34 @@
-var core=require("do/core");
-var http=require("do/http");
-var global=require("do/global");
-var page=require("do/page");
-var style=require("do/style");
+var dojs=require("dojs");
 
-style.css(ui("do_ALayout_topbar"), "pageTopbar");
-style.css(ui("do_ALayout_back"), "dynamicButton");
-style.css(ui("do_Button_ok"), "dynamicButton");
-style.css(ui("do_ALayout_close"), "dynamicButton");
+dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
+dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
+dojs.style.css(ui("do_Button_ok"), "dynamicButton");
+dojs.style.css(ui("do_ALayout_close"), "dynamicButton");
 
-page.allowClose(ui("do_ALayout_back"));
+dojs.page.allowClose(ui("do_ALayout_back"));
 
 var initValue="";
 sm("do_Page").on("loaded",function(){
 	var data=sm("do_Page").getData();
-	if (!core.isNullData(data)){
-		if (!core.isNullData(data.title)){
+	if (!dojs.core.isNullData(data)){
+		if (!dojs.core.isNullData(data.title)){
 			ui("do_Label_title").text = data.title;
 		}
 	
-		if (!core.isNullData(data.inputType)){
+		if (!dojs.core.isNullData(data.inputType)){
 			ui("do_TextField_Data").inputType = data.inputType;
 		}
 		
-		if (!core.isNullData(data.hint)){
+		if (!dojs.core.isNullData(data.hint)){
 			ui("do_TextField_Data").hint = data.hint;
 		}
 		
-		if (!core.isNullData(data.initValue)){
+		if (!dojs.core.isNullData(data.initValue)){
 			initValue = data.initValue;
 			ui("do_TextField_Data").text=initValue;
 		}
 		
-		if (!core.isNullData(data.maxLength)){
+		if (!dojs.core.isNullData(data.maxLength)){
 			ui("do_TextField_Data").maxLength = data.maxLength;
 		}
 	}
@@ -44,7 +40,7 @@ function returnResult(){
 	sm("do_App").closePage({moduleType:"$$inputTextField$$", result:{value:ui("do_TextField_Data").text}});
 }
 
-page.onTouch(ui("do_Button_ok"), function(){
+dojs.page.onTouch(ui("do_Button_ok"), function(){
 	returnResult();
 });
 

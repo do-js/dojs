@@ -1,10 +1,5 @@
 var d1 = require("deviceone");
-
-var core=require("do/core");
-var http=require("do/http");
-var global=require("do/global");
-var page=require("do/page");
-var style=require("do/style");
+var dojs=require("dojs");
 
 var animHide;
 function hideView(_func){
@@ -19,14 +14,14 @@ function hideView(_func){
 }
 var json_data;
 var do_ListData=mm("do_ListData");
-page.allowHide(
+dojs.page.allowHide(
 	ui("$"), 
 	function(data){
 		var height=0;
 		if (data){
 			json_data=[];
 			for(var i=0; i<data.length; i++){
-				if (core.isNullData(data[i].name)){
+				if (dojs.core.isNullData(data[i].name)){
 					json_data.push({template:1});
 					height+=10;
 				}

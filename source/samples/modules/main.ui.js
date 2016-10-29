@@ -9,7 +9,8 @@ var jsonData=[
               {id:"inputTextField", Name:"接收单行文本的输入"},
               {id:"scanBarcode", Name:"扫描二维码"},
               {id:"popupMenu", Name:"弹出菜单"},
-              {id:"singleChoiceList", Name:"弹出单选列表"}
+              {id:"singleChoiceList", Name:"弹出单选列表"},
+              {id:"mainFrame", Name:"主窗口"}
 ];
 
 var do_ListData=mm("do_ListData");

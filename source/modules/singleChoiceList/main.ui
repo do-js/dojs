@@ -31,11 +31,11 @@
 						"type":"do_ALayout",
 						"views":[
 							{
-								"width":"44",
+								"width":"25",
 								"x":"30",
-								"y":"73",
-								"id":"do_ImageView_1",
-								"source":"source://modules/singleChoiceList/return.png",
+								"y":"65",
+								"id":"do_ImageView_2",
+								"source":"source://modules/return.png",
 								"type":"do_ImageView",
 								"height":"42"
 							}

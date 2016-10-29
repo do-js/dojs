@@ -35,7 +35,7 @@
 								"x":"30",
 								"y":"65",
 								"id":"do_ImageView_1",
-								"source":"source://modules/inputTextField/return.png",
+								"source":"source://modules/return.png",
 								"type":"do_ImageView",
 								"height":"42"
 							}

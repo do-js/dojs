@@ -61,13 +61,23 @@ var modules_menus=null;
 //---------------------------------------------------------------
 /**
  * 弹出菜单
- * @param _menus 自定义菜单
+ * @param _menus 选项参数
  */
 module.exports.popupMenu = function(_menus){
 	modules_menus=_menus;
 	page.showView("source://modules/popupMenu/main.ui", _menus);
 };
 
+//---------------------------------------------------------------
+/**
+* 打开主视图
+* @param _menus 自定义菜单
+*/
+module.exports.mainFrame = function(_option){
+	page.showView("source://modules/mainFrame/main.ui", _option);
+};
+
+//---------------------------------------------------------------
 //统一处理页面的回调
 d1.sm("do_Page").on("result", function(data){
 	if (core.isNull(data) ||
