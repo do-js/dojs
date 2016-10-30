@@ -13,7 +13,7 @@
 				"views":[
 					{
 						"width":"750",
-						"id":"do_ViewShower_main",
+						"id":"do_ViewShower_index",
 						"type":"do_ViewShower",
 						"height":"1207"
 					}
@@ -43,15 +43,17 @@
 						"height":"1"
 					},
 					{
+						"isShowbar":"false",
 						"templates":"source://modules/mainFrame/main_1.ui",
 						"width":"750",
-						"y":"1",
+						"y":"2",
+						"canScrollToTop":"false",
 						"id":"do_GridView_bottom",
 						"type":"do_GridView",
 						"height":"126"
 					}
 				],
-				"height":"126"
+				"height":"128"
 			}
 		],
 		"height":"1334"

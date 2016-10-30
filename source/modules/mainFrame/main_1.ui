@@ -1,25 +1,28 @@
 {
 	"RootView":{
+		"bgColor":"00000000",
 		"x":"0",
 		"width":"150",
 		"y":"0",
+		"id":"",
 		"type":"do_ALayout",
 		"views":[
 			{
 				"x":"50",
 				"width":"50",
 				"y":"18",
-				"id":"do_ImageView_1",
+				"id":"do_ImageView_button",
 				"source":"source://image/icon_chat_on.png",
 				"type":"do_ImageView",
 				"height":"50"
 			},
 			{
+				"bgColor":"00000000",
 				"textAlign":"center",
 				"width":"150",
 				"y":"80",
 				"fontSize":"28",
-				"id":"do_Label_1",
+				"id":"do_Label_button",
 				"text":"首页",
 				"type":"do_Label",
 				"fontColor":"55C5B9FF",

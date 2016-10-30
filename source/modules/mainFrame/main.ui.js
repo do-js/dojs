@@ -1,75 +1,63 @@
-var d1 = require("deviceone");
 var dojs=require("dojs");
 
 dojs.page.allowExit();
 
+var viewShower_data;
+var gridView_data;
+var do_ListData=mm("do_ListData");
 sm("do_Page").on("loaded",function(){
-	
 	var data=sm("do_Page").getData();
 	var buttonCount=data.length;
+	if (buttonCount > 5){
+		dojs.core.error("mainFrame最多只能支持5个底部按钮");
+		return;;
+	}
+	viewShower_data=[];
+	gridView_data=[];
+	var width=Math.floor(750/buttonCount);
+	var x=Math.floor((width /2) -25);
+	for(var i=0; i<buttonCount; i++){
+		data[i].x=x;
+		data[i].width=width;
+		gridView_data.push({
+			selected:"0",
+			data:data[i]
+		});
+		viewShower_data.push({
+			id:"b_" + i,
+			path:data[i].path
+		});
+	}
+	do_ListData.addData(gridView_data);
+	ui("do_GridView_bottom").hSpacing=750/buttonCount -150;
 	ui("do_GridView_bottom").numColumns=buttonCount;
-	var do_ListData=d1.mm("do_ListData");
-	do_ListData.add(data);
-	ui("do_GridView_bottom").bindItems(data);
-	
+	ui("do_GridView_bottom").bindItems(do_ListData);
+	ui("do_ViewShower_index").addViews(viewShower_data);
+	ui("do_GridView_bottom").fire("touch", 0);
 });
 
-/*
-//绑定ViewShower的4个子页面
-var viewShower_data = [ 
-	{
-		id : "home",
-		imageUI:ui("do_ImageView_home"),
-		labelUI:ui("do_Label_home"),
-		buttonUI:ui("do_ALayout_home"),
-		path : "source://view/home/main.ui"
-	}, 
-	{
-		id : "match",
-		imageUI:ui("do_ImageView_match"),
-		labelUI:ui("do_Label_match"),
-		buttonUI:ui("do_ALayout_match"),
-		path : "source://view/match/main.ui"
-	}, 
-	{
-		id : "train",
-		imageUI:ui("do_ImageView_train"),
-		labelUI:ui("do_Label_train"),
-		buttonUI:ui("do_ALayout_train"),
-		path : "source://view/train/main.ui"
-	}, 
-	{
-		id : "my",
-		imageUI:ui("do_ImageView_my"),
-		labelUI:ui("do_Label_my"),
-		buttonUI:ui("do_ALayout_my"),
-		path : "source://view/my/main.ui"
-	}
-];
-ui("do_ViewShower_main").addViews(viewShower_data);
-
-//定义按钮点击事件的处理方法
-for(var i=0; i<viewShower_data.length; i++){
-	dojs.style.css(viewShower_data[i].buttonUI, "dynamicButton");
-	viewShower_data[i].buttonUI.on("touch", i, function(_data, _para){
-		var _index = _para.data;
-		ui("do_ViewShower_main").showView(viewShower_data[_index].id);
-		for(var j=0; j<viewShower_data.length; j++){
-			if (_index==j){
-				viewShower_data[j].imageUI.source="source://image/" + 
-					viewShower_data[j].id + "_on.png";
-				viewShower_data[j].labelUI.fontColor="55C5B9FF";
-				if (j == 0) sm("do_Page").fire("home_refresh");
-				if (j == 1) sm("do_Page").fire("train_refresh");
-			}
-			else{
-				viewShower_data[j].imageUI.source="source://image/" + 
-					viewShower_data[j].id + "_off.png";
-				viewShower_data[j].labelUI.fontColor="9E9E9EFF";
+ui("do_GridView_bottom").on("touch", function(_index){
+	ui("do_ViewShower_index").showView(viewShower_data[_index].id);
+	for(var i=0; i< gridView_data.length; i++){
+		if (i==_index){
+			if (gridView_data[i].selected!="1"){
+				gridView_data[i].selected="1";
+				do_ListData.updateOne(i, {
+					data:gridView_data[i].data,
+					selected:"1"
+				});
 			}
 		}
-	});
-}
-ui("do_ALayout_home").fire("touch");
+		else{
+			if (gridView_data[i].selected!="0"){
+				gridView_data[i].selected="0";
+				do_ListData.updateOne(i, {
+					data:gridView_data[i].data,
+					selected:"0"
+				});
+			}
+		}
+	}
+	ui("do_GridView_bottom").refreshItems();
+});
 
-*/

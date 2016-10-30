@@ -3,6 +3,7 @@ var dojs=require("dojs");
 dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
 dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
 
+style.css(ui("do_ALayout_topbar"), "pageTopbar");
 dojs.page.allowClose(ui("do_ALayout_back"));
 
 sm("do_Page").on("loaded",function(){

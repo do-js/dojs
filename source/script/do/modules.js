@@ -18,7 +18,7 @@ module.exports.inputTextField = function(_option, _callback){
 	core.openPage({
 		source:"source://modules/inputTextField/main.ui", 
 		animationType:"fade",
-		data:{title:_option.title, hint:_option.hint, inputType:_option.inputType},
+		data:_option,
 		statusBarState:"transparent"
 	});
 };
@@ -35,7 +35,7 @@ module.exports.scanBarcode = function(_option, _callback){
 	core.openPage({
 		source:"source://modules/scanBarcode/main.ui", 
 		animationType:"fade",
-		data:{title:_option.title, hint:_option.hint},
+		data:_option,
 		statusBarState:"transparent"
 	});	
 };
@@ -74,38 +74,46 @@ module.exports.popupMenu = function(_menus){
 * @param _menus 自定义菜单
 */
 module.exports.mainFrame = function(_option){
-	page.showView("source://modules/mainFrame/main.ui", _option);
+	core.openPage({
+		source:"source://modules/mainFrame/main.ui", 
+		animationType:"fade",
+		data:_option,
+		statusBarState:"transparent"
+	});
 };
 
 //---------------------------------------------------------------
-//统一处理页面的回调
-d1.sm("do_Page").on("result", function(data){
-	if (core.isNull(data) ||
-			core.isNull(data.moduleType)) return;
-	if (data.moduleType == "$$scanBarcode$$"){
-		if (!module_scanBarcode_callback) return; 
-		module_scanBarcode_callback.call(this, data.result);
-		return;
-	}
-	if (data.moduleType == "$$inputTextField$$"){
-		if (!module_inputTextField_callback) return;
-		module_inputTextField_callback.call(this, data.result);
-		return;
-	}
-	if (data.moduleType == "$$singleChoiceList$$"){
-		if (!module_singleChoiceList_callback) return;
-		module_singleChoiceList_callback.call(this, data.result);
-		return;
-	}
-});
+//所有返回内容在app.js里都无法获取
+if (core.inPage()){
+	//统一处理页面的回调
+	d1.sm("do_Page").on("result", function(data){
+		if (core.isNull(data) ||
+				core.isNull(data.moduleType)) return;
+		if (data.moduleType == "$$scanBarcode$$"){
+			if (!module_scanBarcode_callback) return; 
+			module_scanBarcode_callback.call(this, data.result);
+			return;
+		}
+		if (data.moduleType == "$$inputTextField$$"){
+			if (!module_inputTextField_callback) return;
+			module_inputTextField_callback.call(this, data.result);
+			return;
+		}
+		if (data.moduleType == "$$singleChoiceList$$"){
+			if (!module_singleChoiceList_callback) return;
+			module_singleChoiceList_callback.call(this, data.result);
+			return;
+		}
+	});
 
-//统一处理页面的内部消息
-d1.sm("do_Page").on("$$modules_internal_Event$$",function(data){
-	if (core.isNull(data) ||
-			core.isNull(data.moduleType)) return;
-	if (data.moduleType == "$$popupMenu$$"){
-		if (core.isNull(modules_menus)||!modules_menus[data.result.index].callback) return;
-		modules_menus[data.result.index].callback.call(this);
-		return;
-	}	
-});
+	//统一处理页面的内部消息
+	d1.sm("do_Page").on("$$modules_internal_Event$$",function(data){
+		if (core.isNull(data) ||
+				core.isNull(data.moduleType)) return;
+		if (data.moduleType == "$$popupMenu$$"){
+			if (core.isNull(modules_menus)||!modules_menus[data.result.index].callback) return;
+			modules_menus[data.result.index].callback.call(this);
+			return;
+		}	
+	});
+}
