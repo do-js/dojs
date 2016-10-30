@@ -140,7 +140,7 @@ function ajax( url, options){
 		options = url;
 		url = null;
 	}
-	var d=core.getOptions(options, "do/setting/httpSetting");
+	var d=core.getOptions(options, "do/defaultSetting/httpSetting");
 	d.mockData=d.mockData||[];
 	d.type=d.type||"GET";
 	d.type=d.type.toUpperCase();
