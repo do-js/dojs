@@ -10,7 +10,7 @@ var d1=require("deviceone");
  * 当前是否为调试状态
  */
 module.exports.isDebug = function(options){
-	var d=core.getOptions(options, "do/setting/globalSetting");
+	var d=core.getOptions(options, "do/defaultSetting/globalSetting");
 	return d.isDebugStatus;
 };
 
