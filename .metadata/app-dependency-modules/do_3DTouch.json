@@ -1,0 +1,116 @@
+﻿{
+  "ID": "do_3DTouch",
+  "IsContainer": "0",
+  "Type": "SM",
+  "Name": "3DTouch",
+  "Version": "Internal",
+  "Description": "目前支持桌面快捷菜单，最多只能添加4个；因苹果特性，该功能只有在第二次启动App时生效",
+  "Icon": "",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "9.1"
+  },
+  "Android": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Windows": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "WindowsPhone": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "touch",
+      "Description": "点击item触发",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回值包括，{'id':'','title':'','subTitle':'','userInfo':''}"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "addShortcutItem",
+      "Name": "添加桌面快捷菜单",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "Item的唯一标示",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "快捷菜单中Item的唯一标示"
+        },
+        {
+          "ID": "title",
+          "Name": "Item的标题",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "icon",
+          "Name": "图标",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "显示的图标，目前只支持官方提供的图标，DeviceOne集成了官方图标，修改了短码，具体详见http://doc.deviceone.net/web/doc/detail_course/third_party/3DTouch.htm"
+        },
+        {
+          "ID": "subTitle",
+          "Name": "Item的子标题",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "Item的子标题"
+        },
+        {
+          "ID": "userInfo",
+          "Name": "自定义内容",
+          "Type": "Node",
+          "Type_JavaScript": "Node",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "自定义内容，为空或者json字符串"
+        }
+      ]
+    },
+    {
+      "ID": "removeShortcutItem",
+      "Name": "删除桌面快捷菜单",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "Item的唯一标示",
+          "Type": "Node",
+          "Type_JavaScript": "Node",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "快捷菜单中Item的唯一标示，如['id1','id2'...]"
+        }
+      ]
+    }
+  ],
+  "asyncMethodes": []
+}

@@ -1,0 +1,128 @@
+﻿{
+  "ID": "do_PainterView",
+  "IsContainer": "0",
+  "Type": "UI",
+  "Name": "手势签名",
+  "Version": "Internal",
+  "Description": "手势滑动时会在view中留下移动痕迹",
+  "Icon": "",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "brushColor",
+      "Name": "画笔颜色",
+      "Type": "String",
+      "DefaultValue": "FF0000FF",
+      "EditType": "1",
+      "Group": "",
+      "Description": "设置画笔颜色，值格式为：8位16进制字符，前6位是RGB颜色值，后两位是透明度（Alpha），例如：000000FF，默认为红色",
+      "Design": {
+        "Type": "Color",
+        "Data": []
+      }
+    },
+    {
+      "ID": "brushWidth",
+      "Name": "画笔宽度",
+      "Type": "Number",
+      "DefaultValue": "3",
+      "EditType": "1",
+      "Group": "",
+      "Description": "宽度最小为1，表示1像素宽度",
+      "Design": {
+        "Type": "Integer",
+        "Data": []
+      }
+    }
+  ],
+  "Events": [],
+  "syncMethodes": [
+    {
+      "ID": "clear",
+      "Name": "清空画板",
+      "Description": "清空整个画板内容",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "undo",
+      "Name": "回退操作",
+      "Description": "撤销当前步骤，回退到上一步",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "saveAsBitmap",
+      "Name": "保存为Bitmap",
+      "Description": "将整个view保存为一个Btimap",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "bitmap",
+          "Name": "bitmap对象",
+          "Type": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "saveAsImage",
+      "Name": "保存为图片",
+      "Description": "将整个view保存为一个图片",
+      "ReturnType": "String",
+      "ReturnDesc": "返回当前保存的图片路径，为空时表示保存失败",
+      "Paras": [
+        {
+          "ID": "format",
+          "Name": "压缩格式",
+          "Type": "String",
+          "Required": 0,
+          "DefaultValue": "JPEG",
+          "Description": "支持两种格式：PNG，JPEG"
+        },
+        {
+          "ID": "quality",
+          "Name": "压缩质量",
+          "Type": "Number",
+          "Required": 0,
+          "DefaultValue": "100",
+          "Description": "图片的压缩质量，支持 1-100，windows平台不支持"
+        },
+        {
+          "ID": "outPath",
+          "Name": "输出路径",
+          "Type": "String",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "保存的图片路径支持data://目录，如果为空，缺省返回唯一图片路径，会另存到data://temp/do_PainterView/目录下"
+        }
+      ]
+    }
+  ]
+}

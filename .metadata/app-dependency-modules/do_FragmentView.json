@@ -1,0 +1,136 @@
+﻿{
+  "ID": "do_FragmentView",
+  "IsContainer": "0",
+  "Type": "UI",
+  "Name": "多页面滑动视图",
+  "Version": "Internal",
+  "Description": "支持从最左侧或右侧边缘滑出视图，整体侧滑视图带有缩放和渐变效果；",
+  "Icon": "https://do-store.oss-cn-beijing.aliyuncs.com/D/20160121/do_FragmentView/多页面滑动视图.jpg",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "WindowsPhone": {
+    "Support": 1,
+    "MinVersion": "10"
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "allowAnimation",
+      "Name": "动画缩放效果",
+      "Type": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "允许滑动或显示时有动画缩放展示效果",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "supportGesture",
+      "Name": "支持手势滑动",
+      "Type": "String",
+      "DefaultValue": "both",
+      "EditType": "1",
+      "Group": "",
+      "Description": "包含三种类型，缺省both表示同时支持左右滑动",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "both",
+            "value": "同时支持左右滑动"
+          },
+          {
+            "id": "left",
+            "value": "仅支持手势滑出左页"
+          },
+          {
+            "id": "right",
+            "value": "仅支持手势滑出右页"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "templates",
+      "Name": "显示视图对应UI模板文件",
+      "Type": "Node",
+      "DefaultValue": "",
+      "EditType": "0",
+      "Group": "",
+      "Description": "可以设置一个或多个UI模板文件，值为String类型，多个模板之间分别用“,”分隔，例如：“source://view/temp/content.ui,source://view/temp/left.ui”",
+      "Design": {
+        "Type": "Richtext",
+        "Data": []
+      }
+    }
+  ],
+  "Events": [],
+  "syncMethodes": [
+    {
+      "ID": "bindItems",
+      "Name": "绑定视图模板数据",
+      "Description": "可绑定listData实例，addData数据内容为JSON字符串，key值分别为：template（主视图），leftTemplate（左侧视图，可选），rightTemplate（右侧视图，可选），value对应templates属性对应UI模板索引值；例如：[{ template:0 ,leftTemplate:1}]",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "data",
+          "Name": "数据",
+          "Type": "Node",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "refreshItems",
+      "Name": "刷新数据",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnDesc": "支持动态刷新当前视图显示数据",
+      "Paras": []
+    },
+    {
+      "ID": "reset",
+      "Name": "重置为初始视图",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "showLeft",
+      "Name": "显示左侧视图",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "showRight",
+      "Name": "显示右侧视图",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnDesc": "",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": []
+}

@@ -1,0 +1,205 @@
+﻿{
+  "ID": "do_Polyv",
+  "IsContainer": "0",
+  "Type": "SM",
+  "Name": "保利威视",
+  "Version": "Internal",
+  "Description": "保利威视提供网络播放、本地播放、视频下载、视频上传、视频拍摄等功能，不支持windows平台",
+  "Icon": "https://do-store.oss-cn-beijing.aliyuncs.com/D/20160324/do_Polyv/u=1167877973,1917356347&fm=21&gp=0.jpg",
+  "IOS": {
+    "Support": 1,
+    "MinVersion": "7.0"
+  },
+  "Android": {
+    "Support": 1,
+    "MinVersion": "4.0"
+  },
+  "Windows": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "WindowsPhone": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [],
+  "Events": [
+    {
+      "ID": "downloadProgress",
+      "Description": "下载进度事件",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回当前下载进度百分比{progress:20}表示20%"
+    },
+    {
+      "ID": "fail",
+      "Description": "请求出错事件",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回值{type:0}，type表示事件类型，0表示下载事件"
+    },
+    {
+      "ID": "success",
+      "Description": "请求成功事件",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回值{type:0}，type表示事件类型，0表示下载事件"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "download",
+      "Name": "下载视频",
+      "Description": "支持不同码率视频的下载",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "视频唯一标识",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "bitRate",
+          "Name": "视频码率",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "支持：1表示流畅，2表示高清，3表示超清"
+        }
+      ]
+    },
+    {
+      "ID": "getCurrentTime",
+      "Name": "获取当前视频播放时间",
+      "Description": "获取当前视频播放时间",
+      "ReturnType": "Number",
+      "ReturnType_JavaScript": "Number",
+      "ReturnDesc": "获取当前视频播放时间，毫秒值",
+      "Paras": []
+    },
+    {
+      "ID": "getState",
+      "Name": "获取视频状态",
+      "Description": "获取当前视频状态",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "{state:0},state表示视频的当前状态，0:表示停止，1：表示正在播放",
+      "Paras": []
+    },
+    {
+      "ID": "play",
+      "Name": "播放视频",
+      "Description": "支持全屏和小窗口播放",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "视频唯一标识",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        },
+        {
+          "ID": "bitRate",
+          "Name": "视频码率",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "0",
+          "Description": "支持：0是自动根据当前网络环境适应，1表示流畅，2表示高清，3表示超清，默认值"
+        },
+        {
+          "ID": "point",
+          "Name": "播放起点",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "",
+          "Description": "从视频中的某一点开始播放，毫秒值"
+        },
+        {
+          "ID": "isFull",
+          "Name": "是否全屏",
+          "Type": "Bool",
+          "Type_JavaScript": "Bool",
+          "Required": 0,
+          "DefaultValue": "false",
+          "Description": "iOS平台只支持全屏播放"
+        }
+      ]
+    },
+    {
+      "ID": "stop",
+      "Name": "停止播放",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "无",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "getInfo",
+      "Name": "获取视频信息",
+      "Description": "根据视频唯一标识获取视频信息",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "{id:'唯一标识',title:'标题',duration:'时长',imageUrl:'预览图片地址',fileSize:'文件大小(字节)','bitRates':'支持的码率'}",
+      "Paras": [
+        {
+          "ID": "id",
+          "Name": "视频唯一标识",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "getList",
+      "Name": "获取视频列表",
+      "Description": "获取视频列表，支持分页",
+      "ReturnType": "Node",
+      "ReturnType_JavaScript": "Node",
+      "ReturnDesc": "返回结果列表,是一个数组,每一项是一个字典,包括视频的基本信息：{id:'唯一标识',title:'标题',duration:'时长',imageUrl:'预览图片地址',fileSize:'文件大小(字节)','bitRates':'支持的码率'}",
+      "Paras": [
+        {
+          "ID": "pageIndex",
+          "Name": "分页索引",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "0",
+          "Description": ""
+        },
+        {
+          "ID": "pageSize",
+          "Name": "分页容量",
+          "Type": "Number",
+          "Type_JavaScript": "Number",
+          "Required": 0,
+          "DefaultValue": "10",
+          "Description": ""
+        }
+      ]
+    }
+  ]
+}

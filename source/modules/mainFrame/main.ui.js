@@ -8,7 +8,7 @@ sm("do_Page").on("loaded",function(){
 	var data=sm("do_Page").getData();
 	var buttonCount=data.length;
 	ui("do_GridView_bottom").numColumns=buttonCount;
-	var do_ListData=d1.sm("do_ListData");
+	var do_ListData=d1.mm("do_ListData");
 	do_ListData.add(data);
 	ui("do_GridView_bottom").bindItems(data);
 	
