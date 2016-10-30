@@ -9,7 +9,7 @@
 			{
 				"bgColor":"16AF9FFF",
 				"width":"750",
-				"id":"do_ALayout_1",
+				"id":"do_ALayout_topbar",
 				"type":"do_ALayout",
 				"views":[
 					{

@@ -1,5 +1,4 @@
 var dojs=require("dojs");
-dojs.style.css(ui("$"), "dynamicButton");
 
 ui("$").setMapping({
 	"do_ImageView_button.tag":"selected",

@@ -43,7 +43,6 @@
 						"height":"1"
 					},
 					{
-						"isShowbar":"false",
 						"templates":"source://modules/mainFrame/main_1.ui",
 						"width":"750",
 						"y":"2",
