@@ -28,6 +28,18 @@ function builderurlencoded(options){
 	}	
 	return _paraStr;
 }
+function buildUniqueID(options){
+	var _fullData=options.url;
+	if (options.data !=null){
+		if (typeof(options.data) == "string"){
+			_fullData += options.data;
+		}
+		else{
+			_fullData += JSON.stringify(options.data);
+		}		
+	}
+	return do_Algorithm.md5Sync(_fullData)
+}
 function builderFullUrl(options){
 	if (options.data ==null) return options.url;
 	var _paraStr=builderurlencoded(options);
@@ -46,8 +58,7 @@ function callbackFunc(options, _oldData, data, status){
 	if (options.cacheLastResult){
 		if (_oldData && data && core.toString(_oldData, false) == core.toString(data, false)) return;
 		if (isSucceed){
-			var _fUrl=builderFullUrl(options);
-			var _id=do_Algorithm.md5Sync(_fUrl);
+			var _id=buildUniqueID(options);
 			if (options.cacheExpires >0){
 				var _cacheTime = "data://httpCache/" + options.type  +"/" + _id + ".t";
 				var nowTime= (new Date()).getTime();
@@ -156,7 +167,7 @@ function ajax( url, options){
 	var _cacheFile="";
 	if (d.cacheLastResult){
 		var _isTimeout=false;
-		var _id=do_Algorithm.md5Sync(_fUrl);
+		var _id=buildUniqueID(d);
 		if (d.cacheExpires>0){
 			var _cacheTime = "data://httpCache/" + d.type  +"/" + _id + ".t";
 			if (do_Storage.fileExist(_cacheTime)){
