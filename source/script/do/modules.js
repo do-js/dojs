@@ -70,8 +70,8 @@ module.exports.popupMenu = function(_menus){
 
 //---------------------------------------------------------------
 /**
-* 打开主视图
-* @param _menus 自定义菜单
+* 主框架视图
+* @param _option 选项参数
 */
 module.exports.mainFrame = function(_option){
 	core.openPage({
@@ -80,6 +80,20 @@ module.exports.mainFrame = function(_option){
 		data:_option,
 		statusBarState:"transparent"
 	});
+};
+
+//---------------------------------------------------------------
+/**
+* 遮盖视图(一般用于等待)
+* @param _menus 
+*/
+module.exports.waittingLayer = function(_option){
+	if (core.isNull(_option.close) || !_option.close){
+		page.showView("source://modules/waittingLayer/main.ui", _option, 0, 0, {allowUserCloseView:false});
+	}
+	else{
+		page.hideView("source://modules/waittingLayer/main.ui");
+	}
 };
 
 //---------------------------------------------------------------
