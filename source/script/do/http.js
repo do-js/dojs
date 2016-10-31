@@ -47,7 +47,13 @@ function callbackFunc(options, _oldData, data, status){
 		if (_oldData && data && core.toString(_oldData, false) == core.toString(data, false)) return;
 		if (isSucceed){
 			var _fUrl=builderFullUrl(options);
-			var _cacheFile = "data://httpCache/" + options.type  +"/" + do_Algorithm.md5Sync( _fUrl);
+			var _id=do_Algorithm.md5Sync(_fUrl);
+			if (options.cacheExpires >0){
+				var _cacheTime = "data://httpCache/" + options.type  +"/" + _id + ".t";
+				var nowTime= (new Date()).getTime();
+				do_Storage.writeFile(_cacheTime, nowTime + options.cacheExpires);				
+			}
+			var _cacheFile = "data://httpCache/" + options.type  +"/" + _id;
 			do_Storage.writeFile(_cacheFile, data);
 		}
 	}
@@ -142,23 +148,43 @@ function ajax( url, options){
 	}
 	var d=core.getOptions(options, "do/defaultSetting/httpSetting");
 	d.mockData=d.mockData||[];
+	d.cacheExpires=d.cacheExpires||0;
 	d.type=d.type||"GET";
 	d.type=d.type.toUpperCase();
 	if (url) d.url=url;
 	var _fUrl=builderFullUrl(d);
 	var _cacheFile="";
 	if (d.cacheLastResult){
-		var _cacheFile = "data://httpCache/" + d.type  +"/" + do_Algorithm.md5Sync(_fUrl);
-		if (do_Storage.fileExist(_cacheFile)){
-			do_Storage.readFile(_cacheFile, function(data) {
-				var fdata=data;
-				if (d.dataFilter) fdata=d.dataFilter.call(this, data);
-				if (d.success) d.success.call(this, fdata, 200);
-				if (checkMock(_fUrl, data, d)) return;
-				callajax(_fUrl, data, d);
-			});
-			return;
-		}
+		var _isTimeout=false;
+		var _id=do_Algorithm.md5Sync(_fUrl);
+		if (d.cacheExpires>0){
+			var _cacheTime = "data://httpCache/" + d.type  +"/" + _id + ".t";
+			if (do_Storage.fileExist(_cacheTime)){
+				do_Storage.readFile(_cacheTime, function(time) {
+					var _expireTime=parseInt(time);
+					var nowTime= (new Date()).getTime();
+					if (nowTime > _expireTime){
+						_isTimeout=true;
+					}
+				});
+			}
+			else{
+				_isTimeout=true;
+			}
+		}		
+		if (!_isTimeout){
+			var _cacheFile = "data://httpCache/" + d.type  +"/" + _id;
+			if (do_Storage.fileExist(_cacheFile)){
+				do_Storage.readFile(_cacheFile, function(data) {
+					var fdata=data;
+					if (d.dataFilter) fdata=d.dataFilter.call(this, data);
+					if (d.success) d.success.call(this, fdata, 200);
+					if (checkMock(_fUrl, data, d)) return;
+					if (d.cacheExpires==0) callajax(_fUrl, data, d);
+				});
+				return;
+			}
+		}		
 	}
 	if (checkMock(_fUrl, null, d)) return;
 	callajax(_fUrl, null, d);
@@ -198,6 +224,8 @@ function ajax( url, options){
 		complete:null,
 		//是否缓存上次结果 （为true的时候，在返回服务结果之前会先返回上次结果，一般用于改善数据查询的交互体验）
 		cacheLastResult:false,
+		//缓存失效时长（单位为毫秒，-1表示永远使用缓存，0表示每次都先用缓存后刷新）
+		cacheExpires:0,
 		//是否使用测试数据
 		useMockData:false,
 		//测试数据

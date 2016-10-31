@@ -32,7 +32,9 @@ module.exports.options ={
 		//请求完成时运行的函数（在请求成功或失败之后均调用，即在 success 和 error 函数之后）complete(data, status)
 		complete:null,
 		//是否缓存上次结果 （为true的时候，在返回服务结果之前会先返回上次结果，一般用于改善数据查询的交互体验）
-		cacheLastResult:false,
+		cacheLastResult:false,//缓存方式 （0：不缓存 1：优先用缓存 2：先用缓存后刷新 默认为0）
+		//缓存失效时长（单位为毫秒，-1表示永远使用缓存，0表示每次都先用缓存后刷新）
+		cacheExpires:0,
 		//是否使用模拟数据
 		useMockData:false,
 		//模拟数据
