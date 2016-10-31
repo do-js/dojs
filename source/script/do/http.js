@@ -109,6 +109,10 @@ function checkMock(_fUrl, _oldData, options){
 	return false;
 }
 function callajax(_fUrl, _oldData, options){	
+	var _http = d1.mm("do_Http");
+	if (options.beforeSend){
+		options.beforeSend.call(this, options, _http);
+	}
 	var _realUrl=options.url;
 	if (options.type=="GET" || options.type=="DELETE"){
 		_realUrl=_fUrl;
@@ -116,7 +120,6 @@ function callajax(_fUrl, _oldData, options){
 	if (_realUrl.indexOf("http://") !=0 && _realUrl.indexOf("https://") !=0){
 		_realUrl = options.rootUrl + "/" + _realUrl;
 	}
-	var _http = d1.mm("do_Http");
 	_http.url = _realUrl;
 	if (options.contentType =="application/x-www-form-urlencoded")
 	{
@@ -147,9 +150,6 @@ function callajax(_fUrl, _oldData, options){
 		}
 		callbackFunc(options, _oldData, _result, data.status);
 	});
-	if (options.beforeSend){
-		options.beforeSend.call(this, options, _http);
-	}
 	_http.request();
 }
 function ajax( url, options){
