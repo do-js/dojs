@@ -2,6 +2,7 @@ var core=require("do/core");
 var page=require("do/page");
 var d1=require("deviceone");
 var do_Global = d1.sm("do_Global");
+var dojs=require("dojs");
 //默认选项
 module.exports.options ={
    dOption:{
@@ -47,12 +48,12 @@ module.exports.options ={
 			var _token = do_Global.getMemory("accessToken");
 			do_Http.setRequestHeader("Authorization", "Bearer " + _token);
 	   		//显示等待窗口
-			page.showView("source://script/do/view/waitting.ui", null, 0, 0, {allowUserCloseView:false});
+			dojs.modules.waittingLayer({hint:"请稍后"});
 		},
 		//请求完成时运行的函数（在请求成功或失败之后均调用，即在 success 和 error 函数之后）
 		complete:function(){
 			//隐藏等待窗口
-			page.hideView("source://script/do/view/waitting.ui");
+			dojs.modules.waittingLayer({close:true});
 		}
    }
 };

@@ -1,8 +1,8 @@
 var dojs=require("dojs");
 
 module.exports.demo = function(){
-	dojs.modules.waittingLayer({close:false, hint:"请稍后，5秒后自动关闭"});
+	dojs.modules.waittingLayer({hint:"请稍后，3秒后自动关闭"});
 	dojs.page.setTimeout(function(){
 		dojs.modules.waittingLayer({close:true});
-	}, 5000);
+	}, 3000);
 };
