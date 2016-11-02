@@ -123,7 +123,7 @@ function callajax(_fUrl, _oldData, options){
 	_http.url = _realUrl;
 	if (options.contentType =="application/x-www-form-urlencoded")
 	{
-		_http.body = builderurlencoded(options.data);
+		_http.body = builderurlencoded(options);
 	}
 	else{
 		_http.body = JSON.stringify( options.data);
