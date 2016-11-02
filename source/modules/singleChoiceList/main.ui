@@ -35,7 +35,7 @@
 								"x":"30",
 								"y":"65",
 								"id":"do_ImageView_2",
-								"source":"source://modules/return.png",
+								"source":"source://modules/source\tsource://modules/image/return.png",
 								"type":"do_ImageView",
 								"height":"42"
 							}

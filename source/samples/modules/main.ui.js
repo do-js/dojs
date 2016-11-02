@@ -1,9 +1,6 @@
 var dojs=require("dojs");
 
 dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
-dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
-
-dojs.page.allowClose(ui("do_ALayout_back"));
 
 var jsonData=[
               {id:"inputTextField", Name:"单行文本输入"},
