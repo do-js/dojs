@@ -21,7 +21,7 @@ d1.sm("do_App").on("loaded", function() {
 		    	   },
 		    	   {
 		    		   name:"API",
-		    		   path:"source://samples/modules/mainFrame/c.ui",
+		    		   path:"source://samples/api/main.ui",
 		    		   image_on:"source://samples/img/c_2.png",
 		    		   image_off:"source://samples/img/c_1.png",
 		    		   fontColor_on:"55C5B9FF",
@@ -29,7 +29,7 @@ d1.sm("do_App").on("loaded", function() {
 		    	   },
 		    	   {
 		    		   name:"examples",
-		    		   path:"source://samples/modules/mainFrame/d.ui",
+		    		   path:"source://samples/others/main.ui",
 		    		   image_on:"source://samples/img/d_2.png",
 		    		   image_off:"source://samples/img/d_1.png",
 		    		   fontColor_on:"55C5B9FF",
