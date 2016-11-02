@@ -8,32 +8,6 @@ dojs.style.css(ui("do_ALayout_close"), "dynamicButton");
 dojs.page.allowClose(ui("do_ALayout_back"));
 
 var initValue="";
-sm("do_Page").on("loaded",function(){
-	var data=sm("do_Page").getData();
-	if (!dojs.core.isNullData(data)){
-		if (!dojs.core.isNullData(data.title)){
-			ui("do_Label_title").text = data.title;
-		}
-	
-		if (!dojs.core.isNullData(data.inputType)){
-			ui("do_TextField_Data").inputType = data.inputType;
-		}
-		
-		if (!dojs.core.isNullData(data.hint)){
-			ui("do_TextField_Data").hint = data.hint;
-		}
-		
-		if (!dojs.core.isNullData(data.initValue)){
-			initValue = data.initValue;
-			ui("do_TextField_Data").text=initValue;
-		}
-		
-		if (!dojs.core.isNullData(data.maxLength)){
-			ui("do_TextField_Data").maxLength = data.maxLength;
-		}
-	}
-	ui("do_TextField_Data").setFocus(true);
-});
 
 function returnResult(){
 	sm("do_Page").hideKeyboard();
@@ -61,3 +35,28 @@ ui("do_ALayout_close").on("touch", function(){
 	ui("do_TextField_Data").text="";
 });
 ui("do_ALayout_close").visible=false;
+
+var data=sm("do_Page").getData();
+if (!dojs.core.isNullData(data)){
+	if (!dojs.core.isNullData(data.title)){
+		ui("do_Label_title").text = data.title;
+	}
+
+	if (!dojs.core.isNullData(data.inputType)){
+		ui("do_TextField_Data").inputType = data.inputType;
+	}
+	
+	if (!dojs.core.isNullData(data.hint)){
+		ui("do_TextField_Data").hint = data.hint;
+	}
+	
+	if (!dojs.core.isNullData(data.initValue)){
+		initValue = data.initValue;
+		ui("do_TextField_Data").text=initValue;
+	}
+	
+	if (!dojs.core.isNullData(data.maxLength)){
+		ui("do_TextField_Data").maxLength = data.maxLength;
+	}
+}
+ui("do_TextField_Data").setFocus(true);

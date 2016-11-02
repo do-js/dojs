@@ -5,36 +5,6 @@ dojs.page.allowExit();
 var viewShower_data;
 var gridView_data;
 var do_ListData=mm("do_ListData");
-sm("do_Page").on("loaded",function(){
-	var data=sm("do_Page").getData();
-	var buttonCount=data.length;
-	if (buttonCount > 5){
-		dojs.core.error("mainFrame最多只能支持5个底部按钮");
-		return;;
-	}
-	viewShower_data=[];
-	gridView_data=[];
-	var width=Math.floor(750/buttonCount);
-	var x=Math.floor((width /2) -25);
-	for(var i=0; i<buttonCount; i++){
-		data[i].x=x;
-		data[i].width=width;
-		gridView_data.push({
-			selected:"0",
-			data:data[i]
-		});
-		viewShower_data.push({
-			id:"b_" + i,
-			path:data[i].path
-		});
-	}
-	do_ListData.addData(gridView_data);
-	ui("do_GridView_bottom").hSpacing=750/buttonCount -150;
-	ui("do_GridView_bottom").numColumns=buttonCount;
-	ui("do_GridView_bottom").bindItems(do_ListData);
-	ui("do_ViewShower_index").addViews(viewShower_data);
-	ui("do_GridView_bottom").fire("touch", 0);
-});
 
 ui("do_GridView_bottom").on("touch", function(_index){
 	ui("do_ViewShower_index").showView(viewShower_data[_index].id);
@@ -61,3 +31,32 @@ ui("do_GridView_bottom").on("touch", function(_index){
 	ui("do_GridView_bottom").refreshItems();
 });
 
+var data=sm("do_Page").getData();
+var buttonCount=data.length;
+if (buttonCount > 5){
+	dojs.core.error("mainFrame最多只能支持5个底部按钮");
+}
+else{
+	viewShower_data=[];
+	gridView_data=[];
+	var width=Math.floor(750/buttonCount);
+	var x=Math.floor((width /2) -25);
+	for(var i=0; i<buttonCount; i++){
+		data[i].x=x;
+		data[i].width=width;
+		gridView_data.push({
+			selected:"0",
+			data:data[i]
+		});
+		viewShower_data.push({
+			id:"b_" + i,
+			path:data[i].path
+		});
+	}
+	do_ListData.addData(gridView_data);
+	ui("do_GridView_bottom").hSpacing=750/buttonCount -150;
+	ui("do_GridView_bottom").numColumns=buttonCount;
+	ui("do_GridView_bottom").bindItems(do_ListData);
+	ui("do_ViewShower_index").addViews(viewShower_data);
+	ui("do_GridView_bottom").fire("touch", 0);
+}

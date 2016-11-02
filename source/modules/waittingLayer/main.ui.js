@@ -28,4 +28,3 @@ var do_Label_prompt=ui("do_Label_prompt");
 var do_ProgressBar2_show=ui("do_ProgressBar2_show");
 do_ProgressBar2_show.progress = 50;
 
-
