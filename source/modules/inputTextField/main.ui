@@ -14,8 +14,8 @@
 				"views":[
 					{
 						"textAlign":"center",
-						"x":"164",
-						"width":"455",
+						"x":"157",
+						"width":"438",
 						"y":"65",
 						"fontSize":"40",
 						"id":"do_Label_title",
@@ -25,13 +25,13 @@
 						"height":"60"
 					},
 					{
-						"width":"155",
+						"width":"147",
 						"x":"4",
 						"id":"do_ALayout_back",
 						"type":"do_ALayout",
 						"views":[
 							{
-								"width":"25",
+								"width":"33",
 								"x":"30",
 								"y":"65",
 								"id":"do_ImageView_1",
