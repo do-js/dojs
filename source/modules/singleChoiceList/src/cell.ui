@@ -24,7 +24,7 @@
 						"width":"48",
 						"y":"30",
 						"id":"do_ImageView_1",
-						"source":"source://modules/singleChoiceList/select.png",
+						"source":"source://modules/singleChoiceList/src/select.png",
 						"type":"do_ImageView",
 						"height":"48"
 					},

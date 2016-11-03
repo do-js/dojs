@@ -9,7 +9,7 @@
 		"views":[
 			{
 				"bgColor":"FFFFFFFF",
-				"templates":"source://modules/popupMenu/main_1.ui,source://modules/popupMenu/main_2.ui",
+				"templates":"source://modules/popupMenu/src/main_1.ui,source://modules/popupMenu/src/main_2.ui",
 				"width":"750",
 				"id":"do_ListView_index",
 				"type":"do_ListView",

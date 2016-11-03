@@ -1,3 +1,4 @@
+var simpleIndex=require("source://modules/simpleIndex/call");
 var dojs=require("dojs");
 
 module.exports.demo = function(){
@@ -13,5 +14,5 @@ module.exports.demo = function(){
 	    		   
 	    	   }}
 	    	];
-	dojs.modules.popupMenu(menus);
+	simpleIndex.call(menus);
 };

@@ -9,9 +9,9 @@
 		"views":[
 			{
 				"textAlign":"center",
-				"width":"620",
-				"x":"32",
-				"y":"25",
+				"width":"544",
+				"x":"104",
+				"y":"20",
 				"fontSize":"32",
 				"id":"do_Label_name",
 				"type":"do_Label",
@@ -20,9 +20,9 @@
 			{
 				"x":"660",
 				"width":"42",
-				"y":"34",
+				"y":"29",
 				"id":"do_ImageView_arrow",
-				"source":"source://modules/simpleList/arrow.png",
+				"source":"source://modules/simpleIndex/src/arrow.png",
 				"type":"do_ImageView",
 				"height":"42"
 			},
@@ -33,8 +33,16 @@
 				"id":"do_Label_line",
 				"type":"do_Label",
 				"height":"1"
+			},
+			{
+				"x":"32",
+				"width":"48",
+				"y":"26",
+				"id":"do_ImageView_head",
+				"type":"do_ImageView",
+				"height":"48"
 			}
 		],
-		"height":"110"
+		"height":"100"
 	}
 }

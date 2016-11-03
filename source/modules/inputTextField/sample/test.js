@@ -1,8 +1,8 @@
-var core = require("do/core");
 var dojs = require("dojs");
+var inputTextField=require("source://modules/inputTextField/call");
 
 module.exports.demo = function() {
-	dojs.modules.inputTextField({
+	inputTextField.call({
 		// 标题
 		title : "请输入内容",
 		// 提示内容
@@ -15,6 +15,6 @@ module.exports.demo = function() {
 		inputType : "ASC"
 	}, function(data) {
 		//处理返回结果
-		core.toast(data.value);
+		dojs.core.alert(data.value);
 	});
 };

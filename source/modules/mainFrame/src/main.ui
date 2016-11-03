@@ -43,7 +43,7 @@
 						"height":"1"
 					},
 					{
-						"templates":"source://modules/mainFrame/main_1.ui",
+						"templates":"source://modules/mainFrame/src/main_1.ui",
 						"width":"750",
 						"y":"2",
 						"canScrollToTop":"false",

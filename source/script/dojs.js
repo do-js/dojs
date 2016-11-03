@@ -7,7 +7,6 @@ var http=require("do/http");
 var global=require("do/global");
 var page=require("do/page");
 var style=require("do/style");
-var modules=require("do/modules");
 
 //---------------------------------------------------------------
 /**
@@ -38,9 +37,3 @@ module.exports.page = page;
  * 返回do/style.js的引用实例
  */
 module.exports.style = style;
-
-//---------------------------------------------------------------
-/**
- * 返回modules.js的引用实例
- */
-module.exports.modules = modules;

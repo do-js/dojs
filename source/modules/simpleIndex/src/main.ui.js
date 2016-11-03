@@ -45,21 +45,5 @@ if (!dojs.core.isNullData(data)) {
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}
-
-	if (!dojs.core.isNullData(data.inputType)) {
-		ui("do_TextField_Data").inputType = data.inputType;
-	}
-
-	if (!dojs.core.isNullData(data.hint)) {
-		ui("do_TextField_Data").hint = data.hint;
-	}
-
-	if (!dojs.core.isNullData(data.initValue)) {
-		initValue = data.initValue;
-		ui("do_TextField_Data").text = initValue;
-	}
-
-	if (!dojs.core.isNullData(data.maxLength)) {
-		ui("do_TextField_Data").maxLength = data.maxLength;
-	}
+	
 }

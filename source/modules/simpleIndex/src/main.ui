@@ -46,6 +46,7 @@
 			},
 			{
 				"bgColor":"ECECECFF",
+				"templates":"source://modules/simpleIndex/src/main_1.ui,source://modules/simpleIndex/src/main_2.ui,source://modules/simpleIndex/src/main_3.ui",
 				"width":"750",
 				"y":"128",
 				"id":"do_ListView_index",

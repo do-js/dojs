@@ -1,5 +1,6 @@
 var d1 = require("deviceone");
 var dojs=require("dojs");
+var mainFrame=require("source://modules/mainFrame/call");
 
 d1.sm("do_App").on("loaded", function() {
 	var buttons=[
@@ -36,11 +37,5 @@ d1.sm("do_App").on("loaded", function() {
 		    		   fontColor_off:"9E9E9EFF"
 		    	   }
 		    	];
-		dojs.modules.mainFrame(buttons);
-		return;
-	d1.sm("do_App").openPage({
-		source:"source://samples/script/main.ui",
-		statusBarState:"transparent",
-		animationType: "fade"
-	});
+	mainFrame.call(buttons);
 });

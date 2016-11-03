@@ -46,7 +46,7 @@
 				"height":"128"
 			},
 			{
-				"templates":"source://modules/singleChoiceList/cell.ui,source://modules/singleChoiceList/seperate.ui",
+				"templates":"source://modules/singleChoiceList/src/cell.ui,source://modules/singleChoiceList/src/seperate.ui",
 				"width":"750",
 				"y":"128",
 				"id":"do_ListView_1",
