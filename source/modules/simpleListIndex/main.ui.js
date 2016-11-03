@@ -28,17 +28,10 @@ ui("do_TextField_Data").on("enter", function() {
 });
 
 ui("do_TextField_Data").on("textChanged", function() {
-	if (ui("do_TextField_Data").text == "") {
+	if (ui("do_TextField_Data").text == initValue) {
 		ui("do_ALayout_close").visible = false;
 	} else {
 		ui("do_ALayout_close").visible = true;
-	}
-	if (ui("do_TextField_Data").text == initValue) {
-		ui("do_Button_ok").fontColor="ACACACFF";
-		ui("do_Button_ok").enabled=false;
-	} else {
-		ui("do_Button_ok").fontColor="FFFFFFFF";
-		ui("do_Button_ok").enabled=true;
 	}
 });
 
@@ -52,10 +45,7 @@ if (!dojs.core.isNullData(data)) {
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}
-	if (!dojs.core.isNullData(data.text)) {
-		initValue = data.text;
-		ui("do_TextField_Data").text = data.text;
-	}
+
 	if (!dojs.core.isNullData(data.inputType)) {
 		ui("do_TextField_Data").inputType = data.inputType;
 	}
@@ -63,12 +53,14 @@ if (!dojs.core.isNullData(data)) {
 	if (!dojs.core.isNullData(data.hint)) {
 		ui("do_TextField_Data").hint = data.hint;
 	}
+
+	if (!dojs.core.isNullData(data.initValue)) {
+		initValue = data.initValue;
+		ui("do_TextField_Data").text = initValue;
+	}
+
 	if (!dojs.core.isNullData(data.maxLength)) {
 		ui("do_TextField_Data").maxLength = data.maxLength;
 	}
 }
-ui("do_TextField_Data").fire("textChanged");
-
-sm("do_Page").on("loaded", function(){
-	ui("do_TextField_Data").setFocus(true);
-});
+ui("do_TextField_Data").setFocus(true);

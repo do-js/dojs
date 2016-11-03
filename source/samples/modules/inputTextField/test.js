@@ -3,17 +3,18 @@ var dojs = require("dojs");
 
 module.exports.demo = function() {
 	dojs.modules.inputTextField({
+		// 标题
 		title : "请输入内容",
-		text : "测试",
+		// 提示内容
 		hint : "请输入内容",
-		// maxLength:默认值是16
+		// 初始值
+		text : "001",
+		// 最大长度:默认值是16
 		maxLength : 10,
-		// initValue:默认值是""
-		initValue : "",
-		// inputType支持：ENG, PHONENUMBER, DECIMAL, ASC, URL; 默认是ENG
+		// 软键盘的类型，支持：ENG, PHONENUMBER, DECIMAL, ASC, URL; 默认是ASC
 		inputType : "ASC"
 	}, function(data) {
-		// 显示输入结果
+		//处理返回结果
 		core.toast(data.value);
 	});
 };

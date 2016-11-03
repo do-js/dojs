@@ -34,7 +34,7 @@ module.exports.scanBarcode = function(_option, _callback){
 	module_scanBarcode_callback=_callback;
 	core.openPage({
 		source:"source://modules/scanBarcode/main.ui", 
-		animationType:"fade",
+		animationType:"push_r2l_1",
 		data:_option,
 		statusBarState:"transparent"
 	});	
