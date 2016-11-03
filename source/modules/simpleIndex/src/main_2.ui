@@ -27,20 +27,20 @@
 				"height":"42"
 			},
 			{
-				"bgColor":"ACACACFF",
-				"width":"750",
-				"y":"109",
-				"id":"do_Label_line",
-				"type":"do_Label",
-				"height":"1"
-			},
-			{
 				"x":"32",
 				"width":"48",
 				"y":"26",
 				"id":"do_ImageView_head",
 				"type":"do_ImageView",
 				"height":"48"
+			},
+			{
+				"bgColor":"ACACACFF",
+				"width":"750",
+				"y":"98",
+				"id":"do_Label_line",
+				"type":"do_Label",
+				"height":"1"
 			}
 		],
 		"height":"100"

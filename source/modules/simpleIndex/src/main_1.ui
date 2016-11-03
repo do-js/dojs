@@ -29,12 +29,12 @@
 			{
 				"bgColor":"ACACACFF",
 				"width":"750",
-				"y":"109",
+				"y":"98",
 				"id":"do_Label_line",
 				"type":"do_Label",
 				"height":"1"
 			}
 		],
-		"height":"110"
+		"height":"100"
 	}
 }

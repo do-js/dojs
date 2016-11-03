@@ -2,48 +2,41 @@ var dojs = require("dojs");
 
 dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
 dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
-dojs.style.css(ui("do_Button_ok"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_close"), "dynamicButton");
 
 dojs.page.allowClose(ui("do_ALayout_back"));
 
-var initValue = "";
-
-function returnResult() {
-	sm("do_Page").hideKeyboard();
-	sm("do_App").closePage({
-		moduleType : "$$inputTextField$$",
-		result : {
-			value : ui("do_TextField_Data").text
-		}
-	});
-}
-
-dojs.page.onTouch(ui("do_Button_ok"), function() {
-	returnResult();
-});
-
-ui("do_TextField_Data").on("enter", function() {
-	returnResult();
-});
-
-ui("do_TextField_Data").on("textChanged", function() {
-	if (ui("do_TextField_Data").text == initValue) {
-		ui("do_ALayout_close").visible = false;
-	} else {
-		ui("do_ALayout_close").visible = true;
-	}
-});
-
-ui("do_ALayout_close").on("touch", function() {
-	ui("do_TextField_Data").text = "";
-});
-ui("do_ALayout_close").visible = false;
-
 var data = sm("do_Page").getData();
-if (!dojs.core.isNullData(data)) {
-	if (!dojs.core.isNullData(data.title)) {
-		ui("do_Label_title").text = data.title;
-	}
-	
+if (dojs.core.isNullData(data)) data={};
+if (dojs.core.isNullData(data.option)) data.option={};
+if (!dojs.core.isNullData(data.option.title)) {
+	ui("do_Label_title").text = data.option.title;
 }
+if (dojs.core.isNullData(data.model)) data.model=[];
+var json_data=[];
+var do_ListData=mm("do_ListData");
+for(var i=0; i<data.model.length; i++){
+	if (dojs.core.isNullData(data.model[i].name)){
+		json_data.push({template:2});
+	}
+	else{
+		if (dojs.core.isNullData(data.model[i].image)){
+			json_data.push({template:1, name:data.model[i].name});
+		}
+		else{
+			json_data.push({template:0, name:data.model[i].name, image:data.model[i].image});
+		}
+	}	
+}
+do_ListData.removeAll();
+do_ListData.addData(json_data);
+ui("do_ListView_index").bindItems(do_ListData);
+
+ui("do_ListView_index").on("touch", function(_index){
+	if (_index <0) return;
+	var data = json_data[_index];
+	if (data.template ==2) return;
+	sm("do_App").closePage({
+		moduleType : "$$module_simpleIndex$$",
+		result : _index
+	});
+});

@@ -63,6 +63,7 @@ dojs.page.allowHide(
 );
 
 ui("do_ListView_index").on("touch", function(_index){
+	if (_index <0) return;
 	var data = json_data[_index];
 	if (data.template !=0) return;
 	hideView(function(){
