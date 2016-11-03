@@ -63,4 +63,3 @@ if (!dojs.core.isNullData(data)) {
 		ui("do_TextField_Data").maxLength = data.maxLength;
 	}
 }
-ui("do_TextField_Data").setFocus(true);

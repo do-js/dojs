@@ -5,5 +5,6 @@ var page=require("do/page");
 var style=require("do/style");
 
 ui("$").setMapping({
-	"do_Label_name.text":"Name"
+	"do_Label_name.text":"Name",
+	"do_Label_id.text":"id"
 });
