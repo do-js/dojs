@@ -8,22 +8,11 @@
 		"views":[
 			{
 				"x":"18",
-				"width":"360",
+				"width":"684",
 				"y":"33",
 				"fontSize":"32",
 				"id":"do_Label_name",
 				"type":"do_Label",
-				"height":"45"
-			},
-			{
-				"textAlign":"right",
-				"x":"389",
-				"width":"274",
-				"y":"33",
-				"fontSize":"26",
-				"id":"do_Label_id",
-				"type":"do_Label",
-				"fontColor":"555555FF",
 				"height":"45"
 			},
 			{
@@ -33,15 +22,6 @@
 				"id":"do_Label_line",
 				"type":"do_Label",
 				"height":"1"
-			},
-			{
-				"x":"670",
-				"width":"42",
-				"y":"34",
-				"id":"do_ImageView_1",
-				"source":"source://samples/img/arrow.png",
-				"type":"do_ImageView",
-				"height":"42"
 			}
 		],
 		"height":"110"

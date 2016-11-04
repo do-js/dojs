@@ -18,7 +18,7 @@
 						"y":"65",
 						"fontSize":"40",
 						"id":"do_Label_title",
-						"text":"常用javascript库",
+						"text":"API代码示例",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"60"
@@ -27,7 +27,7 @@
 				"height":"128"
 			},
 			{
-				"templates":"source://samples/script/main_1.ui",
+				"templates":"source://samples/api/main_1.ui",
 				"width":"750",
 				"y":"127",
 				"id":"do_ListView_index",
