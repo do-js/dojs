@@ -1,4 +1,5 @@
 var dojs = require("dojs");
+require("ext/stringExt")
 
 dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
 dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
@@ -20,10 +21,10 @@ for(var i=0; i<data.model.length; i++){
 	}
 	else{
 		if (dojs.core.isNullData(data.model[i].image)){
-			json_data.push({template:1, name:data.model[i].name});
+			json_data.push({template:0, name:data.model[i].name, path:data.model[i].path});
 		}
 		else{
-			json_data.push({template:0, name:data.model[i].name, image:data.model[i].image});
+			json_data.push({template:1, name:data.model[i].name, path:data.model[i].path, image:data.model[i].image});
 		}
 	}	
 }
@@ -35,8 +36,12 @@ ui("do_ListView_index").on("touch", function(_index){
 	if (_index <0) return;
 	var data = json_data[_index];
 	if (data.template ==2) return;
-	sm("do_App").closePage({
-		moduleType : "$$module_simpleIndex$$",
-		result : _index
-	});
+	if (dojs.core.isNull(data.path)) return;
+	if (data.path.endWith(".ui")){
+		dojs.core.openPage({source:data.path});
+	}
+	else{
+		var _jsFile=require(data.path);
+		_jsFile.call();
+	}
 });

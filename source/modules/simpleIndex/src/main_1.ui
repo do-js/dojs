@@ -8,7 +8,6 @@
 		"type":"do_ALayout",
 		"views":[
 			{
-				"textAlign":"center",
 				"width":"620",
 				"x":"32",
 				"y":"25",
@@ -29,7 +28,7 @@
 			{
 				"bgColor":"ACACACFF",
 				"width":"750",
-				"y":"98",
+				"y":"99",
 				"id":"do_Label_line",
 				"type":"do_Label",
 				"height":"1"

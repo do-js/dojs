@@ -1,7 +1,6 @@
 var d1 = require("deviceone");
 var dojs=require("dojs");
 
-var module_simpleIndex_model=null;
 //---------------------------------------------------------------
 /**
 * 简单索引
@@ -21,13 +20,3 @@ module.exports.call = function(_definition, _option){
 		statusBarState:"transparent"
 	});	
 };
-
-d1.sm("do_Page").on("result", function(data){
-	if (dojs.core.isNull(data) ||
-			dojs.core.isNull(data.moduleType) ||
-			data.moduleType != "$$module_simpleIndex$$" ||
-			!module_simpleIndex_model ||
-			!module_simpleIndex_model[data.result] ||
-			!module_simpleIndex_model[data.result].callback) return;
-	module_simpleIndex_model[data.result].callback.call(this);
-});
