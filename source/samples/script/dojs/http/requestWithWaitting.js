@@ -3,7 +3,8 @@ var dojs = require("dojs");
 
 module.exports.call = function() {
 	dojs.http.ajax({
-		url:"http://www.baidu.com",
+		parent:"needWaitting",
+		url:"http://www.sina.com.cn",
 		success:function(data){
 			dojs.core.alert(data);
 		},
