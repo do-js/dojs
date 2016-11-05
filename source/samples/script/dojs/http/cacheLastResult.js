@@ -4,7 +4,7 @@ module.exports.call = function() {
 	dojs.http.ajax({
 		url:"http://www.deviceone.net",
 		success:function(data){
-			dojs.core.alert(data, "success:成功时返回的结果");
+			dojs.core.toast(data, "success:成功时返回的结果");
 		},
 		error:function(data){
 			dojs.core.error(data);

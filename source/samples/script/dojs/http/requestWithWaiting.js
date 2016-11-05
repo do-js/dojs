@@ -8,7 +8,7 @@ module.exports.call = function() {
 		//设置3秒超时
 		timeout:3000,
 		success:function(data){
-			dojs.core.alert(data);
+			dojs.core.toast(data);
 		},
 		error:function(data){
 			dojs.core.error(data);

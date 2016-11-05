@@ -9,7 +9,7 @@ module.exports.call = function() {
 			wd : "deviceone"
 		},
 		success : function(data) {
-			dojs.core.alert(data);
+			dojs.core.toast(data);
 		},
 		error : function(data) {
 			dojs.core.error(data);

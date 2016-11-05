@@ -6,7 +6,7 @@ module.exports.call = function() {
 		parent:"needWaitting",
 		url:"http://www.starbucks.com/",
 		success:function(data){
-			dojs.core.alert(data);
+			dojs.core.toast(data);
 		},
 		error:function(data){
 			dojs.core.error(data);
