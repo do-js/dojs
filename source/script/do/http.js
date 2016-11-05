@@ -1,6 +1,6 @@
 //---------------------------------------------------------------
 //访问http的服务
-//测试数据必须存放在：initdata://mock/ 子目录下
+//调试文件必须存放在：initdata://mock/ 子目录下
 //为了方便当前文件的升级，不建议直接修改该文件，如果需要修改相关的配置，请在httpSetting.js中修改
 //version: 1.0.0
 //---------------------------------------------------------------
@@ -56,13 +56,13 @@ function callbackFunc(options, _oldData, data, status){
 		isSucceed=true;
 	}
 	if (options.cacheLastResult){
-		if (_oldData && data && core.toString(_oldData, false) == core.toString(data, false)) return;
+		if (_oldData && data && core.valueEqual(_oldData, data)) return;
 		if (isSucceed){
 			var _id=buildUniqueID(options);
 			if (options.cacheExpires >0){
 				var _cacheTime = "data://httpCache/" + options.type  +"/" + _id + ".t";
 				var nowTime= (new Date()).getTime();
-				do_Storage.writeFile(_cacheTime, nowTime + options.cacheExpires);				
+				do_Storage.writeFile(_cacheTime, nowTime + options.cacheExpires);
 			}
 			var _cacheFile = "data://httpCache/" + options.type  +"/" + _id;
 			do_Storage.writeFile(_cacheFile, data);
@@ -79,7 +79,7 @@ function callbackFunc(options, _oldData, data, status){
 		if (options.error) options.error.call(this, fdata, status);
 	}
 	
-	if (options.complete) options.complete.call(this, fdata);
+	if (options.complete) options.complete.call(this, fdata, status);
 }
 function checkMock(_fUrl, _oldData, options){
 	if (!options.useMockData) return false;
@@ -166,36 +166,59 @@ function ajax( url, options){
 	var _fUrl=builderFullUrl(d);
 	var _cacheFile="";
 	if (d.cacheLastResult){
-		var _isTimeout=false;
 		var _id=buildUniqueID(d);
-		if (d.cacheExpires>0){
-			var _cacheTime = "data://httpCache/" + d.type  +"/" + _id + ".t";
-			if (do_Storage.fileExist(_cacheTime)){
-				do_Storage.readFile(_cacheTime, function(time) {
-					var _expireTime=parseInt(time);
-					var nowTime= (new Date()).getTime();
-					if (nowTime > _expireTime){
-						_isTimeout=true;
-					}
-				});
-			}
-			else{
-				_isTimeout=true;
-			}
-		}		
-		if (!_isTimeout){
-			var _cacheFile = "data://httpCache/" + d.type  +"/" + _id;
+		var _cacheTime = "data://httpCache/" + d.type  +"/" + _id + ".t";
+		var _cacheFile = "data://httpCache/" + d.type  +"/" + _id;
+		if (d.cacheExpires<0){
 			if (do_Storage.fileExist(_cacheFile)){
 				do_Storage.readFile(_cacheFile, function(data) {
 					var fdata=data;
 					if (d.dataFilter) fdata=d.dataFilter.call(this, data);
 					if (d.success) d.success.call(this, fdata, 200);
-					if (checkMock(_fUrl, data, d)) return;
-					if (d.cacheExpires==0) callajax(_fUrl, data, d);
+					if (d.complete) d.complete.call(this, fdata, 200);
 				});
 				return;
 			}
-		}		
+		}
+		else{
+			if (d.cacheExpires>0){
+				if (do_Storage.fileExist(_cacheTime)){
+					do_Storage.readFile(_cacheTime, function(time) {
+						var _expireTime=parseInt(time);
+						var nowTime= (new Date()).getTime();
+						if (nowTime > _expireTime){
+							if (checkMock(_fUrl, null, d)) return;
+							callajax(_fUrl, null, d);
+						}
+						else{
+							if (do_Storage.fileExist(_cacheFile)){
+								do_Storage.readFile(_cacheFile, function(data) {
+									var fdata=data;
+									if (d.dataFilter) fdata=d.dataFilter.call(this, data);
+									if (d.success) d.success.call(this, fdata, 200);
+									if (d.complete) d.complete.call(this, fdata, 200);
+								});
+								return;
+							}
+						}
+					});
+					return;
+				}
+			}
+			else{
+				if (do_Storage.fileExist(_cacheFile)){
+					do_Storage.readFile(_cacheFile, function(data) {
+						var fdata=data;
+						if (d.dataFilter) fdata=d.dataFilter.call(this, data);
+						if (d.success) d.success.call(this, fdata, 200);
+						if (d.complete) d.complete.call(this, fdata, 200);
+						if (checkMock(_fUrl, data, d)) return;
+						callajax(_fUrl, data, d);
+					});
+					return;
+				}
+			}
+		}
 	}
 	if (checkMock(_fUrl, null, d)) return;
 	callajax(_fUrl, null, d);
@@ -207,7 +230,7 @@ function ajax( url, options){
  * ajax访问http服务，默认配置在httpSetting.js中配置
  * @param url 访问的url路径，可以是相对于rootUrl的路径
  * @param options 传入的选项内容
-		//上级选项名称（可继承选项内容）
+		//上级选项名称（在defaultSetting/httpSetting.js中配置,可继承选项内容）
 		parent:null,
 		//服务请求的根路径
 		rootUrl:"",
@@ -235,11 +258,11 @@ function ajax( url, options){
 		complete:null,
 		//是否缓存上次结果 （为true的时候，在返回服务结果之前会先返回上次结果，一般用于改善数据查询的交互体验）
 		cacheLastResult:false,
-		//缓存失效时长（单位为毫秒，-1表示永远使用缓存，0表示每次都先用缓存后刷新）
+		//缓存失效时长（单位为毫秒，-1表示永远使用缓存，0表示每次都先用缓存后刷新变化）
 		cacheExpires:0,
-		//是否使用测试数据
+		//是否使用调试数据
 		useMockData:false,
-		//测试数据
+		//调试数据
 		mockData:null
  */
 module.exports.ajax = function( url, options){

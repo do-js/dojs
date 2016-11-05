@@ -38,6 +38,32 @@ function o2string(o, needFormat) {
 	return o;
 }
 
+//判断两个对象的值是否相等
+function valueEqual(obj1, obj2) {
+	if (obj1==undefined || obj2==undefined){
+		return false;
+	}
+	if (obj1==null && obj2==null) {
+		return true;
+	}
+	if (obj1==null || obj2==null) {
+		return false;
+	}
+	var type1=typeof(obj1);
+	var type2=typeof(obj2);
+	if (type1!=type2) return false;
+	if (type1=="object"){
+		for(var k in obj1){
+			if (!valueEqual(obj1[k], obj2[k])) return false;
+		}
+		for(var k in obj2){
+			if (obj1[k] == undefined) return false;
+		}
+		return true;
+	}
+	return obj1==obj2;
+}
+
 //输出调试信息
 function print(o, tag){
 	if (!tag) tag = typeof(o);
@@ -75,6 +101,16 @@ module.exports.require = function(o){
 module.exports.toString = function(data, needFormat){
 	if (needFormat ==undefined || needFormat==null) needFormat=true;
 	return o2string(data, needFormat);
+};
+
+//---------------------------------------------------------------
+/**
+ * 判断两个对象的值是否相等
+ * @param obj1 第一个对象
+ * @param obj2 第二个对象
+ */
+module.exports.valueEqual = function(obj1, obj2){
+	return valueEqual(obj1, obj2);
 };
 
 //---------------------------------------------------------------
@@ -127,6 +163,7 @@ module.exports.toast = function(o){
  */
 module.exports.error = function(o){
 	var s=o2string(o);
+	d1.print(s, "error");
 	var do_Notification=d1.sm("do_Notification");
 	do_Notification.toast(s);
 };

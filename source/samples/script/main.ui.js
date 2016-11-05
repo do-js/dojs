@@ -4,23 +4,36 @@ dojs.style.css(ui("do_ALayout_topbar"), "pageTopbar");
 
 function dojs_test(){
 	var _indexDefine = [ {
+		name : "core",
+		path : "source://samples/script/dojs/core/index"
+	}, {
 		name : "http",
 		path : "source://samples/script/dojs/http/index"
 	}, {
-		name : "我的二维码",
-		image : "source://modules/simpleIndex/sample/b.png",
-		//打开指定的页面
-		path : "source://modules/simpleIndex/sample/b.ui"
+		name : "style",
+		path : "source://samples/script/dojs/style/main.ui"
+	}, {
+		name : "page",
+		path : "source://samples/script/dojs/page/index"
+	}, {
+		name : "global",
+		path : "source://samples/script/dojs/global/index"
 	}];
 	var simpleIndex = require("source://modules/simpleIndex/call");
 	simpleIndex.call(_indexDefine, {
 		title : "dojs"
 	});
 }
-
-
+function ext_test(){
+	dojs.core.alert("todo");
+}
+function tools_test(){
+	dojs.core.alert("todo");
+}
 var jsonData=[
-              {id:"dojs", Name:"dojs", callback:dojs_test}
+              {Name:"dojs", callback:dojs_test},
+              {Name:"ext", callback:ext_test},
+              {Name:"tools", callback:tools_test}
 ];
 
 

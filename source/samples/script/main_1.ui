@@ -8,7 +8,7 @@
 		"views":[
 			{
 				"x":"18",
-				"width":"684",
+				"width":"633",
 				"y":"33",
 				"fontSize":"32",
 				"id":"do_Label_name",
@@ -22,6 +22,15 @@
 				"id":"do_Label_line",
 				"type":"do_Label",
 				"height":"1"
+			},
+			{
+				"x":"670",
+				"width":"42",
+				"y":"34",
+				"id":"do_ImageView_1",
+				"source":"source://samples/img/arrow.png",
+				"type":"do_ImageView",
+				"height":"42"
 			}
 		],
 		"height":"110"
