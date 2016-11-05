@@ -2,9 +2,14 @@ var d1 = require("deviceone");
 var dojs=require("dojs");
 
 var animHide;
+var animMaskShow = mm("do_Animator");
+var animMaskHide = mm("do_Animator");
+animMaskShow.append(320, {bgColor:"00000044"}, "EaseOut");
+animMaskHide.append(200, {bgColor:"00000000"}, "EaseOut");
 function hideView(_func){
 	if (!ui("$").visible) return;
 	sm("do_Page").hideKeyboard();
+	ui("$").animate(animMaskHide);
 	ui("do_ListView_index").animate(animHide, function(){
 		ui("$").visible = false;
 		if (_func){
@@ -41,15 +46,17 @@ dojs.page.allowHide(
 			do_ListData.removeAll();
 			do_ListData.addData(json_data);
 			ui("do_ListView_index").bindItems(do_ListData);
+			ui("$").bgColor="00000000";
 			ui("$").visible=true;
 			var animShow = mm("do_Animator");
 			animHide = mm("do_Animator");
-			animShow.append(300, {
+			animShow.append(320, {
 			    "y" : 1334-height
 			});
-			animHide.append(100, {
+			animHide.append(200, {
 				"y" :1334
 			});
+			ui("$").animate(animMaskShow);
 			ui("do_ListView_index").animate(animShow);
 		}
 		else{
