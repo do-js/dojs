@@ -1,9 +1,7 @@
 {
 	"RootView":{
-		"bgColor":"FFFFFFFF",
-		"x":"0",
+		"bgColor":"FAFAFAFF",
 		"width":"750",
-		"y":"0",
 		"type":"do_ALayout",
 		"views":[
 			{
@@ -17,9 +15,9 @@
 						"x":"164",
 						"width":"455",
 						"y":"65",
-						"fontSize":"40",
+						"fontSize":"32",
 						"id":"do_Label_title",
-						"text":"用户登录",
+						"text":"登录",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"60"
@@ -48,17 +46,18 @@
 			{
 				"x":"41",
 				"width":"32",
-				"y":"369",
+				"y":"189",
 				"id":"do_ImageView_2",
 				"source":"source://modules/login/src/user.png",
 				"type":"do_ImageView",
 				"height":"32"
 			},
 			{
+				"hintColor":"CCCCCCFF",
 				"hint":"请填写账号",
-				"width":"493",
-				"x":"164",
-				"y":"353",
+				"width":"526",
+				"x":"130",
+				"y":"173",
 				"fontSize":"32",
 				"inputType":"ASC",
 				"id":"do_TextField_user",
@@ -69,7 +68,7 @@
 			{
 				"x":"670",
 				"width":"55",
-				"y":"355",
+				"y":"175",
 				"id":"do_ALayout_user_close",
 				"type":"do_ALayout",
 				"views":[
@@ -89,7 +88,7 @@
 				"bgColor":"DCDCDCFF",
 				"x":"25",
 				"width":"700",
-				"y":"410",
+				"y":"230",
 				"id":"do_Label_user_line",
 				"type":"do_Label",
 				"height":"1"
@@ -97,18 +96,19 @@
 			{
 				"x":"41",
 				"width":"32",
-				"y":"454",
+				"y":"274",
 				"id":"do_ImageView_3",
 				"source":"source://modules/login/src/pwd.png",
 				"type":"do_ImageView",
 				"height":"32"
 			},
 			{
+				"hintColor":"CCCCCCFF",
 				"password":"true",
 				"hint":"请填写密码",
-				"width":"493",
-				"x":"164",
-				"y":"438",
+				"width":"526",
+				"x":"130",
+				"y":"258",
 				"fontSize":"32",
 				"inputType":"ASC",
 				"id":"do_TextField_password",
@@ -119,7 +119,7 @@
 			{
 				"x":"670",
 				"width":"55",
-				"y":"440",
+				"y":"260",
 				"id":"do_ALayout_password_close",
 				"type":"do_ALayout",
 				"views":[
@@ -139,30 +139,168 @@
 				"bgColor":"DCDCDCFF",
 				"x":"25",
 				"width":"700",
-				"y":"495",
+				"y":"315",
 				"id":"do_Label_password_line",
 				"type":"do_Label",
 				"height":"1"
 			},
 			{
 				"border":"00000000,1,15",
-				"bgColor":"33CC33FF",
+				"bgColor":"33BB33FF",
 				"x":"50",
 				"width":"650",
-				"y":"600",
+				"y":"350",
 				"fontSize":"32",
 				"id":"do_Button_ok",
 				"text":"确定",
 				"type":"do_Button",
-				"fontColor":"DDDDDDFF"
+				"fontColor":"FFFFFFFF"
 			},
 			{
-				"x":"311",
-				"width":"128",
-				"y":"160",
-				"id":"do_ImageView_logo",
-				"type":"do_ImageView",
-				"height":"128"
+				"x":"25",
+				"width":"700",
+				"y":"530",
+				"id":"do_ALayout_thirdPart",
+				"type":"do_ALayout",
+				"isStretch":"false",
+				"views":[
+					{
+						"bgColor":"DCDCDCFF",
+						"x":"25",
+						"width":"265",
+						"y":"20",
+						"id":"do_Label_1",
+						"type":"do_Label",
+						"height":"1"
+					},
+					{
+						"textAlign":"center",
+						"x":"290",
+						"width":"130",
+						"y":"9",
+						"fontSize":"20",
+						"id":"do_Label_2",
+						"text":"第三方登录",
+						"type":"do_Label",
+						"fontColor":"9C9C9CFF",
+						"height":"28"
+					},
+					{
+						"bgColor":"DCDCDCFF",
+						"x":"420",
+						"width":"265",
+						"y":"20",
+						"id":"do_Label_3",
+						"type":"do_Label",
+						"height":"1"
+					},
+					{
+						"border":"00000000,1,46",
+						"bgColor":"FFFFFFFF",
+						"x":"309",
+						"width":"92",
+						"y":"70",
+						"id":"do_ALayout_weixin",
+						"type":"do_ALayout",
+						"views":[
+							{
+								"x":"15",
+								"width":"62",
+								"y":"15",
+								"id":"do_ImageView_6",
+								"source":"source://modules/login/src/weixin.png",
+								"type":"do_ImageView",
+								"height":"62"
+							}
+						],
+						"height":"92"
+					},
+					{
+						"border":"00000000,1,46",
+						"bgColor":"FFFFFFFF",
+						"x":"109",
+						"width":"92",
+						"y":"70",
+						"id":"do_ALayout_sina",
+						"type":"do_ALayout",
+						"views":[
+							{
+								"x":"15",
+								"width":"62",
+								"y":"15",
+								"id":"do_ImageView_7",
+								"source":"source://modules/login/src/sina.png",
+								"type":"do_ImageView",
+								"height":"62"
+							}
+						],
+						"height":"92"
+					},
+					{
+						"border":"00000000,1,46",
+						"bgColor":"FFFFFFFF",
+						"x":"509",
+						"width":"92",
+						"y":"70",
+						"id":"do_ALayout_qq",
+						"type":"do_ALayout",
+						"views":[
+							{
+								"x":"15",
+								"width":"62",
+								"y":"15",
+								"id":"do_ImageView_8",
+								"source":"source://modules/login/src/QQ.png",
+								"type":"do_ImageView",
+								"height":"62"
+							}
+						],
+						"height":"92"
+					}
+				],
+				"height":"180"
+			},
+			{
+				"x":"59",
+				"width":"126",
+				"y":"450",
+				"id":"do_ALayout_reg",
+				"type":"do_ALayout",
+				"views":[
+					{
+						"x":"9",
+						"width":"96",
+						"y":"8",
+						"fontSize":"26",
+						"id":"do_Label_4",
+						"text":"注册",
+						"type":"do_Label",
+						"fontColor":"33CC33FF",
+						"height":"37"
+					}
+				],
+				"height":"56"
+			},
+			{
+				"x":"560",
+				"width":"148",
+				"y":"450",
+				"id":"do_ALayout_fetchPwd",
+				"type":"do_ALayout",
+				"views":[
+					{
+						"x":"9",
+						"width":"136",
+						"y":"8",
+						"fontSize":"26",
+						"id":"do_Label_5",
+						"text":"忘记密码？",
+						"type":"do_Label",
+						"fontColor":"33CC33FF",
+						"height":"37"
+					}
+				],
+				"height":"56"
 			}
 		],
 		"height":"1334"
