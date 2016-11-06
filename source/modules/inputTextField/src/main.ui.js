@@ -44,6 +44,7 @@ ui("do_TextField_Data").on("textChanged", function() {
 
 ui("do_ALayout_close").on("touch", function() {
 	ui("do_TextField_Data").text = "";
+	ui("do_TextField_Data").setFocus(true);
 });
 ui("do_ALayout_close").visible = false;
 

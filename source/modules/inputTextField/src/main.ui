@@ -67,6 +67,7 @@
 				"height":"78"
 			},
 			{
+				"hintColor":"CCCCCCFF",
 				"bgColor":"FFFFFFFF",
 				"hint":"请输入",
 				"width":"734",
