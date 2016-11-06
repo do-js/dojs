@@ -62,6 +62,8 @@ module.exports.setData = function(binding_id, data) {
 			d[prop] = data[bind.mapping[m]];
 			if (bind.filter && bind.filter.set && bind.filter.set[m])
 				d[prop] = bind.filter.set[m](d[prop]);
+			if (core.isNull(d[prop]))
+				d[prop] = "";
 			d1.ui(bind.root).set(d);
 		} else {
 			prop = ms[1];
@@ -69,6 +71,8 @@ module.exports.setData = function(binding_id, data) {
 			d[prop] = data[bind.mapping[m]];
 			if (bind.filter && bind.filter.set && bind.filter.set[m])
 				d[prop] = bind.filter.set[m](d[prop]);
+			if (core.isNull(d[prop]))
+				d[prop] = "";
 			d1.ui(bind.root + "." + ms[0]).set(d);
 		}
 	}
