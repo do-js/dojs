@@ -12,6 +12,8 @@ var binding_id;
 // initialize
 (function() {
 	dojs.page.allowClose(ui("back"));
+	dojs.page.allowHideKeyboard();
+	dojs.style.css(ui("do_Button_commit"), "dynamicButton");
 
 	var data = sm("do_Page").getData();
 
