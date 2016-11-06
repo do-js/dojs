@@ -20,7 +20,7 @@ function dojs_test(){
 		path : "source://samples/script/dojs/global/index"
 	}];
 	var simpleIndex = require("source://modules/simpleIndex/call");
-	simpleIndex.call(_indexDefine, {
+	simpleIndex.invoke(_indexDefine, {
 		title : "dojs"
 	});
 }

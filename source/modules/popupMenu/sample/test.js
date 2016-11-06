@@ -14,5 +14,5 @@ module.exports.demo = function(){
 	    		   
 	    	   }}
 	    	];
-	popupMenu.call(menus);
+	popupMenu.invoke(menus);
 };

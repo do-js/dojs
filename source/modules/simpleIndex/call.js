@@ -7,7 +7,7 @@ var dojs=require("dojs");
 * @param _definition 索引定义
 * @param _option 选项参数
 */
-module.exports.call = function(_definition, _option){
+module.exports.invoke = function(_definition, _option){
 	_option=_option||{};
 	_definition=_definition||[];
 	module_simpleIndex_model=_definition;

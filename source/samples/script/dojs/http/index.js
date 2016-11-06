@@ -27,7 +27,7 @@ module.exports.call = function() {
 		path : "source://samples/script/dojs/http/fullOption"
 	}];
 	var simpleIndex = require("source://modules/simpleIndex/call");
-	simpleIndex.call(_indexDefine, {
+	simpleIndex.invoke(_indexDefine, {
 		title : "http使用示例"
 	});
 };

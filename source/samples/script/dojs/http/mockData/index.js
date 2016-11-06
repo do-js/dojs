@@ -12,7 +12,7 @@ module.exports.call = function() {
 		path : "source://samples/script/dojs/http/mockData/mockCondition"
 	} ];
 	var simpleIndex = require("source://modules/simpleIndex/call");
-	simpleIndex.call(_indexDefine, {
+	simpleIndex.invoke(_indexDefine, {
 		title : "mockData使用示例"
 	});
 };

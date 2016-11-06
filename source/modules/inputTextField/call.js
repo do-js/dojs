@@ -8,7 +8,7 @@ var module_inputTextField_callback=null;
  * @param _option 选项参数
  * @param _callback 回调函数
  */
-module.exports.call = function(_option, _callback){
+module.exports.invoke = function(_option, _callback){
 	module_inputTextField_callback=_callback;
 	dojs.core.openPage({
 		source:"source://modules/inputTextField/src/main.ui", 

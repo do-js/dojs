@@ -49,13 +49,13 @@ module.exports.options ={
 			do_Http.setRequestHeader("Authorization", "Bearer " + _token);
 	   		//显示等待窗口
 			var waittingLayer=require("source://modules/waittingLayer/call");
-			waittingLayer.call({hint:"请稍后"});
+			waittingLayer.invoke({hint:"请稍后"});
 		},
 		//请求完成时运行的函数（在请求成功或失败之后均调用，即在 success 和 error 函数之后）
 		complete:function(){
 			//隐藏等待窗口
 			var waittingLayer=require("source://modules/waittingLayer/call");
-			waittingLayer.call({close:true});
+			waittingLayer.invoke({close:true});
 		}
    }
 };

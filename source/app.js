@@ -37,5 +37,5 @@ d1.sm("do_App").on("loaded", function() {
 		    		   fontColor_off:"9E9E9EFF"
 		    	   }
 		    	];
-	mainFrame.call(buttons);
+	mainFrame.invoke(buttons);
 });

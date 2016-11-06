@@ -5,7 +5,7 @@ var dojs=require("dojs");
 * 主页面
 * @param _option 选项参数
 */
-module.exports.call = function(_option){
+module.exports.invoke = function(_option){
 	dojs.core.openPage({
 		source:"source://modules/mainFrame/src/main.ui", 
 		animationType:"fade",

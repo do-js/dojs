@@ -26,7 +26,7 @@ module.exports.demo = function() {
 		name : "通用功能",
 		path : "source://modules/simpleIndex/sample/e.ui"
 	} ];
-	simpleIndex.call(_indexDefine, {
+	simpleIndex.invoke(_indexDefine, {
 		title : "个人信息"
 	});
 };

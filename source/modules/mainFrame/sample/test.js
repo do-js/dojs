@@ -35,5 +35,5 @@ module.exports.demo = function(){
 	    		   fontColor_off:"9E9E9EFF"
 	    	   }
 	    	];
-	mainFrame.call(buttons);
+	mainFrame.invoke(buttons);
 };

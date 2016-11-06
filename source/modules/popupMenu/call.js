@@ -6,7 +6,7 @@ var dojs=require("dojs");
  * 弹出式菜单
  * @param _menus 选项参数
  */
-module.exports.call = function(_menus){
+module.exports.invoke = function(_menus){
 	modules_menus=_menus;
 	dojs.page.showView("source://modules/popupMenu/src/main.ui", _menus);
 };

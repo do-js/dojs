@@ -2,7 +2,7 @@ var dojs = require("dojs");
 var login=require("source://modules/login/call");
 
 module.exports.demo = function() {
-	login.call({
+	login.invoke({
 		// 标题
 		title:"用户登录",
 		// logo图片 (128*128)

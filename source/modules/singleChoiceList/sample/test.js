@@ -2,7 +2,7 @@ var singleChoiceList=require("source://modules/singleChoiceList/call");
 var dojs=require("dojs");
 
 module.exports.demo = function() {
-	singleChoiceList.call({
+	singleChoiceList.invoke({
 		title : "性别",
 		data : [ {
 			text : "男",

@@ -3,7 +3,7 @@ var dojs=require("dojs");
 
 module.exports.demo = function() {
 
-	scanBarcode.call({
+	scanBarcode.invoke({
 		//标题
 		title : "扫描二维码",
 		//提示内容

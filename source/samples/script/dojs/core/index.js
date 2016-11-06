@@ -12,7 +12,7 @@ module.exports.call = function() {
 		path : "source://samples/script/dojs/core/inPage"
 	} ];
 	var simpleIndex = require("source://modules/simpleIndex/call");
-	simpleIndex.call(_indexDefine, {
+	simpleIndex.invoke(_indexDefine, {
 		title : "core示例"
 	});
 };
