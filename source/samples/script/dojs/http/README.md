@@ -1,5 +1,7 @@
 封装http相关服务，http.js是封装相关脚本逻辑的文件（考虑到未来的升级，不建议用户直接修改），httpSetting.js是全局配置文件，用户可以在此定义项目中常用的配置项；
 
+#功能分类
+
 http.js中只对外提供一个方法，即：
 ajax = function( url, options)
 第一个参数：url 是访问的url路径
@@ -10,6 +12,8 @@ ajax = function( url, options)
 首先说明http.ajax完全是线程安全的，大家尽管放心使用。
 
 我们来看看options参数内容的完整定义：
+
+```JavaScript
 {
 	//上级选项名称（可继承选项内容）
 	parent:null,
@@ -44,45 +48,48 @@ ajax = function( url, options)
 	//测试数据
 	mockData:null
 }
+```
 
 这些参数都有什么用呢？
 大家需要知道：url, type, contentType, data, timeout, beforeSend, dataFilter, success, error, complete这几个参数的含义，和jquery中的定义基本是完全一致的，详细含义的理解也可以参考：http://www.w3school.com.cn/jquery/ajax_ajax.asp
 剩下的parent, rootUrl, responseEncoding, cacheLastResult, useMockData, mockData这几个参数是http.js所独有的，后续我们将通过详细实例逐个讲解其含义；
 
-首先，在调用ajax函数之前，不要忘了引入http.js库：
-//-----------------------------------------
-//main.ui.js中的代码：
-var http=require("do/http");
-//-----------------------------------------
+#使用方法
 
-先来看看一个最简单的例子，我们来随便访问一个url服务并获取结果内容：
-//-----------------------------------------
+###0. 首先，在调用ajax函数之前，不要忘了引入dojs.js库：
+
+```JavaScript
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax("http://www.baidu.com", {
+var dojs=require("dojs");
+```
+
+###1. 先来看看一个最简单的例子，我们来随便访问一个url服务并获取结果内容：
+```JavaScript
+//main.ui.js中的代码：
+dojs.http.ajax("http://www.baidu.com", {
 	success:function(data){
 		var do_Notification = sm("do_Notification");
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
 
-上面例子中第一个参数url，也可以放在options中传入：
-//-----------------------------------------
+###2. 上面例子中第一个参数url，也可以放在options中传入：
+```JavaScript
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"http://www.baidu.com",
 	success:function(data){
 		var do_Notification = sm("do_Notification");
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
 
-我们在同一个app项目中，options中的参数是可以设置全局默认值的，也就是说如果我们在调用ajax函数时，没传入的参数都会自动采用全局默认值。
+###3. 我们在同一个app项目中，options中的参数是可以设置全局默认值的，也就是说如果我们在调用ajax函数时，没传入的参数都会自动采用全局默认值。
 options的默认值设置在httpSetting.js文件中名为dOption的选项中设置。例如：
-//-----------------------------------------
+
+```JavaScript
 //httpSetting.js中的代码：
 //默认选项
 module.exports.options ={
@@ -93,21 +100,22 @@ module.exports.options ={
 };
 
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"login",
 	success:function(data){
 		var do_Notification = sm("do_Notification");
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
+
 上面示例中，因为我们在httpSetting.js中设置的全局的url前缀，所以在main.ui.js中http最终的实际url请求地址是：http://202.103.155.22:8080/webapi/login
 通过设置这样的全局url前缀，实际项目中我们在每个页面里就不必再传入完整的url地址了，只需要传入相对的服务名部分即可，我们在切换按app项目的开发服务环境、集成服务环境和生产服务环境时只需轻松修改httpSetting.js中的配置即可（不必每个页面都修改）。
 
 
-除了dOption默认配置外，你还可以在httpSetting.js中配置其它全局配置，然后在传入options的parent选项指定父配置项（相当于从父配置项中继承）。例如：
-//-----------------------------------------
+###4. 除了dOption默认配置外，你还可以在httpSetting.js中配置其它全局配置，然后在传入options的parent选项指定父配置项（相当于从父配置项中继承）。例如：
+
+```JavaScript
 //httpSetting.js中的代码：
 //默认选项
 module.exports.options ={
@@ -124,8 +132,7 @@ module.exports.options ={
 };
 
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	parent:"myOption",
 	url:"login",
 	success:function(data){
@@ -133,26 +140,28 @@ http.ajax({
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
+
 上面的示例中，最终调用http.ajax时传入的实际url参数是：http://202.103.155.23/webapi/login ，因为在myOption配置项中定义了rootUrl:"http://202.103.155.23/webapi"。
 注意：parent参数是可以逐级向上递归查找的，当最终选项的parent参数无效时（定义为null或者没定义），它也是要从dOption默认配置项中继承的。
 所以上面示例中，最终会找到dOption默认设置，设定responseEncoding参数为："utf-8"；（表示返回内容要用utf-8方式解码）；
 所有配置项都是派生类的内容优先，例如：myOption中已经设定了rootUrl，所以在dOption中设定的rootUrl值就被覆盖了。
 
 
-我们再来理解一下cacheLastResult参数，这个参数表示：是否缓存上次请求的结果。
+###5. 我们再来理解一下cacheLastResult参数，这个参数表示：是否缓存上次请求的结果。
 我们在使用新浪微博app的时候，你可能会注意到这样种体验效果。每次当你重新打开新浪微博app时，无论网络状况如何，列表视图中会很快就装载显示出内容项。实际上这些内容是你上次浏览微博的列表结果，因为在它本地缓存了所以才加载这么快的。
 在新浪微博显示本地缓存数据的同时，也会通过后台线程里向服务器发起一个获取最新数据的请求，如果新请求的列表数据成功返回，则会立即以此来替换刷新列表视图中的数据（同时会播放一个清脆的音效）。
 这种先显示本地的缓存数据的方式，很好的规避了空白页面等待期，能给用户一种极佳的体验。
 cacheLastResult参数就是为了完成以上这种效果的，当你把cacheLastResult参数设置为true时，http.ajax的请求将会自动实现“缓存上次结果”的功能。
 
-接下来我们来看看useMockData, mockData这两个参数，我个人认为这两个参数所对应的功能，在实际项目中能带给我们的帮助最大。
+###6. 接下来我们来看看useMockData, mockData这两个参数，我个人认为这两个参数所对应的功能，在实际项目中能带给我们的帮助最大。
 useMockData表示：是否使用模拟数据；useMockData表示：模拟数据的定义
 每当我们启动一个app开发工作时，一般情况下其交互设计、视觉设计和后台服务接口设计都已经完成了，但后台服务接口的开发实现工作往往需要同步进行。
 从开发进度考虑，这个时候app的开发工作是不必等待后台接口开发的。问题是这个阶段开发的app工作毕竟没有调试接口，在真实的后台接口服务开发完成后，有多少工作量还需要重新调整？
 比较理想的做法是：我们设定useMockData开关，在这个开关设定为true的时候，所有接口都按照接口定义返回mock数据（调试模拟数据）。每个接口相关的mock数据定义，完全在mockData中定义。
 例如：
-//-----------------------------------------
+
+```JavaScript
 //httpSetting.js中的代码：
 //默认选项
 module.exports.options ={
@@ -174,8 +183,7 @@ module.exports.options ={
    }
 };
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"framework/login",
 	data:{
 		loginID:"admin",
@@ -187,7 +195,8 @@ http.ajax({
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
+
 由于useMockData开关已被打开，以上示例中的framework/login接口服务，会被重定向本地的一个mock数据文件的内容（内容要求是utf8格式）。
 所有mock数据文件都要求放在initdata://mock目录下，所以result定义的“framework/token.json”值，实际指向以下的完整路径：initdata://mock/framework/token.json
 url参数对应完整的url路径（包括get参数），但它也支持从左到右的部分内容匹配。
@@ -197,15 +206,15 @@ url参数对应完整的url路径（包括get参数），但它也支持从左�
 有了这些本地的接口mock数据的定义，我们就可以完全按照真实的接口定义来构造每个app页面内容了，并可完成一个包含所有功能但完全离线版的app，或者称之为alpha版（可以给用户做为阶段工作的确认）。
 其实这种方式开发出来的alpha版app，基本上已经完全具备beta版app集成调试的能力了。当真实的后台接口服务开发部署完毕后，你只需设置好rootUrl的值并关闭useMockData开关（设置为false）, 所有数据请求都将转向真实的服务地址。
 
-useMockData, mockData两参数对应的功能，给我们app的项目开发过程带来了极大的方便。除此之外，在真实的项目中你一定还需要解决服务认证的问题。
+###7. useMockData, mockData两参数对应的功能，给我们app的项目开发过程带来了极大的方便。除此之外，在真实的项目中你一定还需要解决服务认证的问题。
 一般情况，我们通过认证接口服务会获取数据存取的token认证字符串，后续所有的请求都需要用这个tocken串进行身份认证才行。
 对于这种情况，建议你在把token串存到内存中，然后在httpSetting.js中，通过定义morning的beforeSend函数来统一处理ajax请求发送前的token加载认证工作，达到简化每个http.ajax的调用过程的效果。
 例如：
-//-----------------------------------------
+
+```JavaScript
 //login.ui.js中的代码：
 var do_Global = sm("do_Global");
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"framework/login",
 	data:{
 		loginID:do_TextBox_userName.text,
@@ -241,8 +250,7 @@ module.exports.options ={
    }
 };
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"framework/information",
 	type:"GET",
 	success:function(data){
@@ -250,19 +258,20 @@ http.ajax({
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
+
 以上示例，在framework/login的请求成功返回时，将accessToken写入名为accessToken的内存中。并在httpSetting.js 中定义beforeSend的默认方法，在do_Http组件请求的header中增加Authorization项的内容。（这是一种rest服务的认证方式，您也可以根据实际项目的认证需要，在options的url或data中加上token的值）
 这样一来，后续所有的http.ajax服务请求就都自动加载的认证token。例如：main.ui.js中的framework/information请求，就会通过统一传入的token认证，获取到当前用户的信息。
 
 
-最后我们再一个例子，有些情况下我们希望在http.ajax请求等待时，锁住页面显示等待状态；当数据返回时（包括返回成功数据或返回错误数据的情况），关闭等待状态。
+###8. 最后我们再一个例子，有些情况下我们希望在http.ajax请求等待时，锁住页面显示等待状态；当数据返回时（包括返回成功数据或返回错误数据的情况），关闭等待状态。
 对于这种情况，建议你可以在httpSetting.js中定义beforeSend和dataFilter（或者complete）函数，来统一实现在http.ajax请求过程中的等待视图加载和等待视图隐藏。
 例如：
-//-----------------------------------------
+
+```JavaScript
 //login.ui.js中的代码：
 var do_Global = sm("do_Global");
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"framework/login",
 	data:{
 		loginID:do_TextBox_userName.text,
@@ -274,7 +283,6 @@ http.ajax({
 	}
 });
 //httpSetting.js中的代码：
-var core=require("do/core");
 var d1=require("deviceone");
 var do_Global = d1.sm("do_Global");
 //默认选项
@@ -314,8 +322,7 @@ module.exports.options ={
    }
 };
 //main.ui.js中的代码：
-var http=require("do/http");
-http.ajax({
+dojs.http.ajax({
 	url:"framework/information",
 	type:"GET",
 	parent:"needWaitting",
@@ -324,6 +331,7 @@ http.ajax({
 		do_Notification.alert(data);
 	}
 });
-//-----------------------------------------
+```
+
 以上代码的效果是，在main.ui.js中的framework/information请求过程中，自动加载和隐藏等待视图。
 
