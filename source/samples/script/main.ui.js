@@ -28,7 +28,14 @@ function ext_test(){
 	dojs.core.alert("todo");
 }
 function tools_test(){
-	dojs.core.alert("todo");
+	var _indexDefine = [ {
+		name : "twowaybinding",
+		path : "source://samples/script/tools/twowaybinding/index"
+	}];
+	var simpleIndex = require("source://modules/simpleIndex/call");
+	simpleIndex.invoke(_indexDefine, {
+		title : "tools"
+	});
 }
 var jsonData=[
               {Name:"dojs", callback:dojs_test},
