@@ -17,12 +17,13 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 ####1. js库
 
 [source/script]
+
               - [do]       :最基础的js库，必须拷贝到你自己的项目里
-                    -[core.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core) 
-                    -[page.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page)
-                    -[http.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http)
-                    -[style.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style)
-                    -[global](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global)   
+                    -core.js         : https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core
+                    -page.js         : https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page
+                    -http.js         : https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http
+                    -style.js        : https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style
+                    -global.js       : https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global
                     -[defaultSetting]:里面包含多个配置js文件    
               - [mySetting]:和do下面的defaultSetting想对应，以这个目录下的设置为优先，如果这个目录下没有对应的选项，则使用defaultSetting。      
               - do.js      :基础js库的调用封装，必须拷贝到你自己的项目里
@@ -33,6 +34,7 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 ####2. modules库
 
 [source/modules]
+
               - [img]    :所有目录都共享的一些图标，这个建议必须拷贝到你自己的项目
               - [...]    :每个module都是一个子目录，不建议全部拷贝，用到那个拷贝那个
 
