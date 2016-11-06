@@ -105,9 +105,11 @@ ui("do_TextField_password").on("textChanged", function() {
 
 ui("do_ALayout_user_close").on("touch", function() {
 	ui("do_TextField_user").text = "";
+	ui("do_TextField_user").setFocus(true);
 });
 ui("do_ALayout_password_close").on("touch", function() {
 	ui("do_TextField_password").text = "";
+	ui("do_TextField_password").setFocus(true);
 });
 
 var data = sm("do_Page").getData();
