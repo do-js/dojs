@@ -90,7 +90,7 @@
 						"width":"32",
 						"y":"23",
 						"id":"do_ImageView_close",
-						"source":"source://modules/inputTextField/close.png",
+						"source":"source://modules/inputTextField/src/close.png",
 						"type":"do_ImageView",
 						"height":"32"
 					}

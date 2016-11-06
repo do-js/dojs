@@ -198,7 +198,7 @@
     {
       "ID": "bindItems",
       "Name": "绑定item的数据",
-      "Description": "可绑定listData和hashDatad实例，data的每一个元素都是一个json节点，json节点里有1个特殊key为template表明模板的索引号，在这个组件再增加2个特殊key：leftTemplate，rightTemplate表明左右对应的ui文件，比如[{ template:0 ,text:'aa', rightTemplate:3},{ template:2 ,text:'cc', leftTemplate: 3 }]",
+      "Description": "可绑定listData和hashDatad实例，data的每一个元素都是一个json节点，json节点里有1个特殊key为template表明模板的索引号，在这个组件再增加2个特殊key：leftTemplate，rightTemplate表明左右对应的ui文件，比如[{ template:0 ,text:'aa', rightTemplate:3},{ template:2 ,text:'cc', leftTemplate: 3 }]；为保证组件使用效果，每次请绑定三条及以上的数据",
       "ReturnType": "",
       "ReturnType_JavaScript": "",
       "ReturnDesc": "",
