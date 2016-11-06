@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	dojs.http.ajax({
 		url:"http://www.baidu.com",
 		success:function(data){

@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	dojs.http.ajax({
 		url:"https://www.baidu.com/s",
 		//请求的类型

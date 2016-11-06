@@ -42,6 +42,6 @@ ui("do_ListView_index").on("touch", function(_index){
 	}
 	else{
 		var _jsFile=require(data.path);
-		_jsFile.call();
+		_jsFile.invoke();
 	}
 });

@@ -1,5 +1,5 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	dojs.core.alert(dojs.core.getUUID());
 };

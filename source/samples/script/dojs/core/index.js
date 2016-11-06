@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	var _indexDefine = [ {
 		name : "打印调试信息(print)",
 		path : "source://samples/script/dojs/core/print"

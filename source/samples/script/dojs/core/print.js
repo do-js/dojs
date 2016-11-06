@@ -1,7 +1,7 @@
 var dojs = require("dojs");
 var d1 = require("deviceone");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	var data1 = {
 		name : "张晓丹",
 		age : 32

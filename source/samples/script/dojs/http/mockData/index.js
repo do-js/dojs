@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	var _indexDefine = [ {
 		name : "指定调试数据内容 (mockData)",
 		path : "source://samples/script/dojs/http/mockData/mockData"

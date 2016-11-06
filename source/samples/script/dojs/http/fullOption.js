@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	dojs.http.ajax({
 		//上级选项名称（在defaultSetting/httpSetting.js中配置,可继承选项内容）
 		parent:null,

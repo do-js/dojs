@@ -27,7 +27,7 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 		_pwd=sha256.hex_sha256(_pwd).toLowerCase();
 	}
 	var _jsFile=require(onConfirm);
-	_jsFile.call(ui("do_TextField_user").text,
+	_jsFile.invoke(ui("do_TextField_user").text,
 			_pwd);
 });
 

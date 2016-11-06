@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	var _indexDefine = [ {
 		name : "简单请求(simpleRequest)",
 		path : "source://samples/script/dojs/http/simpleRequest"

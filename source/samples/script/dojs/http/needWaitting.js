@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function() {
+module.exports.invoke = function() {
 	dojs.http.ajax({
 		//显示等待层 (详细参见script/do/defaultSetting/httpSetting.js中的配置)
 		parent:"needWaitting",

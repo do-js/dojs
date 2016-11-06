@@ -1,6 +1,6 @@
 var dojs = require("dojs");
 
-module.exports.call = function(user, password) {
+module.exports.invoke = function(user, password) {
 	if (dojs.core.isNullData(user)){
 		dojs.core.toast("账户不允许空");
 		return false;
