@@ -26,15 +26,7 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 		_pwd=sha256.hex_sha256(_pwd).toLowerCase();
 	}
 	var _jsFile=require(currentOption.onConfirm);
-	if (_jsFile.invoke(ui("do_TextField_user").text,
-			_pwd)){
-		if (currentOption.allowClose){
-			dojs.core.closePage();			
-		}
-		else{
-			sm("do_Global").exit();
-		}
-	}
+	_jsFile.invoke(ui("do_TextField_user").text, _pwd);
 });
 
 ui("do_TextField_user").on("enter", function() {
