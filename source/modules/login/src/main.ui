@@ -269,7 +269,7 @@
 				"views":[
 					{
 						"x":"9",
-						"width":"96",
+						"width":"108",
 						"y":"8",
 						"fontSize":"26",
 						"id":"do_Label_4",
@@ -282,15 +282,15 @@
 				"height":"56"
 			},
 			{
-				"x":"560",
-				"width":"148",
+				"x":"548",
+				"width":"160",
 				"y":"450",
 				"id":"do_ALayout_fetchPwd",
 				"type":"do_ALayout",
 				"views":[
 					{
 						"x":"9",
-						"width":"136",
+						"width":"148",
 						"y":"8",
 						"fontSize":"26",
 						"id":"do_Label_5",

@@ -30,6 +30,7 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 		var sha256=require("tools/crypt/sha256");
 		_pwd=sha256.hex_sha256(_pwd).toLowerCase();
 	}
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"login_normal",
 		user:ui("do_TextField_user").text,
@@ -38,30 +39,35 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 
 dojs.page.onTouch(ui("do_ALayout_reg"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"register"});
 });
 
 dojs.page.onTouch(ui("do_ALayout_fetchPwd"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"fetchPassword"});
 });
 
 dojs.page.onTouch(ui("do_ALayout_sina"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"login_sina"});
 });
 
 dojs.page.onTouch(ui("do_ALayout_weixin"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"login_weixin"});
 });
 
 dojs.page.onTouch(ui("do_ALayout_qq"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
+	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"login_qq"});
 });
