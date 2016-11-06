@@ -8,27 +8,33 @@ dojs.style.css(ui("do_ALayout_password_close"), "dynamicButton");
 
 dojs.page.allowHideKeyboard();
 
-var encryption="none";
-var onConfirm=null;
+var currentOption=null;
 
 dojs.page.onTouch(ui("do_Button_ok"), function() {
-	if (dojs.core.isNullData(onConfirm)) return;
+	if (dojs.core.isNullData(currentOption.onConfirm)) return;
 	var _pwd=ui("do_TextField_password").text;
-	if (encryption=="md5"){
+	if (currentOption.currentOption=="md5"){
 		var md5=require("tools/crypt/md5");
 		_pwd=md5.hex_md5(_pwd).toLowerCase();
 	}
-	if (encryption=="sha1"){
+	if (currentOption.currentOption=="sha1"){
 		var sha1=require("tools/crypt/sha1");
 		_pwd=sha1.hex_sha1(_pwd).toLowerCase();
 	}
-	if (encryption=="sha256"){
+	if (currentOption.currentOption=="sha256"){
 		var sha256=require("tools/crypt/sha256");
 		_pwd=sha256.hex_sha256(_pwd).toLowerCase();
 	}
-	var _jsFile=require(onConfirm);
-	_jsFile.invoke(ui("do_TextField_user").text,
-			_pwd);
+	var _jsFile=require(currentOption.onConfirm);
+	if (_jsFile.invoke(ui("do_TextField_user").text,
+			_pwd)){
+		if (currentOption.allowClose){
+			dojs.core.closePage();			
+		}
+		else{
+			sm("do_Global").exit();
+		}
+	}
 });
 
 ui("do_TextField_user").on("enter", function() {
@@ -79,6 +85,7 @@ ui("do_ALayout_password_close").on("touch", function() {
 
 var data = sm("do_Page").getData();
 if (!dojs.core.isNullData(data)) {
+	currentOption=data;
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}
@@ -106,9 +113,6 @@ if (!dojs.core.isNullData(data)) {
 		}
 	}
 	if (!dojs.core.isNull(data.password) && typeof(data.password)=="object"){
-		if (!dojs.core.isNullData(data.password.encryption)) {
-			encryption = data.password.encryption;
-		}
 		if (!dojs.core.isNullData(data.password.hint)) {
 			ui("do_TextField_password").hint = data.password.hint;
 		}
@@ -116,9 +120,6 @@ if (!dojs.core.isNullData(data)) {
 			ui("do_TextField_password").maxLength = data.password.maxLength;
 		}		
 	}
-	if (!dojs.core.isNullData(data.onConfirm)) {
-		onConfirm=data.onConfirm;
-	}	
 }
 ui("do_TextField_user").fire("textChanged");
 ui("do_TextField_password").fire("textChanged");
