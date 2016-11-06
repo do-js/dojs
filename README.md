@@ -18,46 +18,56 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 
 [source/script]
 
-              - [do]     :最基础的js库，必须拷贝到你自己的项目里              
-              - do.js    :基础js库的调用封装，必须拷贝到你自己的项目里
-              - [ext]    :对现有js对象：date，string ,array的功能扩展，建议拷贝到你自己的项目
-              - [tools]  :一些工具js库，不建议全部拷贝，用到那个拷贝那个
+              - [do]       :最基础的js库，必须拷贝到你自己的项目里
+                    -[core.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core) 
+                    -[page.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page)
+                    -[http.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http)
+                    -[style.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style)
+                    -[global](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global)   
+                    -[defaultSetting]:里面包含多个配置js文件    
+              - [mySetting]:和do下面的defaultSetting想对应，以这个目录下的设置为优先，如果这个目录下没有对应的选项，则使用defaultSetting。      
+              - do.js      :基础js库的调用封装，必须拷贝到你自己的项目里
+              - [ext]      :对现有js对象：date，string ,array的功能扩展，建议拷贝到你自己的项目
+              - [tools]    :一些工具js库，不建议全部拷贝，用到那个拷贝那个
               
 
 ####2. modules库
 
 [source/modules]
 
+              - [img]    :所有目录都共享的一些图标，这个建议必须拷贝到你自己的项目
               - [...]    :每个module都是一个子目录，不建议全部拷贝，用到那个拷贝那个
-              
+
 ##使用方法
 1. 按照上面的建议拷贝对应的文件和目录到你自己的项目中，目录结构不能改变。
 2. 在用到的地方require do.js,然后调用对应的函数，
 js库使用方法类似如下：
 
 ```JavaScript
-   var dojs = require("do.js");
-   dojs.core.fun1();
-   ...
+var dojs = require("do.js");
+dojs.core.fun1();
+...
 ```
 
 module库使用类似如下：
 
 ```JavaScript
-   dojs.modules.inputTextField(
-		{
-			title:"请输入内容", 
-			hint:"请输入内容", 
-			//maxLength:默认值是16
-			maxLength:10, 
-			//initValue:默认值是""
-			initValue:"", 
-			//inputType支持：ENG, PHONENUMBER, DECIMAL, ASC, URL; 默认是ENG
-			inputType:"ENG"
-		},
-			function(data){
-				//显示输入结果
-				dojs.core.alert(data.value);
-		}
-	);
+var inputTextField = require("source://modules/inputTextField/call");
+
+inputTextField.invoke({
+    // 标题
+    title : "请输入内容",
+    // 提示内容
+    hint : "请输入内容",
+    // 初始值
+    text : "001",
+    // 最大长度:默认值是16
+    maxLength : 10,
+    // 软键盘的类型，支持：ENG, PHONENUMBER, DECIMAL, ASC, URL; 默认是ASC
+    inputType : "ASC"
+}, function(data) {
+    // 处理返回结果
+    dojs.core.alert(data.value);
+});
+
 ```
