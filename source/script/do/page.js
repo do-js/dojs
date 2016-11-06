@@ -16,7 +16,8 @@ var lastShowedView=null;
     	supportPanClosePage:true
  */
 module.exports.allowClose = function(_buttons, _options){
-	var d=core.getOptions(_options, "do/defaultSetting/pageSetting");
+	var d=core.getOptions(_options, "mySetting/pageSetting");
+	d=core.getOptions(d, "do/defaultSetting/pageSetting");
 	var do_App = d1.sm("do_App");
 	var do_Page = d1.sm("do_Page");
 	var startTime=0;
@@ -116,7 +117,8 @@ module.exports.allowExit = function(_buttons){
     	allowUserCloseView:true
  */
 module.exports.allowHide = function(_rootView, _onShowView, _onHideView, _options){
-	var d=core.getOptions(_options, "do/defaultSetting/pageSetting");
+	var d=core.getOptions(_options, "mySetting/pageSetting");
+	d=core.getOptions(d, "do/defaultSetting/pageSetting");
 	_rootView.visible = false;
 	_rootView.on("onShowView", function(data){
 		d1.sm("do_Page").hideKeyboard();
@@ -182,7 +184,8 @@ var __addedviews={};
     	allowUserCloseView:true
  */
 module.exports.showView = function(_path, _data, _x, _y, _options){
-	var d=core.getOptions(_options, "do/defaultSetting/pageSetting");
+	var d=core.getOptions(_options, "mySetting/pageSetting");
+	d=core.getOptions(d, "do/defaultSetting/pageSetting");
 	var _rootView = d1.ui("$");	
 	if (core.isNull(_rootView) || "do_ALayout" != _rootView.getType()) return;
 	_x=_x||0;
@@ -226,7 +229,8 @@ module.exports.hideView = function(_path, _data){
     	touchDelay:1500
  */
 module.exports.onTouch = function(_object, _func, _options){
-	var d=core.getOptions(_options, "do/defaultSetting/pageSetting");
+	var d=core.getOptions(_options, "mySetting/pageSetting");
+	d=core.getOptions(d, "do/defaultSetting/pageSetting");
 	_object.on("touch", null, d.touchDelay, _func);
 };
 

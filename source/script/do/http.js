@@ -157,7 +157,8 @@ function ajax( url, options){
 		options = url;
 		url = null;
 	}
-	var d=core.getOptions(options, "do/defaultSetting/httpSetting");
+	var d=core.getOptions(options, "mySetting/httpSetting");
+	d=core.getOptions(d, "do/defaultSetting/httpSetting");
 	d.mockData=d.mockData||[];
 	d.cacheExpires=d.cacheExpires||0;
 	d.type=d.type||"GET";

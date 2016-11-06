@@ -177,7 +177,8 @@ module.exports.openPage = function(_options){
 	if ( typeof(_options) === "string" ) {
 		_options = {source:_options};
 	}
-	var d=module.exports.getOptions(_options, "do/defaultSetting/coreSetting");
+	var d=module.exports.getOptions(_options, "mySetting/coreSetting");
+	d=module.exports.getOptions(d, "do/defaultSetting/coreSetting");
 	var do_App = d1.sm("do_App");
 	do_App.openPage(d);
 };
@@ -188,7 +189,8 @@ module.exports.openPage = function(_options){
  * @param _options 同do_App中closePage的参数
  */
 module.exports.closePage = function(_options){
-	var d=module.exports.getOptions(_options, "do/defaultSetting/coreSetting");
+	var d=module.exports.getOptions(_options, "mySetting/coreSetting");
+	d=module.exports.getOptions(d, "do/defaultSetting/coreSetting");
 	var do_App = d1.sm("do_App");
 	do_App.closePage(d);
 };
