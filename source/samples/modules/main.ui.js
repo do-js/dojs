@@ -10,7 +10,8 @@ var jsonData=[
               {id:"mainFrame", Name:"主框架页"},
               {id:"waittingLayer", Name:"遮盖层"},
               {id:"simpleIndex", Name:"简单索引页"},
-              {id:"login", Name:"登录页"}
+              {id:"login", Name:"登录页"},
+              {id:"register", Name:"注册页"}
 ];
 
 var do_ListData=mm("do_ListData");

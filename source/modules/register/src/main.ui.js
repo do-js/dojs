@@ -5,12 +5,10 @@ dojs.style.css(ui("do_ALayout_back"), "dynamicButton");
 dojs.style.css(ui("do_Button_ok"), "dynamicButton");
 dojs.style.css(ui("do_ALayout_phone_close"), "dynamicButton");
 dojs.style.css(ui("do_ALayout_password_close"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_qq"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_weixin"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_sina"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_reg"), "dynamicButton");
-dojs.style.css(ui("do_ALayout_fetchPwd"), "dynamicButton");
+dojs.style.css(ui("do_ALayout_code_close"), "dynamicButton");
+dojs.style.css(ui("do_ALayout_applyCode"), "dynamicButton");
 
+dojs.page.allowClose(ui("do_ALayout_back"));
 dojs.page.allowHideKeyboard();
 
 var currentOption=null;
@@ -19,16 +17,45 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
 	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
-	_jsFile.invoke({type:"login_normal",
-		user:ui("do_TextField_user").text,
-		password:_pwd});
+	_jsFile.invoke({type:"register",
+		phone:ui("do_TextField_phone").text,
+		code:ui("do_TextField_code").text,
+		password:ui("do_TextField_password").text});
 });
 
-dojs.page.onTouch(ui("do_ALayout_reg"), function() {
+var do_Timer_code = mm("do_Timer");
+do_Timer_code.delay = 0;
+do_Timer_code.interval = 1000;
+var finishedTime=0;
+do_Timer_code.on("tick", function(){
+    if(finishedTime > 0){
+    	ui("do_Label_applyCode").text = "("+finishedTime + "秒)重发";
+    	finishedTime--;
+    	return;
+    }
+    do_Timer_code.stop();
+    ui("do_Label_applyCode").text = "获取验证码";
+    ui("do_Label_applyCode").enabled = true;
+    ui("do_TextField_phone").enabled = true;
+    ui("do_ALayout_phone_close").enabled = true;
+    ui("do_Label_applyCode").fontColor="33BB33FF";    
+});
+
+sm("do_Page").on("smsStartSending", function(){
+	ui("do_TextField_phone").enabled = false;
+	ui("do_ALayout_phone_close").enabled = false;
+	ui("do_Label_applyCode").fontColor="CCCCCCFF";
+	
+	
+	finishedTime=currentOption.sendSmsInterval;
+	do_Timer_code.start();
+});
+dojs.page.onTouch(ui("do_ALayout_applyCode"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
 	sm("do_Page").hideKeyboard();
 	var _jsFile=require(currentOption.onCallback);
-	_jsFile.invoke({type:"register"});
+	_jsFile.invoke({type:"sendSms",
+		phone:ui("do_TextField_phone").text})
 });
 
 ui("do_TextField_phone").on("enter", function() {
@@ -48,24 +75,34 @@ ui("do_TextField_password").on("enter", function() {
 });
 
 function checkTextChange(){
-	if (dojs.core.isNullData(ui("do_TextField_user").text)) {
-		ui("do_ALayout_user_close").visible = false;
+	if (dojs.core.isNullData(ui("do_TextField_phone").text)) {
+		ui("do_ALayout_phone_close").visible = false;
+		ui("do_ALayout_applyCode").enabled=false;
+		ui("do_Label_applyCode").fontColor="CCCCCCFF";
 	} else {
-		ui("do_ALayout_user_close").visible = true;
+		ui("do_ALayout_phone_close").visible = true;
+		ui("do_ALayout_applyCode").enabled=true;
+		ui("do_Label_applyCode").fontColor="33BB33FF";
 	}
 	if (dojs.core.isNullData(ui("do_TextField_code").text)) {
+		ui("do_ALayout_code_close").visible = false;
+	} else {
+		ui("do_ALayout_code_close").visible = true;
+	}
+	if (dojs.core.isNullData(ui("do_TextField_password").text)) {
 		ui("do_ALayout_password_close").visible = false;
 	} else {
 		ui("do_ALayout_password_close").visible = true;
 	}
-	if (ui("do_ALayout_user_close").visible &&
-			ui("do_ALayout_password_close").visible) {
-		ui("do_Button_ok").fontColor="FFFFFFFF";
+	if (!dojs.core.isNullData(ui("do_TextField_phone").text) &&
+			!dojs.core.isNullData(ui("do_TextField_code").text) &&
+			!dojs.core.isNullData(ui("do_TextField_password").text)){
+		ui("do_Button_ok").bgColor="33BB33FF";
 	} else {
-		ui("do_Button_ok").fontColor="CCCCCCFF";
+		ui("do_Button_ok").bgColor="CCCCCCFF";
 	}
 }
-ui("do_TextField_user").on("textChanged", function() {
+ui("do_TextField_phone").on("textChanged", function() {
 	checkTextChange();
 });
 
@@ -73,13 +110,21 @@ ui("do_TextField_code").on("textChanged", function() {
 	checkTextChange();
 });
 
-ui("do_ALayout_user_close").on("touch", function() {
-	ui("do_TextField_user").text = "";
-	ui("do_TextField_user").setFocus(true);
+ui("do_TextField_password").on("textChanged", function() {
+	checkTextChange();
 });
-ui("do_ALayout_password_close").on("touch", function() {
+
+ui("do_ALayout_phone_close").on("touch", function() {
+	ui("do_TextField_phone").text = "";
+	ui("do_TextField_phone").setFocus(true);
+});
+ui("do_ALayout_code_close").on("touch", function() {
 	ui("do_TextField_code").text = "";
 	ui("do_TextField_code").setFocus(true);
+});
+ui("do_ALayout_password_close").on("touch", function() {
+	ui("do_TextField_password").text = "";
+	ui("do_TextField_password").setFocus(true);
 });
 
 var data = sm("do_Page").getData();
@@ -88,54 +133,13 @@ if (!dojs.core.isNullData(data)) {
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}
-	if (data.allowClose){
-		ui("do_ALayout_back").visible=true;
-		dojs.page.allowClose(ui("do_ALayout_back"));
-	}
-	else{
-		ui("do_ALayout_back").visible=false;
-		dojs.page.allowExit();
-	}
-	if (!data.allowRegister) {
-		ui("do_ALayout_reg").visible = false;
-	}
-	if (!data.allowFetchPwd) {
-		ui("do_ALayout_fetchPwd").visible = false;
-	}
-	if (!data.allowSinaLogin && !data.allowWeiXinLogin && !data.allowQQLogin) {
-		ui("do_ALayout_thirdPart").visible = false;
-	}
-	else{
-		if (!data.allowSinaLogin) {
-			ui("do_ALayout_sina").visible = false;
-		}
-		if (!data.allowWeiXinLogin) {
-			ui("do_ALayout_weixin").visible = false;
-		}
-		if (!data.allowQQLogin) {
-			ui("do_ALayout_qq").visible = false;
-		}
-	}
-	if (!dojs.core.isNull(data.user) && typeof(data.user)=="object"){
-		if (!dojs.core.isNullData(data.user.hint)) {
-			ui("do_TextField_user").hint = data.user.hint;
-		}
-		if (!dojs.core.isNullData(data.user.maxLength)) {
-			ui("do_TextField_user").maxLength = data.user.maxLength;
-		}
-	}
-	if (!dojs.core.isNull(data.password) && typeof(data.password)=="object"){
-		if (!dojs.core.isNullData(data.password.hint)) {
-			ui("do_TextField_code").hint = data.password.hint;
-		}
-		if (!dojs.core.isNullData(data.password.maxLength)) {
-			ui("do_TextField_code").maxLength = data.password.maxLength;
-		}		
-	}
 }
-ui("do_TextField_user").fire("textChanged");
+
+ui("do_TextField_phone").fire("textChanged");
 ui("do_TextField_code").fire("textChanged");
+ui("do_TextField_password").fire("textChanged");
+checkTextChange();
 
 sm("do_Page").on("loaded", function(){
-	ui("do_TextField_user").setFocus(true);
+	ui("do_TextField_phone").setFocus(true);
 });
