@@ -1,8 +1,8 @@
 var dojs = require("dojs");
-var register=require("source://modules/register/call");
+var login=require("source://modules/register/call");
 
 module.exports.demo = function() {
-	register.invoke({
+	login.invoke({
 		// 标题
 		title:"登录",
 		// 短信重复发送的间隔时间 （秒）
