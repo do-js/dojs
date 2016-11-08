@@ -76,6 +76,7 @@ ui("do_TextField_code").on("enter", function() {
 
 ui("do_TextField_password").on("enter", function() {
 	if (dojs.isNullData(ui("do_TextField_password").text)) return;
+	sm("do_Page").hideKeyboard();
 	ui("do_Button_ok").setFocus(true);
 });
 
@@ -137,6 +138,15 @@ if (!dojs.core.isNullData(data)) {
 	currentOption=data;
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
+	}
+	if (!dojs.core.isNullData(data.maxPhoneNumberLength)) {
+		ui("do_TextField_phone").maxLength = data.maxPhoneNumberLength;
+	}
+	if (!dojs.core.isNullData(data.maxSmsCodeLength)) {
+		ui("do_TextField_code").maxLength = data.maxSmsCodeLength;
+	}
+	if (!dojs.core.isNullData(data.maxPasswordLength)) {
+		ui("do_TextField_password").maxLength = data.maxPasswordLength;
 	}
 }
 

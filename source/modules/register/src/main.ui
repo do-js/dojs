@@ -86,9 +86,8 @@
 			},
 			{
 				"hintColor":"CCCCCCFF",
-				"password":"true",
-				"hint":"输入验证码",
-				"width":"404",
+				"hint":"输入短信验证码",
+				"width":"304",
 				"x":"51",
 				"y":"258",
 				"fontSize":"32",
@@ -99,7 +98,7 @@
 				"height":"55"
 			},
 			{
-				"x":"460",
+				"x":"360",
 				"width":"55",
 				"y":"260",
 				"id":"do_ALayout_code_close",

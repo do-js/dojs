@@ -16,7 +16,7 @@ module.exports.invoke = function(data) {
 			dojs.core.toast("新用户的密码不允许空");
 			return;
 		}
-		//TODO:提交后台完成注册功能
+		//TODO:提交服务端，完成注册功能
 		
 		dojs.core.closePage();
 		return;
@@ -28,11 +28,12 @@ module.exports.invoke = function(data) {
 			dojs.core.toast("手机号不允许空");
 			return;
 		}		
-		//TODO：调用发送短信的程序
+		//TODO：由服务端调用短信网关，发送验证码短信
 		
+		dojs.core.toast("验证码已经通过短信发送，请尽快查收");
 		//通知UI，短信已经来时发送
 		d1.sm("do_Page").fire("smsStartSending");
-				
+		
 		return;
 	}
 };
