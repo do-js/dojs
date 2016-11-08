@@ -65,19 +65,19 @@ dojs.page.onTouch(ui("do_ALayout_applyCode"), function() {
 });
 
 ui("do_TextField_phone").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_phone").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_phone").text)) return;
 	ui("do_TextField_code").setFocus(true);
 });
 
 ui("do_TextField_code").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_code").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_code").text)) return;
 	ui("do_TextField_password").setFocus(true);
 });
 
 ui("do_TextField_password").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_password").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_password").text)) return;
 	sm("do_Page").hideKeyboard();
-	ui("do_Button_ok").setFocus(true);
+	
 });
 
 function checkTextChange(){	

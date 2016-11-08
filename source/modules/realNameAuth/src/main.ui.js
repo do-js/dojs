@@ -31,13 +31,13 @@ dojs.page.onTouch(ui("do_Button_ok"), function() {
 
 
 ui("do_TextField_name").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_name").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_name").text)) return;
 	ui("do_TextField_id").setFocus(true);
 });
 
 ui("do_TextField_id").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_id").text)) return;
-	ui("do_Button_ok").setFocus(true);
+	if (dojs.core.isNullData(ui("do_TextField_id").text)) return;
+	
 });
 
 function checkTextChange(){	
