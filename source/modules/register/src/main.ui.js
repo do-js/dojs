@@ -35,27 +35,33 @@ do_Timer_code.on("tick", function(){
     }
     do_Timer_code.stop();
     ui("do_Label_applyCode").text = "获取验证码";
-    ui("do_Label_applyCode").enabled = true;
+    ui("do_ALayout_applyCode").enabled = true;
     ui("do_TextField_phone").enabled = true;
-    ui("do_ALayout_phone_close").enabled = true;
+    ui("do_ALayout_phone_close").visible = true;
     ui("do_Label_applyCode").fontColor="33BB33FF";    
 });
 
 sm("do_Page").on("smsStartSending", function(){
+	ui("do_ALayout_applyCode").enabled = false;
 	ui("do_TextField_phone").enabled = false;
-	ui("do_ALayout_phone_close").enabled = false;
+	ui("do_ALayout_phone_close").visible = false;
 	ui("do_Label_applyCode").fontColor="CCCCCCFF";
 	
 	
 	finishedTime=currentOption.sendSmsInterval;
 	do_Timer_code.start();
+	ui("do_TextField_code").setFocus(true);
 });
+//获取验证码
 dojs.page.onTouch(ui("do_ALayout_applyCode"), function() {
 	if (dojs.core.isNullData(currentOption.onCallback)) return;
-	sm("do_Page").hideKeyboard();
+	if (dojs.core.isNullData(ui("do_TextField_phone").text)){
+		dojs.core.toast("手机号无效！");
+		return;
+	}
 	var _jsFile=require(currentOption.onCallback);
 	_jsFile.invoke({type:"sendSms",
-		phone:ui("do_TextField_phone").text})
+		phone:ui("do_TextField_phone").text});
 });
 
 ui("do_TextField_phone").on("enter", function() {
@@ -70,30 +76,10 @@ ui("do_TextField_code").on("enter", function() {
 
 ui("do_TextField_password").on("enter", function() {
 	if (dojs.isNullData(ui("do_TextField_password").text)) return;
-	sm("do_Page").hideKeyboard();
 	ui("do_Button_ok").setFocus(true);
 });
 
-function checkTextChange(){
-	if (dojs.core.isNullData(ui("do_TextField_phone").text)) {
-		ui("do_ALayout_phone_close").visible = false;
-		ui("do_ALayout_applyCode").enabled=false;
-		ui("do_Label_applyCode").fontColor="CCCCCCFF";
-	} else {
-		ui("do_ALayout_phone_close").visible = true;
-		ui("do_ALayout_applyCode").enabled=true;
-		ui("do_Label_applyCode").fontColor="33BB33FF";
-	}
-	if (dojs.core.isNullData(ui("do_TextField_code").text)) {
-		ui("do_ALayout_code_close").visible = false;
-	} else {
-		ui("do_ALayout_code_close").visible = true;
-	}
-	if (dojs.core.isNullData(ui("do_TextField_password").text)) {
-		ui("do_ALayout_password_close").visible = false;
-	} else {
-		ui("do_ALayout_password_close").visible = true;
-	}
+function checkTextChange(){	
 	if (!dojs.core.isNullData(ui("do_TextField_phone").text) &&
 			!dojs.core.isNullData(ui("do_TextField_code").text) &&
 			!dojs.core.isNullData(ui("do_TextField_password").text)){
@@ -103,14 +89,33 @@ function checkTextChange(){
 	}
 }
 ui("do_TextField_phone").on("textChanged", function() {
+	if (dojs.core.isNullData(ui("do_TextField_phone").text)) {
+		ui("do_ALayout_phone_close").visible = false;
+		ui("do_ALayout_applyCode").enabled=false;
+		ui("do_Label_applyCode").fontColor="CCCCCCFF";
+	} else {
+		ui("do_ALayout_phone_close").visible = true;
+		ui("do_ALayout_applyCode").enabled=true;
+		ui("do_Label_applyCode").fontColor="33BB33FF";
+	}
 	checkTextChange();
 });
 
 ui("do_TextField_code").on("textChanged", function() {
+	if (dojs.core.isNullData(ui("do_TextField_code").text)) {
+		ui("do_ALayout_code_close").visible = false;
+	} else {
+		ui("do_ALayout_code_close").visible = true;
+	}	
 	checkTextChange();
 });
 
 ui("do_TextField_password").on("textChanged", function() {
+	if (dojs.core.isNullData(ui("do_TextField_password").text)) {
+		ui("do_ALayout_password_close").visible = false;
+	} else {
+		ui("do_ALayout_password_close").visible = true;
+	}
 	checkTextChange();
 });
 
