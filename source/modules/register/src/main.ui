@@ -153,7 +153,6 @@
 				"x":"51",
 				"y":"343",
 				"fontSize":"32",
-				"inputType":"ASC",
 				"id":"do_TextField_password",
 				"type":"do_TextField",
 				"maxLength":"32",
@@ -190,8 +189,8 @@
 			{
 				"border":"00000000,1,15",
 				"bgColor":"33BB33FF",
-				"x":"50",
-				"width":"650",
+				"x":"30",
+				"width":"690",
 				"y":"500",
 				"fontSize":"32",
 				"id":"do_Button_ok",

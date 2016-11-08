@@ -147,8 +147,8 @@
 			{
 				"border":"00000000,1,15",
 				"bgColor":"33BB33FF",
-				"x":"50",
-				"width":"650",
+				"x":"30",
+				"width":"690",
 				"y":"350",
 				"fontSize":"32",
 				"id":"do_Button_ok",
