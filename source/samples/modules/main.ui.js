@@ -12,6 +12,7 @@ var jsonData=[
               {id:"simpleIndex", Name:"简单索引页"},
               {id:"login", Name:"登录页"},
               {id:"register", Name:"注册页"},
+              {id:"forgetPassword", Name:"重置密码"},
               {id:"realNameAuth", Name:"实名认证页"}
 ];
 

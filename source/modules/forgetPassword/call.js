@@ -8,7 +8,7 @@ var dojs=require("dojs");
  */
 module.exports.invoke = function(_option){
 	dojs.core.openPage({
-		source:"source://modules/register/src/main.ui", 
+		source:"source://modules/forgetPassword/src/main.ui", 
 		animationType:"push_r2l_1",
 		data:_option,
 		statusBarState:"transparent"

@@ -85,8 +85,10 @@ function checkTextChange(){
 			!dojs.core.isNullData(ui("do_TextField_code").text) &&
 			!dojs.core.isNullData(ui("do_TextField_password").text)){
 		ui("do_Button_ok").bgColor="33BB33FF";
+		ui("do_Button_ok").enabled=true;
 	} else {
 		ui("do_Button_ok").bgColor="CCCCCCFF";
+		ui("do_Button_ok").enabled=false;
 	}
 }
 ui("do_TextField_phone").on("textChanged", function() {
@@ -139,14 +141,29 @@ if (!dojs.core.isNullData(data)) {
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}
-	if (!dojs.core.isNullData(data.maxPhoneNumberLength)) {
-		ui("do_TextField_phone").maxLength = data.maxPhoneNumberLength;
+	if (!dojs.core.isNull(data.phoneNumber) && typeof(data.phoneNumber)=="object"){
+		if (!dojs.core.isNullData(data.phoneNumber.hint)) {
+			ui("do_TextField_phone").hint = data.phoneNumber.hint;
+		}
+		if (!dojs.core.isNullData(data.phoneNumber.maxLength)) {
+			ui("do_TextField_phone").maxLength = data.phoneNumber.maxLength;
+		}
 	}
-	if (!dojs.core.isNullData(data.maxSmsCodeLength)) {
-		ui("do_TextField_code").maxLength = data.maxSmsCodeLength;
+	if (!dojs.core.isNull(data.smsCode) && typeof(data.smsCode)=="object"){
+		if (!dojs.core.isNullData(data.smsCode.hint)) {
+			ui("do_TextField_code").hint = data.smsCode.hint;
+		}
+		if (!dojs.core.isNullData(data.smsCode.maxLength)) {
+			ui("do_TextField_code").maxLength = data.smsCode.maxLength;
+		}
 	}
-	if (!dojs.core.isNullData(data.maxPasswordLength)) {
-		ui("do_TextField_password").maxLength = data.maxPasswordLength;
+	if (!dojs.core.isNull(data.password) && typeof(data.password)=="object"){
+		if (!dojs.core.isNullData(data.password.hint)) {
+			ui("do_TextField_password").hint = data.password.hint;
+		}
+		if (!dojs.core.isNullData(data.password.maxLength)) {
+			ui("do_TextField_password").maxLength = data.password.maxLength;
+		}
 	}
 }
 

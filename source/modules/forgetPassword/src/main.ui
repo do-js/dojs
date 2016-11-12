@@ -17,7 +17,7 @@
 						"y":"65",
 						"fontSize":"32",
 						"id":"do_Label_title",
-						"text":"注册账号",
+						"text":"重置密码",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"60"
@@ -190,12 +190,12 @@
 			{
 				"border":"00000000,1,15",
 				"bgColor":"33BB33FF",
-				"x":"50",
-				"width":"650",
+				"x":"30",
+				"width":"690",
 				"y":"500",
 				"fontSize":"32",
 				"id":"do_Button_ok",
-				"text":"注册",
+				"text":"提交",
 				"type":"do_Button",
 				"fontColor":"FFFFFFFF"
 			}

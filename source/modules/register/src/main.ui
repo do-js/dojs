@@ -153,6 +153,7 @@
 				"x":"51",
 				"y":"343",
 				"fontSize":"32",
+				"inputType":"ASC",
 				"id":"do_TextField_password",
 				"type":"do_TextField",
 				"maxLength":"32",
