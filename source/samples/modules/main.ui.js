@@ -13,7 +13,8 @@ var jsonData=[
               {id:"login", Name:"登录页"},
               {id:"register", Name:"注册页"},
               {id:"forgetPassword", Name:"重置密码"},
-              {id:"realNameAuth", Name:"实名认证页"}
+              {id:"realNameAuth", Name:"实名认证页"},
+              {id:"appGuidePage", Name:"应用引导页"}
 ];
 
 var do_ListData=mm("do_ListData");
