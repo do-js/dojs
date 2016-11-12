@@ -1,0 +1,9 @@
+
+{
+	"RootView":{
+		"templates":"source://modules/appGuide/src/template.ui",
+		"width":"750",
+		"type":"do_SlideView",
+		"height":"1334"
+	}
+}
