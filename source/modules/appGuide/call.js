@@ -18,7 +18,10 @@ module.exports.invoke = function(_option) {
 		statusBarState : "transparent"
 	});
 };
-if (dojs.core.inPage()){
+if (!dojs.core.inPage()){
+	dojs.core.error("不允许在app.js中调用 appGuide 模块");
+}
+else{
 	d1.sm("do_Page").on("result", function(data){
 		if (dojs.core.isNull(data) ||
 				dojs.core.isNull(data.moduleType) ||
