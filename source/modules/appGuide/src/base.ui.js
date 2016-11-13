@@ -12,7 +12,6 @@ var data = sm("do_Page").getData();
 var currentOption=data;
 // event
 sm("do_Page").on("loaded", function() {
-	currentOption.onCallback=null;
 	dojs.core.openPage({
 		source : "source://modules/appGuide/src/main.ui",
 		animationType : "fade",

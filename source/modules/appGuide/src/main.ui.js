@@ -4,10 +4,7 @@ require("ext/stringExt");
 // initialize
 (function() {
 	sm("do_Page").on("appCuideClose", function(){
-		dojs.core.closePage();
-		if (dojs.core.isNullData(currentOption.onCallback)) return;
-		var _jsFile=require(currentOption.onCallback);
-		_jsFile.invoke();
+		dojs.core.closePage({moduleType:"$$appGuide$$"});
 	})
 	var currentOption = sm("do_Page").getData();
 	if (dojs.core.isNullData(currentOption) || 
