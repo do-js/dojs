@@ -75,13 +75,13 @@ require("ext/stringExt");
 				}
 			}
 		});
-		ui("do_ALayout_index").y=currentOption.indexImage.yPosition;
+		ui("do_ALayout_index").y=currentOption.indexImage.y;
 		ui("do_ALayout_index").redraw();
 		ui("do_SlideView_content").fire("indexChanged", 0);
 	}
 	for (var i = 0; i < content.length; i++) {
 		content[i].text=currentOption.closeButton.text;
-		content[i].yPosition=currentOption.closeButton.yPosition;
+		content[i].y=currentOption.closeButton.y;
 		content[i].width=currentOption.closeButton.width;
 		content[i].bgColor=currentOption.closeButton.bgColor;
 		content[i].fontColor=currentOption.closeButton.fontColor;

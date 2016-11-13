@@ -33,14 +33,14 @@ module.exports.demo = function() {
 			//其它非当前索引的颜色
 			unSelectedColor:"9C9C9CFF",
 			//垂直方向的位置
-			yPosition:1206
+			y:1206
 		},
 		//关闭按钮
 		closeButton : {
 			//文本内容
 			text:"进入应用",
 			//垂直方向的位置
-			yPosition:1134,
+			y:1134,
 			//宽度
 			width:500,
 			//背景颜色
