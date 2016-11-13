@@ -1,6 +1,5 @@
 var dojs = require("dojs");
 var appGuide = require("source://modules/appGuide/call");
-// 使用这个module，可以根据自己的要求，去修改template.ui里进入按钮的样式
 module.exports.demo = function() {
 	appGuide.invoke({
 		// 定义每个导览页的内容(最多支持5页)
