@@ -1,30 +1,100 @@
-/**
- * related to guide.ui
- * 
- * @Author : zxhuizhi@126.com
- * @Timestamp : 2016-11-12
- */
-// 先打开这个页面，通过这个页面再打开main页面，main页面点击“进入”后关闭main页面
-// ，然后回到guide页面，从guide页面再真正进入首页
 var dojs = require("dojs");
-var data = sm("do_Page").getData();
+require("ext/stringExt");
 
-// event
-sm("do_Page").on("loaded", function() {
-	dojs.core.openPage({
-		source : "source://modules/appGuide/src/guide.ui",
-		animationType : "fade",
-		data : data,
-		statusBarState : "transparent"
-	});
-	var background = data["background"];
-	if (background) {
-		if (background.indexOf("http") >= 0 || background.indexOf("source://") >= 0 || background.indexOf("data://") >= 0) {
-			ui("$").bgImage = background;
-		} else {
-			ui("$").bgColor = background;
+// initialize
+(function() {
+	sm("do_Page").on("appCuideClose", function(){
+		dojs.core.closePage();
+		var _jsFile=require(currentOption.onCallback);
+		_jsFile.invoke();
+	})
+	var currentOption = sm("do_Page").getData();
+	if (dojs.core.isNullData(currentOption) || 
+			dojs.core.isNullData(currentOption.content))return;
+	var content = currentOption.content;
+	if (content.length <=0) return;
+	if (content.length > 5){
+		dojs.core.error("最多支持5页")
+		ui("do_ALayout_index1").visible=false;
+		ui("do_ALayout_index2").visible=false;
+		ui("do_ALayout_index3").visible=false;
+		ui("do_ALayout_index4").visible=false;
+		ui("do_ALayout_index5").visible=false;
+		return;
+	}
+	if (!currentOption.indexImage.visible){
+		ui("do_ALayout_index").visible=false;
+	}
+	else{
+		if (content.length==1){
+			content[0].indexUI=ui("do_ALayout_index3");
+			ui("do_ALayout_index1").visible=false;
+			ui("do_ALayout_index2").visible=false;
+			ui("do_ALayout_index4").visible=false;
+			ui("do_ALayout_index5").visible=false;
+		}
+		if (content.length==2){
+			ui("do_ALayout_index").x = 50;
+			ui("do_ALayout_index").redraw();
+			content[0].indexUI=ui("do_ALayout_index3");
+			content[1].indexUI=ui("do_ALayout_index4");
+			ui("do_ALayout_index1").visible=false;
+			ui("do_ALayout_index2").visible=false;
+			ui("do_ALayout_index5").visible=false;
+		}
+		if (content.length==3){
+			content[0].indexUI=ui("do_ALayout_index2");
+			content[1].indexUI=ui("do_ALayout_index3");
+			content[2].indexUI=ui("do_ALayout_index4");
+			ui("do_ALayout_index1").visible=false;
+			ui("do_ALayout_index5").visible=false;
+		}
+		if (content.length==4){
+			ui("do_ALayout_index").x = 50;
+			ui("do_ALayout_index").redraw();
+			content[0].indexUI=ui("do_ALayout_index2");
+			content[1].indexUI=ui("do_ALayout_index3");
+			content[2].indexUI=ui("do_ALayout_index4");
+			content[3].indexUI=ui("do_ALayout_index5");
+			ui("do_ALayout_index1").visible=false;
+		}
+		if (content.length==5){
+			content[0].indexUI=ui("do_ALayout_index1");
+			content[1].indexUI=ui("do_ALayout_index2");
+			content[2].indexUI=ui("do_ALayout_index3");
+			content[3].indexUI=ui("do_ALayout_index4");
+			content[4].indexUI=ui("do_ALayout_index5");
+		}
+		ui("do_SlideView_content").on("indexChanged", function(_index){
+			for (var i = 0; i < content.length; i++) {
+				if (i==_index){
+					content[i].indexUI.bgColor=currentOption.indexImage.selectedColor;
+				}
+				else{
+					content[i].indexUI.bgColor=currentOption.indexImage.unSelectedColor;
+				}
+			}
+		});
+		ui("do_ALayout_index").y=currentOption.indexImage.yPosition;
+		ui("do_ALayout_index").redraw();
+		ui("do_SlideView_content").fire("indexChanged", 0);
+	}
+	for (var i = 0; i < content.length; i++) {
+		content[i].text=currentOption.closeButton.text;
+		content[i].yPosition=currentOption.closeButton.yPosition;
+		content[i].width=currentOption.closeButton.width;
+		content[i].bgColor=currentOption.closeButton.bgColor;
+		content[i].fontColor=currentOption.closeButton.fontColor;
+		if (content[i].path.endWith(".ui")){
+			content[i].template=1;
+		}
+		else{
+			content[i].template=0;
 		}
 	}
-}).on("result", function() {
-	dojs.core.openPage(data.openPageOption);
-})
+	var listdata = mm("do_ListData");
+	listdata.addData(content);
+	ui("do_SlideView_content").bindItems(listdata);
+	ui("do_SlideView_content").refreshItems();
+})();
+

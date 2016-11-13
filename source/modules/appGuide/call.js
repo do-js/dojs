@@ -2,17 +2,28 @@ var dojs = require("dojs");
 
 // ---------------------------------------------------------------
 /**
- * app第一次启动出现的引导页， 先打开guide这个页面，通过这个页面再打开main页面，main页面点击“进入”后关闭main页面
- * ，然后回到guide页面，从guide页面再真正进入首页 使用这个module， 可以根据自己的要求，去修改template.ui里进入按钮的样式
+ * 应用的导览页
  * 
  * @param _option
  *            选项参数
  */
 module.exports.invoke = function(_option) {
-	dojs.core.openPage({
-		source : "source://modules/appGuide/src/main.ui",
-		animationType : "fade",
-		data : _option,
-		statusBarState : "transparent"
-	});
+	if (!dojs.core.inPage()){
+		//从app.js进入，需要先打开一个底层基础页，
+		//防止关闭导览页时直接退出应用(IOS低版本容易出现这个问题)
+		dojs.core.openPage({
+			source : "source://modules/appGuide/src/base.ui",
+			animationType : "fade",
+			data : _option,
+			statusBarState : "transparent"
+		});
+	}
+	else{
+		dojs.core.openPage({
+			source : "source://modules/appGuide/src/main.ui",
+			animationType : "fade",
+			data : _option,
+			statusBarState : "transparent"
+		});
+	}	
 };

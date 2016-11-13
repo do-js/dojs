@@ -5,8 +5,8 @@
 		"views":[
 			{
 				"width":"750",
-				"id":"bgImageView",
-				"type":"do_ImageView",
+				"id":"do_ALayout_body",
+				"type":"do_ALayout",
 				"height":"1334"
 			},
 			{
@@ -14,9 +14,9 @@
 				"bgColor":"D3D3B7FF",
 				"width":"500",
 				"x":"125",
-				"y":"980",
+				"y":"1134",
 				"fontSize":"45",
-				"id":"entryButton",
+				"id":"do_Button_close",
 				"text":"进入",
 				"type":"do_Button",
 				"fontColor":"FFFFFFFF"
