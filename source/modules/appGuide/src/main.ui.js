@@ -5,6 +5,7 @@ require("ext/stringExt");
 (function() {
 	sm("do_Page").on("appCuideClose", function(){
 		dojs.core.closePage();
+		if (dojs.core.isNullData(currentOption.onCallback)) return;
 		var _jsFile=require(currentOption.onCallback);
 		_jsFile.invoke();
 	})
