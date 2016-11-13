@@ -1,6 +1,7 @@
 var dojs = require("dojs");
-var appGuide = require("source://modules/appGuide/call");
+
 module.exports.demo = function() {
+	var appGuide = require("source://modules/appGuide/call");
 	appGuide.invoke({
 		// 定义每个导览页的内容(最多支持5页)
 		content : [ {
