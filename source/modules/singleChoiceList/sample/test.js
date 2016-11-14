@@ -15,11 +15,11 @@ module.exports.demo = function() {
 			tag : "2"
 		} ],
 		// selected表示初始选中的索引，不设置就是0
-		selected : 1
-	
-	}, function(data) {
-		// 显示输入结果,比如返回{"text":"女","tag":"0"}
-		dojs.core.alert(data.value);
-
+		selected : 1,
+		//回调事件
+		onCallback:function(data){
+			//此处可以编写回调代码
+			dojs.core.alert(data.value);
+		}
 	});
 };
