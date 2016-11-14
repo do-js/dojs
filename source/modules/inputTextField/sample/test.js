@@ -1,7 +1,7 @@
 var dojs = require("dojs");
-var inputTextField=require("source://modules/inputTextField/call");
 
 module.exports.demo = function() {
+	var inputTextField=require("source://modules/inputTextField/call");
 	inputTextField.invoke({
 		// 标题
 		title : "请输入内容",

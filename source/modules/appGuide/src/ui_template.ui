@@ -1,0 +1,27 @@
+{
+	"RootView":{
+		"width":"750",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"width":"750",
+				"id":"do_ALayout_body",
+				"type":"do_ALayout",
+				"height":"1334"
+			},
+			{
+				"border":"D3D3B7FF,1,10",
+				"bgColor":"D3D3B7FF",
+				"width":"500",
+				"x":"125",
+				"y":"1134",
+				"fontSize":"45",
+				"id":"do_Button_close",
+				"text":"进入",
+				"type":"do_Button",
+				"fontColor":"FFFFFFFF"
+			}
+		],
+		"height":"1334"
+	}
+}

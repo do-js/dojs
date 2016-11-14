@@ -73,14 +73,14 @@ dojs.page.onTouch(ui("do_ALayout_qq"), function() {
 });
 
 ui("do_TextField_user").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_user").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_user").text)) return;
 	ui("do_TextField_password").setFocus(true);
 });
 
 ui("do_TextField_password").on("enter", function() {
-	if (dojs.isNullData(ui("do_TextField_password").text)) return;
+	if (dojs.core.isNullData(ui("do_TextField_password").text)) return;
 	sm("do_Page").hideKeyboard();
-	ui("do_Button_ok").setFocus(true);
+	
 });
 
 function checkTextChange(){

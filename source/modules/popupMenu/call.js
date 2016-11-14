@@ -11,11 +11,16 @@ module.exports.invoke = function(_menus){
 	dojs.page.showView("source://modules/popupMenu/src/main.ui", _menus);
 };
 
-d1.sm("do_Page").on("$$modules_internal_Event$$",function(data){
-	if (dojs.core.isNull(data) ||
-			dojs.core.isNull(data.moduleType) ||
-			data.moduleType != "$$popupMenu$$" ||
-			dojs.core.isNull(modules_menus)||
-			!modules_menus[data.result.index].callback) return;
-	modules_menus[data.result.index].callback.call(this);	
-});
+if (!dojs.core.inPage()){
+	dojs.core.error("不允许在app.js中调用 popupMenu 模块");
+}
+else{
+	d1.sm("do_Page").on("$$modules_internal_Event$$",function(data){
+		if (dojs.core.isNull(data) ||
+				dojs.core.isNull(data.moduleType) ||
+				data.moduleType != "$$popupMenu$$" ||
+				dojs.core.isNull(modules_menus)||
+				!modules_menus[data.result.index].callback) return;
+		modules_menus[data.result.index].callback.call(this);	
+	});
+}
