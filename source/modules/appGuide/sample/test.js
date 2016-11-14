@@ -49,7 +49,10 @@ module.exports.demo = function() {
 			//字体颜色
 			fontColor:"FFFFFFFF"
 		},
-		//回调的代码
-		onCallback:"source://modules/appGuide/sample/appGuideLogic"
+		//回调事件
+		onCallback:function(data){
+			//此处可以编写回调代码，例如：打开其它页面
+			//dojs.core.openPage("");
+		}
 	});
 };

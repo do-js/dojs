@@ -8,8 +8,8 @@ var module_singleChoiceList_callback=null;
 * @param _option 选项参数
 * @param _callback 回调函数
 */
-module.exports.invoke = function(_option, _callback){
-	module_singleChoiceList_callback=_callback;
+module.exports.invoke = function(_option){
+	module_singleChoiceList_callback=_option.onCallback;
 	dojs.core.openPage({
 		source:"source://modules/singleChoiceList/src/main.ui", 
 		animationType:"push_r2l_1",
@@ -26,7 +26,7 @@ else{
 		if (dojs.core.isNull(data) ||
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$singleChoiceList$$" ||
-				!module_singleChoiceList_callback) return;
+				dojs.core.isNullData(module_singleChoiceList_callback)) return;
 		module_singleChoiceList_callback.call(this, data.result);
 	});
 }

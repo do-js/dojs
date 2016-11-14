@@ -12,9 +12,11 @@ module.exports.demo = function() {
 		// 最大长度:默认值是16
 		maxLength : 10,
 		// 软键盘的类型，支持：ENG, PHONENUMBER, DECIMAL, ASC, URL; 默认是ASC
-		inputType : "ASC"
-	}, function(data) {
-		//处理返回结果
-		dojs.core.alert(data.value);
+		inputType : "ASC",
+		//回调事件
+		onCallback:function(data){
+			//此处可以编写回调代码
+			dojs.core.alert(data.value);
+		}
 	});
 };

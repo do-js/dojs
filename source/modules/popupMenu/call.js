@@ -4,11 +4,11 @@ var dojs=require("dojs");
 //---------------------------------------------------------------
 /**
  * 弹出式菜单
- * @param _menus 选项参数
+ * @param _option 选项参数
  */
-module.exports.invoke = function(_menus){
-	modules_menus=_menus;
-	dojs.page.showView("source://modules/popupMenu/src/main.ui", _menus);
+module.exports.invoke = function(_option){
+	modules_menus=_option;
+	dojs.page.showView("source://modules/popupMenu/src/main.ui", _option);
 };
 
 if (!dojs.core.inPage()){
@@ -20,7 +20,7 @@ else{
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$popupMenu$$" ||
 				dojs.core.isNull(modules_menus)||
-				!modules_menus[data.result.index].callback) return;
+				dojs.core.isNullData(modules_menus[data.result.index].callback)) return;
 		modules_menus[data.result.index].callback.call(this);	
 	});
 }

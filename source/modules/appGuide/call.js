@@ -8,9 +8,9 @@ var dojs = require("dojs");
  * @param _option
  *            选项参数
  */
-var module_appGuide_callbackFile=null;
+var module_appGuide_callback=null;
 module.exports.invoke = function(_option) {
-	module_appGuide_callbackFile=_option.onCallback;
+	module_appGuide_callback=_option.onCallback;
 	dojs.core.openPage({
 		source : "source://modules/appGuide/src/main.ui",
 		animationType : "fade",
@@ -26,8 +26,7 @@ else{
 		if (dojs.core.isNull(data) ||
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$appGuide$$" ||
-				dojs.core.isNullData(module_appGuide_callbackFile)) return;
-		var _jsFile=require(module_appGuide_callbackFile);
-		_jsFile.invoke();
+				dojs.core.isNullData(module_appGuide_callback)) return;
+		module_appGuide_callback.call(this, data);
 	});	
 }
