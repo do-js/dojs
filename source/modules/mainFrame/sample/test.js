@@ -1,7 +1,7 @@
 var mainFrame=require("source://modules/mainFrame/call");
 
 module.exports.demo = function(){
-	var buttons=[
+	var options=[
 	    	   {
 	    		   name:"首页",
 	    		   path:"source://modules/mainFrame/sample/a.ui",
@@ -35,5 +35,5 @@ module.exports.demo = function(){
 	    		   fontColor_off:"9E9E9EFF"
 	    	   }
 	    	];
-	mainFrame.invoke(buttons);
+	mainFrame.invoke(options);
 };
