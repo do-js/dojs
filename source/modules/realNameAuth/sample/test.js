@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var realNameAuth=require("source://modules/realNameAuth/call");
-
 module.exports.demo = function() {
+	var realNameAuth=require("source://modules/realNameAuth/call");
 	realNameAuth.invoke({
 		// 标题
 		title:"实名认证",

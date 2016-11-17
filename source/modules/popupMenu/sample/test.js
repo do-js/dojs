@@ -1,4 +1,3 @@
-var popupMenu = require("source://modules/popupMenu/call");
 var dojs = require("dojs");
 
 module.exports.demo = function() {
@@ -25,5 +24,6 @@ module.exports.demo = function() {
 		}
 	} ];
 	//弹出菜单
+	var popupMenu = require("source://modules/popupMenu/call");
 	popupMenu.invoke(menus);
 };

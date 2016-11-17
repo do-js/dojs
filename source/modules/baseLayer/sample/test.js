@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var login=require("source://modules/login/call");
-
 module.exports.demo = function() {
+	var login=require("source://modules/login/call");
 	login.invoke({
 		// 标题
 		title:"登录",

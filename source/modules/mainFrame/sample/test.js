@@ -1,5 +1,3 @@
-var mainFrame=require("source://modules/mainFrame/call");
-
 module.exports.demo = function(){
 	var options=[
 	    	   {
@@ -35,5 +33,6 @@ module.exports.demo = function(){
 	    		   fontColor_off:"9E9E9EFF"
 	    	   }
 	    	];
+	var mainFrame=require("source://modules/mainFrame/call");
 	mainFrame.invoke(options);
 };

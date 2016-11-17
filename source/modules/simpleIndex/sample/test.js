@@ -1,7 +1,5 @@
-var simpleIndex = require("source://modules/simpleIndex/call");
-var dojs = require("dojs");
-
 module.exports.demo = function() {
+	var simpleIndex = require("source://modules/simpleIndex/call");
 	var _indexDefine = [ {
 		//列表名称
 		name : "我的照片",
