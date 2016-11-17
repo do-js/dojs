@@ -4,7 +4,7 @@
 //只是提供了setData和getData方法来模拟。但是也很大的减少了多ui和数据的反复交互存取
 //-----------------------------------------
 /* 示例
- var twowayBinding = require("do/tools/twowayBinding");
+ var twowayBinding = require("tools/twowayBinding");
 
  //1.定义多个ui和数据的隐射关系，返回绑定的唯一id 
  var binding_id = twowayBinding.define(ui("$"), {

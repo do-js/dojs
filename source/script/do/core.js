@@ -8,7 +8,10 @@ var d1 = require("deviceone");
 function getOptions(c, os, p){
 	p=p||"dOption";
 	var od=os[p];
-	if (!od)return;
+	if (!od){
+		od=os["dOption"];
+		if (!od) return;
+	}
 	if ("dOption"!=p && od.parent!=p) getOptions(c, os, od.parent);
 	for(var k in od){
 		if (od[k]!=null) c[k]=od[k];
