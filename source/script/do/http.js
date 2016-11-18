@@ -70,16 +70,16 @@ function callbackFunc(options, _oldData, data, status){
 	}
 	var fdata=data;
 	if (options.dataFilter){
-		fdata=options.dataFilter.call(this, data);
+		fdata=core.callFunction(options.dataFilter, data);
 	}
 	if (isSucceed){
-		if (options.success) options.success.call(this, fdata, status);
+		if (options.success) core.callFunction(options.success, fdata, status);
 	}
 	else{
-		if (options.error) options.error.call(this, fdata, status);
+		if (options.error) core.callFunction(options.error, fdata, status);
 	}
 	
-	if (options.complete) options.complete.call(this, fdata, status);
+	if (options.complete) core.callFunction(options.complete, fdata, status);
 }
 function checkMock(_fUrl, _oldData, options){
 	if (!options.useMockData) return false;
@@ -111,7 +111,7 @@ function checkMock(_fUrl, _oldData, options){
 function callajax(_fUrl, _oldData, options){	
 	var _http = d1.mm("do_Http");
 	if (options.beforeSend){
-		options.beforeSend.call(this, options, _http);
+		core.callFunction(options.beforeSend, options, _http);
 	}
 	var _realUrl=options.url;
 	if (options.type=="GET" || options.type=="DELETE"){
@@ -157,8 +157,7 @@ function ajax( url, options){
 		options = url;
 		url = null;
 	}
-	var d=core.getOptions(options, "mySetting/httpSetting");
-	d=core.getOptions(d, "do/defaultSetting/httpSetting");
+	var d=core.getOptions(options, "do/defaultSetting/httpSetting", "mySetting/httpSetting");
 	d.mockData=d.mockData||[];
 	d.cacheExpires=d.cacheExpires||0;
 	d.type=d.type||"GET";
@@ -174,9 +173,9 @@ function ajax( url, options){
 			if (do_Storage.fileExist(_cacheFile)){
 				do_Storage.readFile(_cacheFile, function(data) {
 					var fdata=data;
-					if (d.dataFilter) fdata=d.dataFilter.call(this, data);
-					if (d.success) d.success.call(this, fdata, 200);
-					if (d.complete) d.complete.call(this, fdata, 200);
+					if (d.dataFilter) fdata=core.callFunction(d.dataFilter, data);
+					if (d.success) core.callFunction(d.success, fdata, 200);
+					if (d.complete) core.callFunction(d.complete, fdata, 200);
 				});
 				return;
 			}
@@ -195,9 +194,9 @@ function ajax( url, options){
 							if (do_Storage.fileExist(_cacheFile)){
 								do_Storage.readFile(_cacheFile, function(data) {
 									var fdata=data;
-									if (d.dataFilter) fdata=d.dataFilter.call(this, data);
-									if (d.success) d.success.call(this, fdata, 200);
-									if (d.complete) d.complete.call(this, fdata, 200);
+									if (d.dataFilter) fdata=core.callFunction(d.dataFilter, data);
+									if (d.success) core.callFunction(d.success, fdata, 200);
+									if (d.complete) core.callFunction(d.complete, fdata, 200);
 								});
 								return;
 							}
@@ -210,9 +209,9 @@ function ajax( url, options){
 				if (do_Storage.fileExist(_cacheFile)){
 					do_Storage.readFile(_cacheFile, function(data) {
 						var fdata=data;
-						if (d.dataFilter) fdata=d.dataFilter.call(this, data);
-						if (d.success) d.success.call(this, fdata, 200);
-						if (d.complete) d.complete.call(this, fdata, 200);
+						if (d.dataFilter) fdata=core.callFunction(d.dataFilter, data);
+						if (d.success) core.callFunction(d.success, fdata, 200);
+						if (d.complete) core.callFunction(d.complete, fdata, 200);
 						if (checkMock(_fUrl, data, d)) return;
 						callajax(_fUrl, data, d);
 					});

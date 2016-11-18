@@ -14,8 +14,7 @@ var do_Global = d1.sm("do_Global");
  * @param options 是传入的选项内容，要求为json格式的数据。（用于设置ui的属性和事件）
  */
 module.exports.css = function(ui, options){
-	var d=core.getOptions(options, "mySetting/styleSetting");
-	d=core.getOptions(d, "do/defaultSetting/styleSetting");
+	var d=core.getOptions(options, "do/defaultSetting/styleSetting", "mySetting/styleSetting");
 	var as=null;
 	for(var k in d){
 		var v=d[k];

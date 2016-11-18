@@ -27,6 +27,6 @@ else{
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$scanBarcode$$" ||
 				dojs.core.isNullData(module_scanBarcode_callback )) return;
-		module_scanBarcode_callback.call(this, data.result);		
+		dojs.core.callFunction(module_scanBarcode_callback, data.result);		
 	});
 }

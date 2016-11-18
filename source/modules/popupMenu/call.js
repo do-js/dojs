@@ -21,6 +21,6 @@ else{
 				data.moduleType != "$$popupMenu$$" ||
 				dojs.core.isNull(modules_menus)||
 				dojs.core.isNullData(modules_menus[data.result.index].callback)) return;
-		modules_menus[data.result.index].callback.call(this);	
+		dojs.core.callFunction(modules_menus[data.result.index].callback);	
 	});
 }

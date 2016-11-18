@@ -14,7 +14,21 @@ function getOptions(c, os, p){
 	}
 	if ("dOption"!=p && od.parent!=p) getOptions(c, os, od.parent);
 	for(var k in od){
-		if (od[k]!=null) c[k]=od[k];
+		if (c[k]==od[k] || od[k]==null) continue;
+		if (typeof(od[k]) =="object" && od[k].length != undefined){
+			if (c[k]==undefined || c[k]==null){
+				c[k]=od[k];
+				continue;
+			}
+			if (typeof(c[k]) !="object" || c[k].length == undefined){
+				c[k]=[c[k]];
+			}
+			for (var i=0; i<od[k].length; i++){
+				c[k].push(od[k][i]);
+			}
+			continue;
+		}
+		c[k]=od[k];
 	}
 }
 
@@ -180,8 +194,7 @@ module.exports.openPage = function(_options){
 	if ( typeof(_options) === "string" ) {
 		_options = {source:_options};
 	}
-	var d=module.exports.getOptions(_options, "mySetting/coreSetting");
-	d=module.exports.getOptions(d, "do/defaultSetting/coreSetting");
+	var d=module.exports.getOptions(_options, "do/defaultSetting/coreSetting", "mySetting/coreSetting");
 	var do_App = d1.sm("do_App");
 	do_App.openPage(d);
 };
@@ -192,8 +205,7 @@ module.exports.openPage = function(_options){
  * @param _options 同do_App中closePage的参数
  */
 module.exports.closePage = function(_options){
-	var d=module.exports.getOptions(_options, "mySetting/coreSetting");
-	d=module.exports.getOptions(d, "do/defaultSetting/coreSetting");
+	var d=module.exports.getOptions(_options, "do/defaultSetting/coreSetting", "mySetting/coreSetting");
 	var do_App = d1.sm("do_App");
 	do_App.closePage(d);
 };
@@ -230,22 +242,31 @@ module.exports.isNullData = function(data){
 /**
  * 获取选项的配置 (用于js配置项的获取)
  * @param options 传入的自定义选项内容(也可以是选项名称)
- * @param file 相关配置文件名称（ 不包括.js扩展名）
+ * @param file1 默认配置文件名称（ 不包括.js扩展名）
+ * @param file2 自定义配置文件名称（ 不包括.js扩展名）
  */
-module.exports.getOptions = function(options, file){
+module.exports.getOptions = function(options, file1,  file2){
 	options = options || {}
 	if (typeof(options)=="string"){
 		options={parent:options};
 	}
-	var st=require(file);
-	if (st && st.options){
-		var c={};
-		getOptions(c, st.options, options.parent);
-		for(var k in options){
-			if (options[k]!=null) c[k]=options[k];
+	var c={};
+	if (file1){
+		var st=require(file1);
+		if (st && st.options){			
+			getOptions(c, st.options, options.parent);			
 		}
-		options=c;
 	}
+	if (file2){
+		var st=require(file2);
+		if (st && st.options){
+			getOptions(c, st.options, options.parent);
+		}
+	}
+	for(var k in options){
+		if (options[k]!=null) c[k]=options[k];
+	}
+	options=c;
 	return options;
 };
 
@@ -263,4 +284,22 @@ module.exports.getUUID = function(){
  */
 module.exports.inPage = function(){
 	return __address !=undefined && __address!=null && __address.length >0;
+};
+
+//---------------------------------------------------------------
+/**
+ * 调用函数(一般多用于option中的函数)
+ */
+module.exports.callFunction = function(_func, data1, data2, data3){
+	if (_func==null || _func==undefined) return;
+	if (typeof(_func)=="function"){
+		return _func.call(this, data1,data2,data3);
+	}
+	if (typeof(_func)=="object" && _func.length != undefined){
+		var _result=null;
+		for(var i=0; i<_func.length; i++){			
+			_result=_func[i].call(this, data1,data2,data3)
+		}		
+		return _result;
+	}
 };
