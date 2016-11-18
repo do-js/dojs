@@ -1,3 +1,5 @@
+var dojs=require("dojs");
+			
 module.exports.demo = function() {
 	var singleChoiceList=require("source://modules/singleChoiceList/call");
 	singleChoiceList.invoke({
@@ -17,7 +19,6 @@ module.exports.demo = function() {
 		//回调事件
 		onCallback:function(data){
 			//此处可以编写回调代码
-			var dojs=require("dojs");
 			dojs.core.alert(data.value);
 		}
 	});

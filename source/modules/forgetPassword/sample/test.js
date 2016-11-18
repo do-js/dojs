@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var forgetPassword=require("source://modules/forgetPassword/call");
-
 module.exports.demo = function() {
+	var forgetPassword=require("source://modules/forgetPassword/call");
 	forgetPassword.invoke({
 		// 标题
 		title:"重置密码",
