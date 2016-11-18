@@ -3,13 +3,13 @@ var dojs=require("dojs");
 
 //---------------------------------------------------------------
 /**
- * 忘记密码
+ * 基础视图层（一般用做应用最低层的ui）
  * @param _option 选项参数
  */
 module.exports.invoke = function(_option){
 	dojs.core.openPage({
-		source:"source://modules/forgetPassword/src/main.ui", 
-		animationType:"push_r2l_1",
+		source:"source://modules/baseLayer/src/main.ui", 
+		animationType:"fade",
 		data:_option,
 		statusBarState:"transparent"
 	});

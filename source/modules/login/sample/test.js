@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var login=require("source://modules/login/call");
-
 module.exports.demo = function() {
+	var login=require("source://modules/login/call");
 	login.invoke({
 		// 标题
 		title:"登录",
@@ -34,7 +32,7 @@ module.exports.demo = function() {
 			maxLength:32
 		},
 		// 回调的代码
-		onCallback:"source://modules/login/sample/loginCheck"
+		onCallback:"source://modules/login/sample/loginCallback"
 		
 	});
 };

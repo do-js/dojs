@@ -27,6 +27,6 @@ else{
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$appGuide$$" ||
 				dojs.core.isNullData(module_appGuide_callback)) return;
-		module_appGuide_callback.call(this, data);
+		dojs.core.callFunction(module_appGuide_callback, data);
 	});	
 }

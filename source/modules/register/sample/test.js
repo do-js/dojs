@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var register=require("source://modules/register/call");
-
 module.exports.demo = function() {
+	var register=require("source://modules/register/call");
 	register.invoke({
 		// 标题
 		title:"会员注册",
@@ -29,7 +27,7 @@ module.exports.demo = function() {
 			maxLength : 18
 		},
 		// 回调的代码
-		onCallback:"source://modules/register/sample/registerLogic"
+		onCallback:"source://modules/register/sample/registerCallback"
 		
 	});
 };

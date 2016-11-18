@@ -136,8 +136,8 @@ ui("do_ALayout_password_close").on("touch", function() {
 });
 
 var data = sm("do_Page").getData();
-if (!dojs.core.isNullData(data)) {
-	currentOption=data;
+currentOption=data;
+if (!dojs.core.isNullData(currentOption)) {
 	if (!dojs.core.isNullData(data.title)) {
 		ui("do_Label_title").text = data.title;
 	}

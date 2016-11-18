@@ -44,6 +44,6 @@ Array.prototype.remove = function (item) {
  */
 Array.prototype.each = function (func) { 
 	for (var i = 0; i < this.length; i++) {
-		func.call(i, this[i]);
+		core.callFunction(func, this[i]);
 	}
 };

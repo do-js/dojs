@@ -13,7 +13,7 @@ function hideView(_func){
 	ui("do_ListView_index").animate(animHide, function(){
 		ui("$").visible = false;
 		if (_func){
-			_func.call(this);
+			dojs.core.callFunction(_func);
 		}
 	});
 }

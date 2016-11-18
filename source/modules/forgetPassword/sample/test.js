@@ -1,7 +1,5 @@
-var dojs = require("dojs");
-var forgetPassword=require("source://modules/forgetPassword/call");
-
 module.exports.demo = function() {
+	var forgetPassword=require("source://modules/forgetPassword/call");
 	forgetPassword.invoke({
 		// 标题
 		title:"重置密码",
@@ -29,7 +27,7 @@ module.exports.demo = function() {
 			maxLength : 18
 		},
 		// 回调的代码
-		onCallback:"source://modules/forgetPassword/sample/forgetPasswordLogic"
+		onCallback:"source://modules/forgetPassword/sample/forgetPasswordCallback"
 		
 	});
 };

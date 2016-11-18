@@ -27,7 +27,7 @@ else{
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$singleChoiceList$$" ||
 				dojs.core.isNullData(module_singleChoiceList_callback)) return;
-		module_singleChoiceList_callback.call(this, data.result);
+		dojs.core.callFunction(module_singleChoiceList_callback, data.result);
 	});
 }
 

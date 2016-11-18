@@ -26,6 +26,6 @@ else{
 				dojs.core.isNull(data.moduleType) ||
 				data.moduleType != "$$inputTextField$$" ||
 				dojs.core.isNullData(module_inputTextField_callback)) return;
-		module_inputTextField_callback.call(this, data.result);
+		dojs.core.callFunction(module_inputTextField_callback, data.result);
 	});
 }

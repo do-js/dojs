@@ -3,7 +3,7 @@ var dojs=require("dojs");
 
 //---------------------------------------------------------------
 /**
- * 用户登录
+ * 实名认证
  * @param _option 选项参数
  */
 module.exports.invoke = function(_option){

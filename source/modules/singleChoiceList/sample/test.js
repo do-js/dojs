@@ -1,7 +1,7 @@
-var singleChoiceList=require("source://modules/singleChoiceList/call");
 var dojs=require("dojs");
-
+			
 module.exports.demo = function() {
+	var singleChoiceList=require("source://modules/singleChoiceList/call");
 	singleChoiceList.invoke({
 		title : "性别",
 		data : [ {
