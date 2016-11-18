@@ -27,7 +27,7 @@ module.exports.demo = function() {
 			maxLength : 18
 		},
 		// 回调的代码
-		onCallback:"source://modules/register/sample/registerLogic"
+		onCallback:"source://modules/register/sample/registerCallback"
 		
 	});
 };

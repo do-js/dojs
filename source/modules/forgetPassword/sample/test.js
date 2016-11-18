@@ -27,7 +27,7 @@ module.exports.demo = function() {
 			maxLength : 18
 		},
 		// 回调的代码
-		onCallback:"source://modules/forgetPassword/sample/forgetPasswordLogic"
+		onCallback:"source://modules/forgetPassword/sample/forgetPasswordCallback"
 		
 	});
 };

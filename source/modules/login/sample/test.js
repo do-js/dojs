@@ -32,7 +32,7 @@ module.exports.demo = function() {
 			maxLength:32
 		},
 		// 回调的代码
-		onCallback:"source://modules/login/sample/loginCheck"
+		onCallback:"source://modules/login/sample/loginCallback"
 		
 	});
 };

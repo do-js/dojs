@@ -3,7 +3,7 @@ var dojs=require("dojs");
 
 //---------------------------------------------------------------
 /**
- * 用户登录
+ * 基础视图层（一般用做应用最低层的ui）
  * @param _option 选项参数
  */
 module.exports.invoke = function(_option){

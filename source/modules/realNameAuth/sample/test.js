@@ -18,7 +18,7 @@ module.exports.demo = function() {
 			maxLength : 18
 		},
 		// 回调的代码
-		onCallback:"source://modules/realNameAuth/sample/realNameAuthLogic"
+		onCallback:"source://modules/realNameAuth/sample/realNameAuthCallback"
 		
 	});
 };
