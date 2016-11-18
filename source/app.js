@@ -7,6 +7,8 @@ d1.sm("do_App").on("loaded", function() {
 	baseLayer.invoke({
 		// 背景颜色
 		bgColor:"00000000",
+		// 背景图片
+		bgImage:"",
 		// 回调的代码
 		onCallback:"source://baseLayerCallback"
 	});	
