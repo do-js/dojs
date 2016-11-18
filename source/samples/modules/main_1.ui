@@ -39,7 +39,7 @@
 				"width":"42",
 				"y":"34",
 				"id":"do_ImageView_1",
-				"source":"source://samples/img/arrow.png",
+				"source":"source://image/samples/arrow.png",
 				"type":"do_ImageView",
 				"height":"42"
 			}

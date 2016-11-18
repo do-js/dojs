@@ -100,7 +100,7 @@
 								"width":"48",
 								"y":"30",
 								"id":"do_ImageView_5",
-								"source":"source://samples/img/arrow.png",
+								"source":"source://image/samples/arrow.png",
 								"type":"do_ImageView",
 								"height":"48"
 							}
@@ -137,7 +137,7 @@
 								"width":"48",
 								"y":"30",
 								"id":"do_ImageView_7",
-								"source":"source://samples/img/arrow.png",
+								"source":"source://image/amples/arrow.png",
 								"type":"do_ImageView",
 								"height":"48"
 							}
@@ -174,7 +174,7 @@
 								"width":"48",
 								"y":"30",
 								"id":"do_ImageView_9",
-								"source":"source://samples/img/arrow.png",
+								"source":"source://image/samples/arrow.png",
 								"type":"do_ImageView",
 								"height":"48"
 							}
