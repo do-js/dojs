@@ -6,7 +6,9 @@ var viewShower_data;
 var gridView_data;
 var do_ListData=mm("do_ListData");
 
+var lastIndex=0;
 ui("do_GridView_bottom").on("touch", function(_index){
+	if (typeof(_index)=="string") _index=parseInt(_index);
 	ui("do_ViewShower_index").showView(viewShower_data[_index].id);
 	for(var i=0; i< gridView_data.length; i++){
 		if (i==_index){
@@ -28,7 +30,8 @@ ui("do_GridView_bottom").on("touch", function(_index){
 			}
 		}
 	}
-	ui("do_GridView_bottom").refreshItems();
+	ui("do_GridView_bottom").refreshItems([_index, lastIndex]);
+	lastIndex=_index;
 });
 
 var data=sm("do_Page").getData();
