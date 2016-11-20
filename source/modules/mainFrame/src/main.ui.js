@@ -30,7 +30,12 @@ ui("do_GridView_bottom").on("touch", function(_index){
 			}
 		}
 	}
-	ui("do_GridView_bottom").refreshItems([_index, lastIndex]);
+	if (_index== lastIndex){
+		ui("do_GridView_bottom").refreshItems([_index]);
+	}
+	else{
+		ui("do_GridView_bottom").refreshItems([_index, lastIndex]);
+	}	
 	lastIndex=_index;
 });
 
