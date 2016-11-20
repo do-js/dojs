@@ -1,0 +1,10 @@
+{
+	"RootView":{
+		"width":"750",
+		"id":"imageview",
+		"type":"do_ImageView",
+		"cacheType":"always",
+		"enabled":"true",
+		"height":"500"
+	}
+}
