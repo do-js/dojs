@@ -303,3 +303,25 @@ module.exports.callFunction = function(_func, data1, data2, data3){
 		return _result;
 	}
 };
+
+//---------------------------------------------------------------
+/**
+ * 尝试转为json数据
+ */
+module.exports.tryParseJson = function(_data){
+	if (typeof(_data)=="string"){
+		var _r1=_data.trim();
+		if (_r1.length >0){
+			var c=_r1.charCodeAt(0);
+			if (c==123||c==91){
+				try{
+					_data=JSON.parse(_r1);
+				}
+				catch(e){
+					;
+				}
+			}				
+		}
+	}
+	return _data;
+};
