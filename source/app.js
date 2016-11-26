@@ -1,6 +1,5 @@
 var d1 = require("deviceone");
 var dojs = require("dojs");
-var mainFrame = require("source://modules/mainFrame/call");
 
 d1.sm("do_App").on("loaded", function() {
 	var baseLayer=require("source://modules/baseLayer/call");

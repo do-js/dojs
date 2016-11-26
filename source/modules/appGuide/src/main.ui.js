@@ -80,6 +80,7 @@ require("ext/stringExt");
 	for (var i = 0; i < content.length; i++) {
 		content[i].text=currentOption.closeButton.text;
 		content[i].y=currentOption.closeButton.y;
+		content[i].x=(750 -currentOption.closeButton.width)/2;
 		content[i].width=currentOption.closeButton.width;
 		content[i].bgColor=currentOption.closeButton.bgColor;
 		content[i].fontColor=currentOption.closeButton.fontColor;
