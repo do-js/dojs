@@ -102,6 +102,9 @@ if (!dojs.core.isNullData(data)) {
 			ui("do_TextField_id").maxLength = data.id.maxLength;
 		}
 	}
+	if (!dojs.core.isNullData(data.prompt)) {
+		ui("do_Label_prompt").text = data.prompt;
+	}
 }
 
 ui("do_TextField_name").fire("textChanged");
