@@ -146,7 +146,7 @@ function callajax(_fUrl, _oldData, options){
 						_result=data.data;
 					}
 				}				
-			}			
+			}		
 		}
 		callbackFunc(options, _oldData, _result, data.status);
 	});

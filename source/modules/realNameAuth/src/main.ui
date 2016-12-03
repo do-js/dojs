@@ -179,8 +179,8 @@
 						"width":"710",
 						"x":"40",
 						"fontSize":"32",
-						"id":"do_Label_9",
-						"text":"上传照片",
+						"id":"do_Label_prompt",
+						"text":"上传相关照片",
 						"type":"do_Label",
 						"height":"60"
 					}
@@ -227,7 +227,7 @@
 				"y":"670",
 				"fontSize":"26",
 				"id":"do_Label_10",
-				"text":"身份证正面",
+				"text":"证件的正面照片",
 				"type":"do_Label",
 				"fontColor":"BBBBBBFF",
 				"height":"50"
@@ -239,7 +239,7 @@
 				"y":"670",
 				"fontSize":"26",
 				"id":"do_Label_11",
-				"text":"身份证反面",
+				"text":"证件的反面照片",
 				"type":"do_Label",
 				"fontColor":"BBBBBBFF",
 				"height":"50"
@@ -251,7 +251,7 @@
 				"y":"670",
 				"fontSize":"26",
 				"id":"do_Label_12",
-				"text":"手持身份证原件",
+				"text":"手持证件的照片",
 				"type":"do_Label",
 				"fontColor":"BBBBBBFF",
 				"height":"50"

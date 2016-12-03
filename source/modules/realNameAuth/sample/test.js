@@ -17,6 +17,8 @@ module.exports.demo = function() {
 			// 最大长度限制
 			maxLength : 18
 		},
+		//提示信息
+		prompt:"上传相关照片",
 		// 回调的代码
 		onCallback:"source://modules/realNameAuth/sample/realNameAuthCallback"
 		
