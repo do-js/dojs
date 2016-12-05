@@ -214,7 +214,7 @@ module.exports.closePage = function(_options){
  * 判断值是否为JSON 对象
  * @param data 判断的值
  */
-module.exports.isObject = function(data) {
+module.exports.isJSONObject = function(data) {
 	return typeof data == "object" && data != null && typeof data.length == "undefined";
 }
 
@@ -223,7 +223,7 @@ module.exports.isObject = function(data) {
  * 判断值是否为JSON Array
  * @param data 判断的值
  */
-module.exports.isArray = function(data) {
+module.exports.isJSONArray = function(data) {
 	return typeof data == "object" && data != null && typeof data.length != "undefined";
 }
 //---------------------------------------------------------------
