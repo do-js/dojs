@@ -1,9 +1,0 @@
-{
-	"RootView":{
-		"bgColor":"00000000",
-		"templates":"source://userControls/appGuide/src/template.ui",
-		"width":"750",
-		"type":"do_SlideView",
-		"height":"1334"
-	}
-}

@@ -16,6 +16,13 @@ var options = [ {
 	fontColor_on : "55C5B9FF",
 	fontColor_off : "9E9E9EFF"
 }, {
+	name : "uControls",
+	path : "source://samples/userControls/main.ui",
+	image_on : "source://image/samples/b_2.png",
+	image_off : "source://image/samples/b_1.png",
+	fontColor_on : "55C5B9FF",
+	fontColor_off : "9E9E9EFF"
+}, {
 	name : "API",
 	path : "source://samples/api/main.ui",
 	image_on : "source://image/samples/c_2.png",

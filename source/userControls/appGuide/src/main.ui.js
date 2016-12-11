@@ -2,7 +2,7 @@
 var do_Page = sm("do_Page");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	if (_option.content) {
 		var d = _option.content;
 		for (var i = 0; i < d.length; i++) {

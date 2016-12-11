@@ -3,7 +3,7 @@ var dojs = require("dojs");
 var do_Page = sm("do_Page");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	if (_option["content"]) {
 		var data = _option["content"];
 		var listdata = mm("do_ListData");

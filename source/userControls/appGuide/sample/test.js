@@ -1,12 +1,15 @@
 var dojs = require("dojs");
-var appGuide = require("source://userControls/appGuide/call");
 /**
  * 添加一个引导页，一般是3-5页，每一页一般是一个图片，最后一页有一个按钮，点击可以进入首页
  * 缺省从0，0位置开始
  */
-module.exports.demo = function(alayout, id) {
-	appGuide.addToALayout(alayout, id, {
-		// 图片数据
+module.exports.demo = function(_parent) {
+	var userControl = require("source://userControls/userControl");
+	userControl.addView(_parent, "appGuide", {
+		x:0,
+		y:0,
+		width:650,
+		height:1106,
 		content : [ {
 			bgImage : "http://img.zcool.cn/community/01efd35649945a32f87512f6c971f8.jpg",
 			showCloseButton : false,

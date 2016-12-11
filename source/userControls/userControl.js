@@ -5,6 +5,8 @@ var dojs=require("dojs");
 module.exports.addView = function(_parent, _controlName, _option){
 	_option.x=_option.x||0;
 	_option.y=_option.y||0;
+	_option.width=_option.width||0;
+	_option.height=_option.height||0;
 	if (dojs.core.isNull(_parent)){
 		dojs.core.error("试图userControl加入到null对象上");
 		return null;

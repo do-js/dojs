@@ -9,7 +9,7 @@
 var do_Page = sm("do_Page");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	root.width = _option.width;
 	root.height = _option.height;
 	var _w = root.width / 5;

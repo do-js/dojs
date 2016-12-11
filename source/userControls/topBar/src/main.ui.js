@@ -10,7 +10,7 @@ var dojs = require("dojs");
 var do_Page = sm("do_Page");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	// 调整大小，如果不需要系统状态栏，则高度减少40
 	if (_option["noSystemStatusBar"]) {
 		root.height = root.height - 40;

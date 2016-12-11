@@ -11,7 +11,7 @@ var tags = [ "radio1", "radio2", "radio3", "radio4", "radio5" ];
 var radius = 25;
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	root.width = _option.width;
 	root.height = _option.height;
 	var count = _option.content.length;
