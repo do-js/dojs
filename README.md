@@ -20,19 +20,18 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 
 ```
  [source/script]
-            ├── [do]
-            │       ├── [core.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core) 
-            │       ├── [page.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page)
-            │       ├── [http.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http)
-            │       ├── [global](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global)  
-            │       ├── [style.js](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style)
-            │       └── [defaultSetting]
-            ├── [mySetting]
-            ├── [ext]
-            ├── [tools]
-            └── do.js
+        ├── [do]
+        │       ├── core.js 
+        │       ├── page.js
+        │       ├── http.js
+        │       ├── global 
+        │       ├── style.js
+        │       └── [defaultSetting]
+        ├── [mySetting]
+        ├── [ext]
+        ├── [tools]
+        └── do.js
 ```
-
 
     [do]            :最基础的js库，必须拷贝到你自己的项目里
     [defaultSetting]:里面包含多个配置js文件    
