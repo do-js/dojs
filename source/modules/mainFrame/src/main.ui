@@ -29,30 +29,21 @@
 				"height":"1"
 			},
 			{
-				"bgColor":"FFFFFFFF",
+				"bgColor":"CCCCCCFF",
 				"width":"750",
 				"y":"1208",
-				"id":"do_ALayout_3",
+				"id":"do_Label_1",
+				"type":"do_Label",
+				"height":"1"
+			},
+			{
+				"bgColor":"FFFFFFFF",
+				"width":"750",
+				"y":"1209",
+				"id":"do_ALayout_bottom",
 				"type":"do_ALayout",
-				"views":[
-					{
-						"bgColor":"BFBFBFFF",
-						"width":"750",
-						"id":"do_ALayout_line",
-						"type":"do_ALayout",
-						"height":"1"
-					},
-					{
-						"templates":"source://modules/mainFrame/src/main_1.ui",
-						"width":"750",
-						"y":"2",
-						"canScrollToTop":"false",
-						"id":"do_GridView_bottom",
-						"type":"do_GridView",
-						"height":"126"
-					}
-				],
-				"height":"128"
+				"views":[],
+				"height":"126"
 			}
 		],
 		"height":"1334"
