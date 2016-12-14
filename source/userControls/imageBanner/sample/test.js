@@ -1,10 +1,10 @@
 var dojs = require("dojs");
-var imageBanner = require("source://userControls/imageBanner/call");
 /**
- * 图片轮播图，最多6个图片
+ * 图片轮播图，最多6个图片，x，y可设置，高宽固定
  */
-module.exports.demo = function(alayout, id) {
-	imageBanner.addToALayout(alayout, id, {
+module.exports.demo = function(_parent) {
+	var userControl = require("source://userControls/userControl");
+	userControl.addView(_parent, "imageBanner", {
 		// 加到ALayout上的坐标值
 		x : 0,
 		y : 0,
@@ -22,7 +22,7 @@ module.exports.demo = function(alayout, id) {
 			bgImage : "source://userControls/imageBanner/sample/banner3.jpg",
 			tag : 2
 		} ],
-		onCallback : function(data) {
+		onBannerTouch : function(data) {
 			// 点击轮播图任何一个页面触发的点击事件
 			// data就是传递过去的tag值
 			dojs.core.toast(data);

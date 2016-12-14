@@ -7,7 +7,5 @@ dojs.page.allowHideKeyboard();
 
 var data = sm("do_Page").getData();
 
-sm("do_Page").on("loaded", function(){
-	var _rq=require("source://userControls/" + data.id + "/sample/test");
-	_rq.demo(ui("do_ALayout_content"));
-});
+var _rq = require("source://userControls/" + data.id + "/sample/test");
+_rq.demo(ui("do_ALayout_content"));

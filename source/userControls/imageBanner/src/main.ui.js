@@ -34,3 +34,6 @@ root.on("usreControlInit", function(_option) {
 		ui("slideview").startLoop(_option["interval"]);
 	}
 });
+sm("do_Page").on("imageBanneronBannerTouch", function(_data) {
+	root.fire("onBannerTouch", _data);
+})

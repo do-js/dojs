@@ -41,10 +41,10 @@ root.on("usreControlInit", function(_option) {
 	}
 	//
 	ui("leftButton").on("touch", function() {
-		sm("do_Page").fire("topBaronCallback1")
+		root.fire("onLeftButtonTouch")
 	});
 	ui("rightButton").on("touch", function() {
-		sm("do_Page").fire("topBaronCallback2")
+		root.fire("onRightButtonTouch")
 	});
 
 	dojs.style.css(ui("leftImage"), "dynamicButton");
