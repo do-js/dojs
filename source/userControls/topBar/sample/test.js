@@ -1,10 +1,10 @@
 var dojs = require("dojs");
-var topbar = require("source://userControls/topBar/call");
 /**
  * topBar宽固定是750，高固定为128或88，x，y固定为0，0
  */
-module.exports.demo = function(alayout, id) {
-	topbar.addToALayout(alayout, id, {
+module.exports.demo = function(_parent) {
+	var userControl = require("source://userControls/userControl");
+	userControl.addView(_parent, "topBar", {
 		// 背景图片或颜色，如下为图片，也可以是FF0000FF这种颜色值
 		background : "source://userControls/topBar/sample/background.jpg",
 		// 包括系统状态栏，则高度为128，否则为88
@@ -24,11 +24,11 @@ module.exports.demo = function(alayout, id) {
 			text : "我是TopBar1"
 		},
 		// 点击左边按钮触发的回调
-		onCallback1 : function() {
+		onLeftButtonTouch : function() {
 			dojs.core.toast("点击左边按钮");
 		},
 		// 点击右边边按钮触发的回调
-		onCallback2 : function() {
+		onRightButtonTouch : function() {
 			dojs.core.toast("点击右边按钮");
 		}
 	});

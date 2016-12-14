@@ -1,7 +1,7 @@
 /**
  * related to template.ui
  * 
- * @Author : zxhuizhi@126.com
+ * @Author : and
  * @Timestamp : 2016-11-12
  */
 var dojs = require("dojs");
@@ -13,7 +13,7 @@ ui("$").setMapping({
 dojs.style.css(ui("entryButton"), "dynamicButton");
 
 ui("entryButton").on("touch", function() {
-	sm("do_Page").fire("appGuideonCallback", ui("$").tag);
+	sm("do_Page").fire("onAppGuideCloseButtonTouch", ui("$").tag);
 })
 
 ui("$").on("dataRefreshed", function(d) {

@@ -1,8 +1,9 @@
 //variable
 var do_Page = sm("do_Page");
+var dojs = require("dojs");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
 	if (_option.content) {
 		var d = _option.content;
 		for (var i = 0; i < d.length; i++) {
@@ -10,7 +11,10 @@ root.on("initialize", function(_option) {
 		}
 		var listdata = mm("do_ListData");
 		listdata.addData(d);
-		ui("$").bindItems(listdata);
-		ui("$").refreshItems();
+		root.bindItems(listdata);
+		root.refreshItems();
 	}
+});
+sm("do_Page").on("onAppGuideCloseButtonTouch", function(_data) {
+	root.fire("onCloseButtonTouch", _data);
 });

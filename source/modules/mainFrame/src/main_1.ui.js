@@ -1,23 +1,26 @@
-var dojs=require("dojs");
+var dojs = require("dojs");
 
-ui("$").setMapping({
-	"do_ImageView_button.tag":"selected",
-	"do_Label_button.tag":"data"
-});
+var image_button = ui("do_ImageView_button");
+var label_button = ui("do_Label_button");
 
-ui("$").on("dataRefreshed", function(){
-	var data=JSON.parse(ui("do_Label_button").tag);
-	ui("$").width = data.width;
-	ui("do_Label_button").width = data.width;
-	ui("do_ImageView_button").x = data.x;
-	ui("$").redraw();
-	ui("do_Label_button").text=data.name;
-	if (ui("do_ImageView_button").tag =="1"){
-		ui("do_ImageView_button").source=data.image_on;
-		ui("do_Label_button").fontColor=data.fontColor_on;
+ui("$").on("initWidth", function(data) {
+	var _width = data["width"];
+	if (this.width != _width) {
+		this.width = _width;
+		image_button.x = (_width - image_button.width) / 2;
+		label_button.width = _width;
+		this.redraw();
 	}
-	else{
-		ui("do_ImageView_button").source=data.image_off;
-		ui("do_Label_button").fontColor=data.fontColor_off;
+	image_button.source = data.image_off;
+	label_button.fontColor = data.fontColor_off;
+	label_button.text = data.name;
+
+}).on("selected", function(data) {
+	if (data.selected == "1") {
+		image_button.source = data.image_on;
+		label_button.fontColor = data.fontColor_on;
+	} else {
+		image_button.source = data.image_off;
+		label_button.fontColor = data.fontColor_off;
 	}
 });

@@ -9,7 +9,8 @@
 var do_Page = sm("do_Page");
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
+	root.visible = false;
 	root.width = _option.width;
 	root.height = _option.height;
 	var _w = root.width / 5;
@@ -42,5 +43,5 @@ function comment(d, e) {
 	for (var j = i; j < 5; j++) {
 		ui("star" + (j + 1)).source = "source://userControls/starComment/src/starep.png"
 	}
-	sm("do_Page").fire("starCommentonCallback", i);
+	root.fire("onStarTouch", i);
 }

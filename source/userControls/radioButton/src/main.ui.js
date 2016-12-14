@@ -11,7 +11,8 @@ var tags = [ "radio1", "radio2", "radio3", "radio4", "radio5" ];
 var radius = 25;
 var root = ui("$");
 // event
-root.on("initialize", function(_option) {
+root.on("usreControlInit", function(_option) {
+	root.visible = false;
 	root.width = _option.width;
 	root.height = _option.height;
 	var count = _option.content.length;
@@ -81,7 +82,7 @@ function send_type(d, e) {
 	var tagLabel = ui(tags[i] + "_3");
 	d.text = tagLabel.text;
 	d.tag = tagLabel.tag;
-	sm("do_Page").fire("radioButtononCallback", d);
+	root.fire("onSelected", d);
 
 	for (var j = 0; j < tags.length; j++) {
 		var border = ui(tags[j] + "_1");

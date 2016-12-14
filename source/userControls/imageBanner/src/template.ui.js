@@ -6,5 +6,5 @@ root.setMapping({
 });
 
 root.on("touch", function() {
-	sm("do_Page").fire("imageBanneronCallback", this.tag);
+	sm("do_Page").fire("imageBanneronBannerTouch", this.tag);
 });

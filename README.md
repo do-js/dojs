@@ -21,20 +21,20 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 ```
  [source/script]
         ├── [do]
-        │       ├── core.js 
-        │       ├── page.js
-        │       ├── http.js
-        │       ├── global 
-        │       ├── style.js
-        │       └── [defaultSetting]
+        │     ├── core.js 
+        │     ├── page.js
+        │     ├── http.js
+        │     ├── global 
+        │     ├── style.js
+        │     └── [defaultSetting]
         ├── [mySetting]
         ├── [ext]
         ├── [tools]
         └── do.js
 ```
 
-    [do]            :最基础的js库，必须拷贝到你自己的项目里
-    [defaultSetting]:里面包含多个配置js文件    
+    [do]            :最基础的js库，必须拷贝到你自己的项目里,里面包含5个最基础的js库
+    [defaultSetting]:里面包含多个配置文件，用于设置一些缺省值    
     [mySetting]     :和do下面的defaultSetting想对应，以这个目录下的设置为优先，如果这个目录下没有对应的选项，则使用defaultSetting。      
     do.js           :基础js库的调用封装，必须拷贝到你自己的项目里
     [ext]           :对现有js对象：date，string ,array的功能扩展，建议拷贝到你自己的项目
@@ -43,9 +43,18 @@ deviceone提供了非常强大和基础底层的组件，可以很灵活的开�
 
 ####2. modules库
 
+```
 [source/modules]
-            ├── [img]    :所有目录都共享的一些图标，这个建议必须拷贝到你自己的项
-            ├── [...]    :每个module都是一个子目录，不建议全部拷贝，用到那个拷贝那个
+      ├── [img]    :所有目录都共享的一些图标，这个建议必须拷贝到你自己的项目
+      ├── [...]    :每个module都是一个子目录，不建议全部拷贝，用到那个拷贝那个
+```
+
+####3. userControl库
+
+```
+[source/userControl]
+      ├── [...]    :每个userControl都是一个子目录，不建议全部拷贝，用到那个拷贝那个
+```
 
 ##使用方法
 1. 按照上面的建议拷贝对应的文件和目录到你自己的项目中，目录结构不能改变。
