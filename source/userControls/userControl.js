@@ -16,6 +16,10 @@ module.exports.addView = function(_parent, _controlName, _option){
 		var _address = _parent.add(_id, "source://userControls/" + _controlName + "/src/main.ui", _option.x, _option.y);
 		var _view=d1.ui(_address);
 		_view.fire("usreControlInit", _option);
+		for(var k in _option){
+			if (!typeof(_option[k]) !="function") continue;
+			_view.on(k, _option[k]);
+		}
 		_view.visible=true;
 		_view.fire("usreControlInitialized", _option);
 		return _view;
@@ -25,6 +29,10 @@ module.exports.addView = function(_parent, _controlName, _option){
 		var _address = _parent.add(_id, "source://userControls/" + _controlName + "/src/main.ui", _option.target);
 		var _view=d1.ui(_address);
 		_view.fire("usreControlInit", _option);
+		for(var k in _option){
+			if (!typeof(_option[k]) !="function") continue;
+			_view.on(k, _option[k]);
+		}
 		_view.visible=true;
 		_view.fire("usreControlInitialized", _option);
 		return _view;
