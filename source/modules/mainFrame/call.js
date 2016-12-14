@@ -10,6 +10,7 @@ module.exports.invoke = function(_option){
 		source:"source://modules/mainFrame/src/main.ui", 
 		animationType:"fade",
 		data:_option,
-		statusBarState:"transparent"
+		statusBarState:"show",
+		statusBarBgColor : "16AF9FFF"
 	});
 };

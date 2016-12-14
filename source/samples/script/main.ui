@@ -7,34 +7,25 @@
 		"type":"do_ALayout",
 		"views":[
 			{
-				"bgColor":"16AF9FFF",
-				"width":"750",
-				"id":"do_ALayout_topbar",
-				"type":"do_ALayout",
-				"views":[
-					{
-						"textAlign":"center",
-						"width":"750",
-						"y":"65",
-						"fontSize":"40",
-						"id":"do_Label_title",
-						"text":"常用javascript库",
-						"type":"do_Label",
-						"fontColor":"FFFFFFFF",
-						"height":"60"
-					}
-				],
-				"height":"128"
-			},
-			{
 				"templates":"source://samples/script/main_1.ui",
 				"width":"750",
-				"y":"127",
+				"y":"88",
 				"id":"do_ListView_index",
 				"type":"do_ListView",
-				"height":"1206"
+				"height":"1118"
+			},
+			{
+				"bgColor":"16AF9FFF",
+				"textAlign":"center",
+				"width":"750",
+				"fontSize":"40",
+				"id":"do_Label_title",
+				"text":"常用javascript库",
+				"type":"do_Label",
+				"fontColor":"FFFFFFFF",
+				"height":"88"
 			}
 		],
-		"height":"1334"
+		"height":"1207"
 	}
 }
