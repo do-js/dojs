@@ -44,12 +44,19 @@
 				"height":"128"
 			},
 			{
-				"bgColor":"FFFFFFFF",
-				"width":"650",
-				"x":"50",
+				"width":"750",
 				"y":"178",
-				"id":"do_ALayout_content",
-				"type":"do_ALayout",
+				"id":"do_ScrollView_1",
+				"type":"do_ScrollView",
+				"views":[
+					{
+						"bgColor":"FFFFFFFF",
+						"width":"750",
+						"id":"do_ALayout_content",
+						"type":"do_ALayout",
+						"height":"1334"
+					}
+				],
 				"height":"1106"
 			}
 		],

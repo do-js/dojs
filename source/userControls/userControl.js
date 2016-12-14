@@ -17,7 +17,7 @@ module.exports.addView = function(_parent, _controlName, _option){
 		var _view=d1.ui(_address);
 		_view.fire("usreControlInit", _option);
 		for(var k in _option){
-			if (!typeof(_option[k]) !="function") continue;
+			if (typeof(_option[k]) !="function") continue;
 			_view.on(k, _option[k]);
 		}
 		_view.visible=true;
@@ -30,7 +30,7 @@ module.exports.addView = function(_parent, _controlName, _option){
 		var _view=d1.ui(_address);
 		_view.fire("usreControlInit", _option);
 		for(var k in _option){
-			if (!typeof(_option[k]) !="function") continue;
+			if (typeof(_option[k]) !="function") continue;
 			_view.on(k, _option[k]);
 		}
 		_view.visible=true;

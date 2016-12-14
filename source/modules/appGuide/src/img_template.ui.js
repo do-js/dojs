@@ -1,7 +1,7 @@
 /**
  * related to template.ui
  * 
- * @Author : zxhuizhi@126.com
+ * @Author : and
  * @Timestamp : 2016-11-12
  */
 var dojs = require("dojs");
