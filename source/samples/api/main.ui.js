@@ -18,7 +18,26 @@ var listdata = mm("do_ListData");
 		}
 	});
 })();
-
+//event
+sm("do_Page").on("installed",function(_id){
+	dojs.core.p(_id);
+	sm("do_Storage").readFile("data://api.json", function(d) {
+		for (var i = 0; i < d.length; i++) {
+			var id = d[i].id;
+			if(_id==id){
+				if(!d[i].newmd5)
+					d[i].newmd5=d[i].md5;
+				else {
+					d[i].md5=d[i].newmd5;
+				}
+				break;
+			}
+		}
+		dojs.core.p(d);
+		refresh(d);
+		save(d);
+	})
+})
 // private function
 function save(_d) {
 	sm("do_Storage").writeFile("data://api.json", _d, function() {
@@ -46,6 +65,7 @@ function getMd5(_data, id) {
 }
 function refresh(_result) {
 	ui("do_ListView_index").bindItems(listdata);
+	listdata.removeAll();
 	listdata.addData(_result);
 	ui("do_ListView_index").refreshItems();
 }
