@@ -20,27 +20,28 @@ ui("$").on("dataRefreshed", function(d) {
 	else
 		size = size + "B";
 	ui("do_Label_size").text = size;
+	data = d;
 	if (!d.newmd5 || (d.newmd5 && d.newmd5 != d.md5)) {
 		ui("do_ALayout_flag").visible = true;
 		imageview.source = "source://image/samples/api/update.png";
-		data = d;
 		entry = null;
 	} else {
 		ui("do_ALayout_flag").visible = false;
 		imageview.source = "source://image/samples/api/arrow.png";
 		entry = d.entry;
-		data = null;
 	}
 }).on("touch", function() {
 	if (entry) {
 		sm("do_App").openPage({
-			source : entry,
-			statusBarState : "transparent"
+			source : "source://samples/api/frame.ui",
+			data : data,
+			statusBarBgColor : "000000FF",
+			statusBarState : "show"
 		});
 	}
 })
 ui("do_ALayout_2").on("touch", function() {
-	if (data == null)
+	if (entry != null)
 		return;
 	var http = mm("do_Http");
 	// 显示等待窗口
@@ -52,9 +53,7 @@ ui("do_ALayout_2").on("touch", function() {
 	http.url = data.url;
 	http.on("result", function(d) {
 		sm("do_Storage").unzip(src, "data://temp/" + data.id, function(_d, e) {
-			var updatesrc = "data://temp/" + data.id + "/source/view/" + data.type;
-			dojs.core.p(updatesrc + "/" + data.id + "/main.ui");
-			dojs.core.p("xxx" + sm("do_Storage").fileExist(updatesrc + "/" + data.id + "/main.ui"));
+			var updatesrc = "data://temp/" + data.id + "/source/view";
 			sm("do_App").update([ updatesrc ], "source://view", function() {
 				sm("do_Page").fire("installed", data.id);
 				// 隐藏等待窗口

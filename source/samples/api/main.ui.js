@@ -18,17 +18,16 @@ var listdata = mm("do_ListData");
 		}
 	});
 })();
-//event
-sm("do_Page").on("installed",function(_id){
-	dojs.core.p(_id);
+// event
+sm("do_Page").on("installed", function(_id) {
 	sm("do_Storage").readFile("data://api.json", function(d) {
 		for (var i = 0; i < d.length; i++) {
 			var id = d[i].id;
-			if(_id==id){
-				if(!d[i].newmd5)
-					d[i].newmd5=d[i].md5;
+			if (_id == id) {
+				if (!d[i].newmd5)
+					d[i].newmd5 = d[i].md5;
 				else {
-					d[i].md5=d[i].newmd5;
+					d[i].md5 = d[i].newmd5;
 				}
 				break;
 			}
@@ -49,9 +48,10 @@ function update(_result) {
 		for (var i = 0; i < d.length; i++) {
 			var id = d[i].id;
 			var newmd5 = getMd5(_result, id);
-			if (newmd5)
+			if (d[i].newmd5 && newmd5)
 				d[i].newmd5 = newmd5;
 		}
+		dojs.core.p(d);
 		refresh(d);
 		save(d);
 	})

@@ -1,0 +1,26 @@
+{
+	"RootView":{
+		"x":"0",
+		"width":"750",
+		"y":"0",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"width":"750",
+				"y":"88",
+				"id":"do_ScrollView_1",
+				"type":"do_ScrollView",
+				"views":[
+					{
+						"width":"750",
+						"id":"do_LinearLayout_1",
+						"type":"do_LinearLayout",
+						"height":"-1"
+					}
+				],
+				"height":"1246"
+			}
+		],
+		"height":"1334"
+	}
+}
