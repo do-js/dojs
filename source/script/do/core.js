@@ -139,7 +139,29 @@ module.exports.valueEqual = function(obj1, obj2){
 module.exports.p = function(data,tag){
 	print(data,tag);
 };
-
+/**
+ * 调试状态下，在IDE中打印信息,并在tag值显示函数调用的stack
+ * @param data 要打印的内容，可以是字符串、数字、对象或数组对象等
+ * @param tag [可空] 类型标签
+ */
+module.exports.ps = function(data){
+	var stack = [];
+    var caller = arguments.callee.caller;
+	while (caller) {
+		var name = getFunctionName(caller);
+		stack.unshift(name);
+		if(name==undefined||name.length==0)
+			break;
+		caller = caller && caller.caller;
+	}
+	print(data,o2string(stack.join('->'), false));
+};
+function getFunctionName(func) {
+    if ( typeof func == 'function' || typeof func == 'object' ) {
+        var name = ('' + func).match(/function\s*([\w\$]*)\s*\(/);
+    }
+    return name && name[1];
+}
 //---------------------------------------------------------------
 /**
  * 弹出提示信息
