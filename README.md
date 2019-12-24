@@ -7,22 +7,23 @@ appworker提供了非常强大和基础底层的组件，可以很灵活的开�
 
 这部分代码内容后续会不断更新，欢迎小伙伴们能随时帮助我们修改和完善这些代码，或者贡献更多你们手中积累的高品质代码出来给大家一起分享（我们会不断选取更多优秀的代码进来，和让小伙伴们一起分享）。
 
-##概述
+## 概述
 ![](http://doc.deviceone.net/web/img/20161215/04726244a4a848e7b8a08dac13362695.png)
 
 这个项目本身就是一个可以运行的App，用户可以很直观的看到这个框架运行的效果。里面的JS库包含三个部分：
 
-####1. js基础库：这个库和ui无关，封装了一些常用的基础函数，包含一些工具函数，http的ajax形式的函数，样式框架，全局设置等。
+#### 1. js基础库：这个库和ui无关，封装了一些常用的基础函数，包含一些工具函数，http的ajax形式的函数，样式框架，全局设置等。
   
-####2. modules库：这个库基本上都是和ui相关的一些功能性模块。把ui和逻辑都封装起来，使用者无需了解里面的细节。
+#### 2. modules库：这个库基本上都是和ui相关的一些功能性模块。把ui和逻辑都封装起来，使用者无需了解里面的细节。
 
-####3. userControl库：这个库也是和ui相关的模块，和modules的差别在于，它的使用是通过ALayout和Linearlayout的add方法使用；而modules是弹出一个page或者add一个全屏的遮盖层。
+#### 3. userControl库：这个库也是和ui相关的模块，和modules的差别在于，它的使用是通过ALayout和Linearlayout的add方法使用；而modules是弹出一个page或者add一个全屏的遮盖层。
 
 这些库的使用方法基本上就是用到那个拷贝那个到自己的项目目录下，但是注意目录结构不要随意修改。
 同时，这个App也提供动态加载组件API的学习Sample。
-##目录结构
 
-####1. js基础库
+## 目录结构
+
+#### 1. js基础库
 
 ```
  [source/script]
@@ -47,7 +48,7 @@ appworker提供了非常强大和基础底层的组件，可以很灵活的开�
     [tools]         :一些工具js库，不建议全部拷贝，用到那个拷贝那个
               
 
-####2. modules库
+#### 2. modules库
 
 ```
 [source/modules]
@@ -55,7 +56,7 @@ appworker提供了非常强大和基础底层的组件，可以很灵活的开�
       ├── [...]    :每个module都是一个子目录，不建议全部拷贝，用到那个拷贝那个
 ```
 
-####3. userControl库
+#### 3. userControl库
 
 ```
 [source/userControls]
@@ -63,9 +64,9 @@ appworker提供了非常强大和基础底层的组件，可以很灵活的开�
       ├── userControls.js   :所有userControl调用的入口，建议拷贝
 ```
 
-##使用方法示范
+## 使用方法示范
 
-####1. js库使用详细参考[global](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global),[core](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core),[http](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http),[page](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page),[style](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style)
+#### 1. js库使用详细参考[global](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/global),[core](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/core),[http](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/http),[page](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/page),[style](https://github.com/do-js/dojs/tree/master/source/samples/script/dojs/style)
 基本使用类似如下：
 
 ```JavaScript
@@ -74,7 +75,7 @@ dojs.core.p(obj); //打印任何对象，取代appworker.print方法
 ...
 ```
 
-####2. module库使用详细参考[modules](https://github.com/do-js/dojs/tree/master/source/samples/modules)
+#### 2. module库使用详细参考[modules](https://github.com/do-js/dojs/tree/master/source/samples/modules)
 基本使用类似如下：
 
 ```JavaScript
@@ -98,7 +99,7 @@ inputTextField.invoke({
 
 ```
 
-####3. userControl库使用详细参考[userControls](https://github.com/do-js/dojs/tree/master/source/samples/userControls)
+#### . userControl库使用详细参考[userControls](https://github.com/do-js/dojs/tree/master/source/samples/userControls)
 基本使用类似如下：
 
 ```JavaScript
